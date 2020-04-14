@@ -1,0 +1,630 @@
+/*
+Table de contenus code css
+------------------------------------
+1 > GENERAL
+2 > HEADER
+3 > NAVIGATION
+4 > BANNERS
+5 > HOME SLIDER
+6 > PRODUCT
+7 > PRODUCTS PAGE
+8 > PRODUCT DETAILS PAGE
+9 > CHECKOUT PAGE
+10 > FOOTER
+11 > SLICK
+12 > RESPONSIVE
+------------------------------------*/
+
+/*=========================================================
+	01 -> GENERAL
+===========================================================*/
+
+/*----------------------------*\
+	Typography
+\*----------------------------*/
+
+body {
+  font-family: 'Hind', sans-serif;
+  color: #4A4E5A;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #30323A;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+a {
+  color: #30323A;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+
+a:hover, a:focus {
+  color: #F8694A;
+  text-decoration: none;
+  outline: none;
+}
+
+.primary-color {
+  color: #F8694A;
+}
+
+.white-color {
+  color: #FFF;
+}
+
+.font-weak {
+  font-weight: 400;
+}
+
+strong {
+  color: #30323A;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-color: #DADADA;
+}
+
+/*----------------------------*\
+	Buttons
+\*----------------------------*/
+
+.main-btn, .primary-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.icon-btn.main-btn, .icon-btn.primary-btn {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  padding: 0px;
+  border: none;
+}
+
+.main-btn {
+  color: rgb(151, 155, 170);
+  background-color: #FFF;
+  -webkit-box-shadow: 0px 0px 0px 1px #DADADA inset, 0px 0px 0px 6px transparent;
+  box-shadow: 0px 0px 0px 1px #DADADA inset, 0px 0px 0px 6px transparent;
+}
+
+.main-btn:hover, .main-btn:focus {
+  color: #F8694A;
+  -webkit-box-shadow: 0px 0px 0px 1px #F8694A inset, 0px 0px 0px 0px #F8694A;
+  box-shadow: 0px 0px 0px 1px #F8694A inset, 0px 0px 0px 0px #F8694A;
+}
+
+.primary-btn {
+  color: #FFF;
+  background-color: #F8694A;
+}
+
+.primary-btn:hover, .primary-btn:focus {
+  color: #FFF;
+  background-color: #30323A;
+}
+
+/*----------------------------*\
+	Inputs
+\*----------------------------*/
+
+/*----------------------------*\
+	Lists
+\*----------------------------*/
+
+
+/*----------------------------*\
+	Sections
+\*----------------------------*/
+
+/*----------------------------*\
+	Breadcrumb
+\*----------------------------*/
+/*=========================================================
+	02 -> HEADER
+===========================================================*/
+
+#header {
+  padding-top: 5px;
+  padding-left: 1px;
+  padding-bottom: 5px;
+  background: white;
+}
+
+
+/*----------------------------*\
+	logo
+\*----------------------------*/
+
+.header-logo {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.header-logo .logo>img {
+  width: 100px;
+  max-height: 100px;
+}
+
+
+/*----------------------------*\
+	Cart header
+\*----------------------------*/
+/* l'icone bug du coup je l'ai effacé mais je garde ça pour si j'ajoute un autre iconne pour le cadis*/
+.header-cart .header-btns-icon .qty {
+  position: absolute;
+  right: -9px;
+  top: -9px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 10px;
+  background: #F8694A;
+  color: #FFF;
+  border-radius: 50%;
+}
+
+/*=========================================================
+	03 -> NAVIGATION
+===========================================================*/
+
+#navigation {
+  background-color: rgb(130, 140, 180);
+}
+
+#navigation .container {
+  position: relative;
+}
+
+
+/*----------------------------*\
+	Menu nav
+\*----------------------------*/
+
+.menu-nav .menu-header {
+  display: none;
+  padding: 15px;
+  text-transform: uppercase;
+  background: rgb(73, 74, 80);
+  color: rgb(3, 3, 3);
+  font-weight: 700;
+}
+
+.menu-nav .menu-header>i {
+  float: right;
+  line-height: 20px;
+}
+
+.menu-nav .menu-list>li {
+  display: inline-block;
+}
+
+.menu-nav .menu-list>li>a {
+  display: block;
+  padding: 15px;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+.menu-nav .menu-list>li>a:hover, .menu-nav .menu-list>li>a:focus, .menu-nav .menu-list>li.dropdown.open>a {
+  color: #F8694A;
+}
+
+/*----------------------------*\
+	Dropdowns
+\*----------------------------*/
+
+.custom-menu {
+  position: absolute;
+  padding: 15px;
+  background: #FFF;
+  -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
+  z-index: 100;
+  top: 100%;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.dropdown.open>.custom-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*-- Default Dropdown --*/
+
+.dropdown.default-dropdown>.custom-menu {
+  border-top: 2px solid #F8694A;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(15px);
+  -ms-transform: translateX(-50%) translateY(15px);
+  transform: translateX(-50%) translateY(15px);
+}
+
+.dropdown.default-dropdown.open>.custom-menu {
+  -webkit-transform: translateX(-50%) translateY(0px);
+  -ms-transform: translateX(-50%) translateY(0px);
+  transform: translateX(-50%) translateY(0px);
+}
+
+.dropdown.default-dropdown>.custom-menu>li>a {
+  display: block;
+  padding: 10px 0px;
+  text-transform: uppercase;
+}
+
+/*-- Mega Dropdown --*/
+
+.dropdown.mega-dropdown.full-width {
+  position: static !important;
+}
+
+.dropdown.mega-dropdown>.custom-menu {
+  border-top: 2px solid #F8694A;
+  left: 0;
+  -webkit-transform: translate(0px, 15px);
+  -ms-transform: translate(0px, 15px);
+  transform: translate(0px, 15px);
+  width: auto;
+  min-width: 750px;
+  max-width: 100%;
+}
+
+.dropdown.mega-dropdown.full-width>.custom-menu {
+  width: 100%;
+}
+
+.dropdown.mega-dropdown.open>.custom-menu {
+  -webkit-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+/*-- Side Dropdown --*/
+
+.dropdown.side-dropdown>.custom-menu {
+  border-left: 2px solid #F8694A;
+  left: 100%;
+  top: 0;
+  width: 750px;
+  -webkit-transform: translate(15px, 0px);
+  -ms-transform: translate(15px, 0px);
+  transform: translate(15px, 0px);
+}
+
+.dropdown.side-dropdown.open>.custom-menu {
+  -webkit-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+/*----------------------------*\
+	Mobile nav
+\*----------------------------*/
+
+#header .nav-toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  #header .nav-toggle {
+    display: inline-block;
+  }
+  header .pull-left, header .pull-right {
+    float: none !important;
+  }
+  header .pull-right {
+    margin-top: 10px;
+  }
+  #responsive-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    max-width: 270px;
+    width: 0%;
+    overflow: hidden;
+    background-color: #FFF;
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: 0.5s all;
+    transition: 0.5s all;
+    z-index: 990;
+  }
+  #responsive-nav.open {
+    width: 100%;
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  #responsive-nav .dropdown .custom-menu {
+    display: none;
+    position: static;
+    width: 100%;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-top: none;
+    border-left: 2px solid #F8694A;
+  }
+  #responsive-nav .dropdown.open .custom-menu {
+    display: block;
+    min-width: auto;
+    -webkit-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  .category-nav .category-list, .menu-nav .menu-list {
+    display: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: calc(100vh - 100px);
+  }
+  .category-nav .category-list.open, .menu-nav .menu-list.open {
+    display: block;
+  }
+  .menu-nav .menu-header, .category-nav .category-header {
+    cursor: pointer;
+  }
+  .category-nav {
+    float: none;
+    width: 100%;
+  }
+  .category-nav .category-list {
+    position: static;
+  }
+  .menu-nav .menu-header {
+    display: block;
+  }
+  .menu-nav .menu-list {
+    float: none;
+    border-left: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    border-bottom: 1px solid #DADADA;
+  }
+  .menu-nav .menu-list>li {
+    display: block;
+  }
+  .menu-nav .menu-list>li+li {
+    border-top: 1px solid #DADADA;
+  }
+  .menu-nav .menu-list>li>a {
+    color: #30323A;
+  }
+  #navigation.shadow:after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+  }
+}
+
+/*=========================================================
+	04 -> BANNERS
+===========================================================*/
+
+.banner {
+  display: block;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.banner>img {
+  width: 100%;
+}
+
+.banner.banner-1 .banner-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.banner.banner-2 .banner-caption {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+}
+
+.banner h1 {
+  font-size: 46px;
+  text-transform: uppercase;
+}
+
+/*=========================================================
+	05 -> HOME SLIDER
+===========================================================*/
+
+#home .home-wrap {
+  margin-left: 20px;
+}
+
+#home-slick .banner {
+  margin: 0px;
+}
+
+/*=========================================================
+	06 -> PRODUCT
+===========================================================*/
+
+/*=========================================================
+	07 -> PRODUCTS PAGE
+===========================================================*/
+
+/*=========================================================
+	08 -> PRODUCT DETAILS PAGE
+===========================================================*/
+
+/*=========================================================
+	09 -> CHECKOUT PAGE
+===========================================================*/
+
+/*=========================================================
+	10 -> FOOTER
+===========================================================*/
+
+.footer {
+  margin: 15px 0px;
+}
+
+.footer .footer-header {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  margin-bottom: 30px;
+}
+
+.footer-logo .logo {
+  display: inline-block;
+}
+
+.footer-logo .logo>img {
+  width: 100%;
+  max-height: 70px;
+}
+
+.footer-social>li {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 6px;
+}
+
+.footer-social>li:last-child {
+  margin-right: 0px;
+}
+
+.footer-copyright {
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/*=========================================================
+	11 -> SLICK
+===========================================================*/
+
+/*----------------------------*\
+	Arrows
+\*----------------------------*/
+
+.slick-prev, .slick-next {
+  width: 40px;
+  height: 40px;
+  background: #30323A;
+  z-index: 22;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+  background: #F8694A;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #FFF;
+}
+
+.slick-prev {
+  left: 15px;
+}
+
+.slick-next {
+  right: 15px;
+}
+
+.custom-nav .slick-prev, .custom-nav .slick-next {
+  display: inline-block;
+  position: static;
+  -webkit-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+/*----------------------------*\
+	Dots
+\*----------------------------*/
+
+.slick-dots li, .slick-dots li button, .slick-dots li button:before {
+  width: 10px;
+  height: 10px;
+}
+
+.slick-dots li button:before {
+  content: "";
+  opacity: 1;
+  background: #DADADA;
+  border-radius: 50%;
+}
+
+.slick-dots li.slick-active button:before {
+  background-color: #F8694A;
+}
+
+.custom-dots .slick-dots {
+  position: static;
+  margin: 15px 0px;
+}
+
+/*=========================================================
+	12 -> RESPONSIVE
+===========================================================*/
+
+@media only screen and (max-width: 991px) {
+  #home .home-wrap {
+    margin-left: 0px;
+  }
+  #aside {
+    margin-bottom: 60px;
+  }
+  .product-reviews {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .banner h1 {
+    font-size: 36px;
+  }
+  .store-filter .pull-right, .store-filter .pull-left {
+    float: none !important;
+  }
+  .store-filter .pull-right {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  [class*='col-xs'] {
+    width: 100%;
+  }
+}

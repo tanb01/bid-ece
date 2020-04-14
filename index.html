@@ -1,18 +1,288 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="fr">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>BID ECE</title>
 
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />	
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+</head>
+
+<body>
+	<!-- HEADER -->
+	<header>
+		<!-- header -->
+		<div id="header">						
+			<div class="container">
+				<div class="pull-left">
+					<!-- Logo -->
+					<div class="header-logo">
+						<a class="logo" href="#">
+							<img src="./img/logo.jpg" alt="logo">
+						</a>
+					</div>
+					<!-- /Logo -->
+				</div>
+				<h1>BID</h1>
+				<h1>ECE</h1>
+			</div>			
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+	</header>
+	<!-- /HEADER -->
+
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- menu nav -->
+				<div class="pull-right"></div>
+					<div class="menu-nav">
+						<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+						<ul class="menu-list">
+							<li><a href="#">Page Principale</a></li>
+							
+							<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Achats<i class="fa fa-caret-down"></i></a>
+								<ul class="custom-menu">
+									<h4 >Catégories</h4></li>
+									<li><a href="index.html">Ferraille ou Trésor</a></li>
+									<li><a href="products.html">Bon pour le Musée</a></li>
+									<li><a href="products.html">Accessoire VIP</a></li>
+									<h4 >Modes de vente</h4></li>
+									<li><a href="index.html">Ferraille ou Trésor</a></li>
+									<li><a href="products.html">Bon pour le Musée</a></li>
+									<li><a href="products.html">Accessoire VIP</a></li>
+								</ul>
+							</li>
+							
+							<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Vente<i class="fa fa-caret-down"></i></a>
+								<ul class="custom-menu">
+									<li><a href="index.html">Mon compte</a></li>
+									<li><a href="products.html">Ajouter des articles</a></li>
+								</ul>
+							</li>
+							<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Votre compte<i class="fa fa-caret-down"></i></a>
+								<ul class="custom-menu">
+									<li><a href="index.html">Client</a></li>
+									<li><a href="index.html">Administrateur</a></li>				
+
+								</ul>
+							</li>
+							<li><a href="#">Payer</a></li>
+						</ul>
+					</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div><br><br>
+	<!-- /NAVIGATION -->
+
+	<!-- HOME -->
+	
+	<div id="home">
+		<!-- container -->
+		<div class="container">
+			<!-- home wrap -->
+			<div class="home-wrap">
+				<!-- home slick -->
+				<div id="home-slick">
+					<!-- banner -->
+					<div class="banner banner-1">
+						<img src="./img/timbres.jpg" alt="" height="700px" width="400px">
+						<div class="banner-caption text-center">
+							<h1>Le plus grand magasin d'encherès en ligne</h1>
+							<h3 class="white-color font-weak">Profitez de produits de qualité</h3>
+							<button class="primary-btn">Regarder</button>
+						</div>
+					</div>
+					<!-- /banner -->
+
+					<!-- banner -->
+					<div class="banner banner-1">
+						<img src="./img/art2.jpg" alt="" height="700px" width="400px">
+						<div class="banner-caption">
+							<h1 class="primary-color">Les encherès du moment<br><span class="white-color font-weak">50% de réduction</span></h1>
+							<button class="primary-btn">Jettez un coup d'oeil</button>
+						</div>
+					</div>
+					<!-- /banner -->
+
+					<!-- banner -->
+					<div class="banner banner-1">
+						<img src="./img/art3.jpg" alt="" height="700px" width="400px">
+						<div class="banner-caption">
+							<h1 class="white-color">Produits de qualité<span>Collection</span></h1>
+							<button class="primary-btn">Achetez maintenant</button>
+						</div>
+					</div>
+					<!-- /banner -->
+				</div>
+				<!-- /home slick -->
+			</div>
+			<!-- /home wrap -->
+		</div>
+		<!-- /container -->
+	</div><br><br><br>
+	
+	  <div class="container text-center">    
+		  <h3>Les encherès du moment</h3>
+		  <br>
+		  <div class="row">
+			<div class="col-sm-2">
+			  <img src="./img/art2.jpg" class="img-responsive" style="width:100%" alt="Image">
+			  <p>Partner 1</p>
+			</div>
+			<div class="col-sm-2"> 
+			  <img src="./img/art2.jpg" class="img-responsive" style="width:100%" alt="Image">
+			  <p>Partner 2</p>    
+			</div>
+			<div class="col-sm-2"> 
+			  <img src="./img/art2.jpg" class="img-responsive" style="width:100%" alt="Image">
+			  <p>Partner 3</p>
+			</div>
+			<div class="col-sm-2"> 
+			  <img src="./img/art2.jpg" class="img-responsive" style="width:100%" alt="Image">
+			  <p>Partner 4</p>
+			</div> 
+			<div class="col-sm-2"> 
+			  <img src="./img/art2.jpg" class="img-responsive" style="width:100%" alt="Image">
+			  <p>Partner 5</p>
+			</div>     
+			<div class="col-sm-2"> 
+			  <img src="./img/art2.jpg" class="img-responsive" style="width:100%" alt="Image">
+			  <p>Partner 6</p>
+			</div> 
+		  </div>
+		</div><br>
+	</div>
+	<!--penchers -->
+	
+
+	<!-- FOOTER -->
+	<footer id="footer" class="section section-grey">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<!-- footer logo -->
+						<div class="footer-logo">
+							<a class="logo" href="#">
+		            <img src="./img/logo.jpg" alt="" height="600px" width="30px">
+		          </a>
+						</div>
+						<!-- /footer logo -->
+
+						<p>BIDECE »  a été créé en 2020 pour permettre à chacun d’acheter et de vendre les plus belles pièces uniques. Chaque jour, marchands professionnels et vendeurs particuliers proposent sur BIDECE leurs meubles vintage, scandinaves, design et objets décoratifs. Les prix affichés sont fixés par ces vendeurs et BIDECE opère en tant qu’intermédiaire et tiers de confiance auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi les 100 000 références de BIDECE la perle rare et être livrés sans bouger de leur canapé. Les pièces proposées à la vente sont quant à elles quotidiennement sélectionnées à la main par nos équipes.</p>
+
+						<!-- footer social -->
+						<ul class="footer-social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						</ul>
+						<!-- /footer social -->
+					</div>
+				</div>
+				<!-- /footer widget -->
+
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Mon espace</h3>
+						<ul class="list-links">
+							<li><a href="#">Client</a></li>
+							<li><a href="#">Vendeur</a></li>
+							<li><a href="#">Administrateur</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /footer widget -->
+
+				<div class="clearfix visible-sm visible-xs"></div>
+
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Service client</h3>
+						<ul class="list-links">
+							<li><a href="#">A propos nous</a></li>
+							<li><a href="#">Politique de retour</a></li>
+							<li><a href="#">Comment acheter</a></li>
+							<li><a href="#">Forum de questions?</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /footer widget -->
+
+				<!-- footer subscribe -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Restons connecté! Abonnée vous à la newsletter</h3>
+						<p>Achetew en toute sérenité</p>
+						<form>
+							<div class="form-group">
+								<input class="input" placeholder="Enter Email Address">
+							</div>
+							<button class="primary-btn">S'abonner</button>
+						</form>
+					</div>
+				</div>
+				<!-- /footer subscribe -->
+			</div>
+			<!-- /row -->
+			<hr>
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> Droits récervés| Faite par<i class="fa fa-heart-o" aria-hidden="true"></i>Diana,Benjamin,Quentin</a>
+						
+					</div>
+					<!-- /footer copyright -->
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</footer>
+	<!-- /FOOTER -->
+
+	<!-- jQuery Plugins -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/nouislider.min.js"></script>	
+	<script src="js/main.js"></script>
+
+</body>
+
 </html>
