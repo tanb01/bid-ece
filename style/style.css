@@ -45,3 +45,8 @@ li {
   margin: 5px;
   max-width: 300px;
 }
+
+.menu-bar {
+  position: relative;
+  z-index: 1000;
+}
