@@ -1,6 +1,7 @@
 :root {
   --main-color-lightblue: #35a6f4;
   --main-color-darkblue: #6995c6;
+  --main-color-navbar-footer: rgb(129, 188, 236);
 }
 
 h1 {
@@ -13,8 +14,19 @@ a:hover {
   text-decoration: none;
 }
 
+#navbarSupportedContent>ul>li>a {
+  color: white;
+}
+
 li {
   list-style-type: none;
+}
+
+footer {
+  background-color: var(--main-color-navbar-footer);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .dropdown:hover>.dropdown-menu {
@@ -46,7 +58,11 @@ li {
   max-width: 300px;
 }
 
-.menu-bar {
-  position: relative;
-  z-index: 1000;
+.navbar {
+  background-color: rgb(129, 188, 236) !important;
+}
+
+.navbar-nav>li {
+  margin-right: 70px;
+  margin-left: 70px;
 }
