@@ -33,7 +33,29 @@ if (mysqli_num_rows($result) == 0) {
         <div class="card-body">
             <h4 class="card-title"><?php echo $data['nom'] ?></h4>
             <p class="card-text">Categorie : <?php echo $data['categorie'] ?></p>
-            <p class="card-text">Mode de Vente : <?php echo $data['mode_de_vente'] ?></p>
+            <p class="card-text">Mode de Vente : <?php 
+            switch ($data['mode_de_vente']) {
+              case '1':
+                echo "Enchère";
+                break;
+              case '2':
+                echo "Meilleure Offre";
+                break;
+              case '3':
+                echo "Achat Immédiat";
+                break;
+              case '4':
+                echo "Enchère/ Achat Immédiat";
+                break;
+              case '5':
+                echo "Meilleure Offre/ Achat Immédiat";
+                break;
+              default:
+                  echo "Erreur";
+                break;
+            }
+            ?>
+            </p>
             <p class="card-text">Prix achat immediat : <?php echo $data['prix'] ?>€</p>
             <p class="card-text">Stock : <?php echo $data['stock'] ?></p>
           </div>
