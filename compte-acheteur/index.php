@@ -1,6 +1,7 @@
 <?php
 session_start();
-?>
+
+if ($_SESSION['statut'] == "Admin" || $_SESSION['statut'] == "Vendeur") {?>
 
 <!DOCTYPE html>
 <html>
@@ -26,8 +27,8 @@ session_start();
 </head>
 
 <body>
-  <!--Navbar-->
-  <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <!--Navbar-->
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" width="100px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +53,8 @@ session_start();
           </div>
         </li>
         <?php
-        if (isset($_SESSION['statut'])) {
-          if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
+if (isset($_SESSION['statut'])) {
+    if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
           <li class="nav-item dropdown">
           <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Vente
@@ -61,21 +62,25 @@ session_start();
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item nav-link" href="../compte-vendeur/">Espace Vendeur</a>
             <?php
-            if ($_SESSION['statut'] == 'Admin') {?>
+if ($_SESSION['statut'] == 'Admin') {?>
                           <div class="dropdown-divider"></div>
             <a class="dropdown-item nav-link" href="../compte-admin/">Espace Admin</a>
             <?php
-            }
-            ?>
+}
+        ?>
             </div>
             <?php
-            }}
-            ?>
-        </li>
+}}
+    ?>
+        <?php 
+        if ($_SESSION['statut']=="Acheteur") {?></li>
         <li class="nav-item">
-          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) { echo $_SESSION["prenom"];}
-          ?></a>
+          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) {echo $_SESSION["prenom"];
+          }
+    ?></a>
         </li>
+      <?php
+      }?>
         <li class="nav-item">
           <a class="nav-link" href="../paiement">Payer</a>
         </li>
@@ -85,7 +90,7 @@ session_start();
             <a href="../traitement/deconnexion.php" class="nav-link btn btn-danger">Deconnexion</a>
           </li>
         <?php
-        } else {?>
+      } else {?>
           <li class="nav-item">
             <a href="../connexion/" class="nav-link btn btn-primary">Se connecter</a>
           </li>
@@ -93,8 +98,8 @@ session_start();
             <a href="../inscription/" class="nav-link btn btn-success">S'inscrire</a>
           </li>
         <?php
-        }
-        ?>
+}
+    ?>
       </ul>
     </div>
   </div>
@@ -318,3 +323,7 @@ session_start();
 </body>
 
 </html>
+<?php
+} else {
+  header("location: ../");}
+?>

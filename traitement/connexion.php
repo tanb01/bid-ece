@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
-    header("location: ../");
+    header("location: ../compte-vendeur/");
     exit;
 }
 
@@ -25,9 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($emailErr) && empty($passwordErr)) {
         $fin_de_email = substr($email, strpos($email, "@") + 1);
         if ($fin_de_email == "edu.ece.fr") {
-            $sql = "SELECT user_id, pseudo, statut FROM user WHERE email = '$email' and mot_de_passe = '$password'";
+            $sql = "SELECT * FROM user WHERE email = '$email' and mot_de_passe = '$password'";
+            $isUser = 1;
         } else {
-            $sql = "SELECT acheteur_id, prenom FROM acheteur WHERE email = '$email' and mot_de_passe = '$password'";
+            $sql = "SELECT * FROM acheteur WHERE email = '$email' and mot_de_passe = '$password'";
+            $isUser = 2;
         }
 
         $result = mysqli_query($db_handle, $sql);
@@ -36,19 +38,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             while ($data = mysqli_fetch_assoc($result)) {
                 $_SESSION["logged_in"] = true;
-                if (!isset($_SESSION['statut'])) {
+                $_SESSION["email"] = $email;
+                if ($isUser == 2) {
                     $_SESSION["id"] = $data['acheteur_id'];
                     $_SESSION["statut"] = "Acheteur";
                     $_SESSION['prenom'] = $data['prenom'];
-                } else if ($data['statut'] === "Admin" || $data["statut"] === "Vendeur") {
+                    $_SESSION['nom'] = $data['nom'];
+                    $_SESSION['contrat_legal'] = $data['contrat_legal'];
+                    $_SESSION['carte_de_fidelite'] = $data['carte_de_fidelite'];
+                } else if ($isUser = 1) {
                     $_SESSION["id"] = $data['user_id'];
                     $_SESSION["statut"] = $data['statut'];
-                    $_SESSION['prenom'] = $data['pseudo'];
+                    $_SESSION['nom'] = $data['nom'];
+                    $_SESSION['pseudo'] = $data['pseudo'];
+                    $_SESSION['note'] = $data['note'];
+                    $_SESSION['photo_de_profil'] = $data['photo_de_profil'];
+                    $_SESSION['image_de_fond'] = $data['image_de_fond'];
+                } else {
+                    $_SESSION["id"] = 0;
+                    $_SESSION["statut"] = "";
+                    $_SESSION['prenom'] = "";
                 }
-                // echo "Id: " . $_SESSION["id"] . "<br>";
-                // echo "Statut: " . $_SESSION["statut"] . "<br>";
-                // echo "Prenom: " . $_SESSION["prenom"] . "<br>";
 
+                echo "Id: " . $_SESSION["id"] . "<br>";
+                echo "Statut: " . $_SESSION["statut"] . "<br>";
+                echo "Prenom: " . $_SESSION["prenom"] . "<br>";
+                header("location: ../compte-admin/");
+                exit;
             }
         } else if ($count == 0) {
             $emailErr = "Votre compte n'a pas ete retrouve!";
@@ -60,5 +76,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_close($db_handle);
     }
 }
-
-?>

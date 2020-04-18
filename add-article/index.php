@@ -1,3 +1,54 @@
+<?php
+include("../traitement/config.php");
+
+if (isset($_POST['ajouterArticle'])) {
+// Récuperer les données venant de la page HTML
+$nomArticle = isset($_POST["nomArticle"]) ? $_POST["nomArticle"] : "";
+$description = isset($_POST["description"]) ? $_POST["description"] : "";
+$prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
+$cat = isset($_POST["choix"]) ? $_POST["choix"] : "";
+$mdv = isset($_POST["choix1"]) ? $_POST["choix1"] : "";
+
+if (isset($_POST["ajouter"])) {
+    if ($nomArticle && $description && $prix) {
+        $sql = "SELECT * FROM item";
+        if ($nomArticle != "") {
+            //on cherche l'article avec le paramètre nomArticle
+            $sql .= " WHERE nom LIKE '%$nomArticle%'";
+        }
+        $result = mysqli_query($db_handle, $sql);
+        //regarder s'il y a de résultat
+
+        if (mysqli_num_rows($result) != 0) {
+            //l'article est déjà dans la BDD
+            echo "L'article est déjà en ligne";
+        } else {
+
+            $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, '1', '$nomArticle', '$prix', NULL, NULL, '$description', '$cat', '$mdv', '1')";
+            $result = mysqli_query($db_handle, $sql);
+            echo "L'article a été ajouté" . "<br>";
+        }
+    } else {
+        echo "<h4>Veuillez remplir tout les champs</h4>";
+    }
+}
+//fermer la connexion
+mysqli_close($db_handle);
+?>
+
+    <?php
+//si le bouton est cliqué
+if (isset($_POST["ajouter"])) {
+    //afficher information sur la catégorie
+    echo "<br>Catégorie:" . $cat;
+    //afficher information sur le mode de vente
+    echo "<br>Mode de vente:" . $mdv;
+    echo "<br>Nom Article:" . $nomArticle;
+    echo "<br>Description:" . $description;
+    echo "<br>Prix:" . $prix;
+}
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,79 +70,9 @@
 </head>
 
 <body>
-  <!--Navbar-->
-  <div class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" width="100px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../">Accueil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="../achat" id="navbarDropdownMenuLink" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            Achat
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../categories/">
-              Catégories
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../modes-de-vente/">Mode de Vente</a>
-          </div>
-        </li>
-        <?php
-        if (isset($_SESSION['statut'])) {
-          if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
-          <li class="nav-item dropdown">
-          <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Vente
-          </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../compte-vendeur/">Espace Vendeur</a>
-            <?php
-            if ($_SESSION['statut'] == 'Admin') {?>
-                          <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../compte-admin/">Espace Admin</a>
-            <?php
-            }
-            ?>
-            </div>
-            <?php
-            }}
-            ?>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) { echo $_SESSION["prenom"];}
-          ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../paiement">Payer</a>
-        </li>
-        <?php
-        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {?>
-          <li class="nav-item">
-            <a href="../traitement/deconnexion.php" class="nav-link btn btn-danger">Deconnexion</a>
-          </li>
-        <?php
-        } else {?>
-          <li class="nav-item">
-            <a href="../connexion/" class="nav-link btn btn-primary">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a href="../inscription/" class="nav-link btn btn-success">S'inscrire</a>
-          </li>
-        <?php
-        }
-        ?>
-      </ul>
-    </div>
-  </div>
-  <!--/.Navbar-->
+<?php
+require "../common/header.php";
+?>
 
     <div class="container">
 
@@ -153,7 +134,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choix1" value="5" id="meilleureoffreachatimmediat">Meilleure Offre et Achat immédiat
+                            <input class="form-check-input" type="radio" name="choix1" value="5" id="meilleureoffreachatimmediat">Meilleure Offre et Achat Immédiat
                             <label class="form-check-label" for="meilleureoffreachatimmediat">
                                 5
                             </label>
@@ -164,91 +145,14 @@
             </div>
         </div>
     </div>
-    <?php
-            
-            // Récuperer les données venant de la page HTML
-            $nomArticle = isset($_POST["nomArticle"])? $_POST["nomArticle"] : ""; 
-            $description = isset($_POST["description"])? $_POST["description"] : "";
-            $prix = isset($_POST["prix"])? $_POST["prix"] : "";
-            $cat = isset($_POST["choix"])? $_POST["choix"] :"";
-            $mdv = isset($_POST["choix1"])? $_POST["choix1"] :"";
-            
-            
-            //Identifier votre BDD
-            $database = "bid_ece";
-            //connectez-vous dans votre BDD
-            //Rappel: votre serveur = localhost | votre login = root |votre password = root
-            $db_handle = mysqli_connect('localhost', 'root', 'root');
-            $db_found = mysqli_select_db($db_handle, $database);
-            
-            if ($_POST["ajouter"]) { 
-                if($nomArticle&&$description&&$prix){
-                    if ($db_found) {
-                        $sql = "SELECT * FROM item"; 
-                        if ($nomArticle != "") {
-                            //on cherche l'article avec le paramètre nomArticle
-                            $sql .= " WHERE nom LIKE '%$nomArticle%'";
-                        }
-                        $result = mysqli_query($db_handle, $sql);
-                        //regarder s'il y a de résultat
-                    
-                        if (mysqli_num_rows($result) != 0) {
-                            //l'article est déjà dans la BDD
-                            echo "Déjà en ligne";
-                        } 
-                        else {
-                            
-                            $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, '1', '$nomArticle', '$prix', NULL, NULL, '$description', '$cat', '$mdv', '2')";
-                            $result = mysqli_query($db_handle, $sql);
-                            echo "Article ajouté" . "<br>";  
-                        }
-                    } 
-                    else {
-                        echo "Database not found";
-                    } 
-                }else echo "<h4>Veuillez remplir tout les champs</h4>";
-            }
-            
-            //fermer la connexion
-            mysqli_close($db_handle);
-?>
-
-    <?php
-                    //si le bouton est cliqué
-                    if (isset($_POST["ajouter"])) {
-                        //afficher information sur la catégorie
-                        echo "<br>Catégorie:" . $cat;
-                        //afficher information sur le mode de vente
-                        echo "<br>Mode de vente:" . $mdv;
-                        echo "<br>Nom Article:" . $nomArticle;
-                        echo "<br>Description:" . $description;
-                        echo "<br>Prix:" . $prix;
-                    }
-    
-                    
-    
-    ?>
-
-    <!--Footer-->
-    <!--<footer>
-    <div class="container">
-      <div class="my-auto text-white text-center py-4">
-        <h6 class="my-auto no-deco">2020
-          &copy; BID ECE<span></span></h6>
-        <div class="row">
-          BID ECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
-          les plus belles pièces uniques. Les prix affichés sont fixés par ces
-          vendeurs et BID ECE opère en tant qu’intermédiaire et tiers de confiance
-          auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
-          les 100 000 références de BID ECE la perle rare et être livrés sans
-          bouger de leur canapé. Les pièces proposées à la vente sont quant à
-          elles quotidiennement sélectionnées à la main par nos équipes.
-        </div>
-      </div>
-    </div>
-  </footer>-->
-    <!--/.Footer-->
+ <?php
+  }
+  ?>
+<?php require "../common/footer.php";?>
+</body>
 
 </body>
 
 </html>
+
+<!-- INSERT INTO `user` (`user_id`, `email`, `mot_de_passe`, `nom`, `pseudo`, `statut`, `note`, `photo_de_profil`, `image_de_fond`) VALUES (NULL, 'carl', 'carl', 'bonhomme', 'carlito', 'Vendeur', '3', NULL, NULL) -->

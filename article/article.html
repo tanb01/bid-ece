@@ -12,6 +12,52 @@
 </head>
 
 <body>
+  <!--Navbar-->
+  <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" width="100px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../">Accueil</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="../achat" id="navbarDropdownMenuLink" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            Achat
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item nav-link" href="../categories/">
+              Catégories
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item nav-link" href="../modes-de-vente/">Mode de Vente</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Vente
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item nav-link" href="../compte-vendeur/">Espace Vendeur</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item nav-link" href="../compte-admin/">Espace Admin</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../compte-acheteur/">Votre Compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../paiement">Payer</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--/.Navbar-->
+
   <h2>Article</h2>
   <div class="container-fluid">
     <div class="container">
@@ -50,8 +96,26 @@
       </div>
     </div>
   </div>
-  </div>
 
+  <!--Footer-->
+  <footer>
+    <div class="container">
+      <div class="my-auto text-white text-center py-4">
+        <h6 class="my-auto no-deco">2020
+          &copy; BID ECE<span></span></h6>
+        <div class="row">
+          BID ECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
+          les plus belles pièces uniques. Les prix affichés sont fixés par ces
+          vendeurs et BID ECE opère en tant qu’intermédiaire et tiers de confiance
+          auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
+          les 100 000 références de BID ECE la perle rare et être livrés sans
+          bouger de leur canapé. Les pièces proposées à la vente sont quant à
+          elles quotidiennement sélectionnées à la main par nos équipes.
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/.Footer-->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +74,7 @@ session_start();
             ?>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) { echo $_SESSION["prenom"];}
+          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["nom"])) { echo $_SESSION["nom"];}
           ?></a>
         </li>
         <li class="nav-item">
@@ -105,7 +106,7 @@ session_start();
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
-            <img src="../img/logo_bid_ece.jpg" alt="Take a pic" />
+            <img src="data:image/jpeg;base64, <?php echo base64_encode($_SESSION['photo_de_profil']) ?>" alt="Take a pic" />
             <div class="file btn btn-lg btn-primary">
               Modifier la photo
               <input type="file" name="file" />
@@ -115,12 +116,12 @@ session_start();
         <div class="col-md-6">
           <div class="profile-head">
             <h5>
-              Vendeur 1
+              Vendeur
             </h5>
             <h6>
-              Vendeur numéro 1
+              Vendeur numéro <?php echo htmlspecialchars($_SESSION['id']); ?>
             </h6>
-            <p class="proile-rating">Note <span>8/10</span></p>
+            <p class="proile-rating">Note <span><?php echo isset($_SESSION['note'])? "/10" : "Aucune"; ?></span></p>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="informations-tab" data-toggle="tab" href="#informations" role="tab"
@@ -150,10 +151,10 @@ session_start();
             <div class="tab-pane fade show active" id="informations" role="tabpanel" aria-labelledby="informations-tab">
               <div class="row">
                 <div class="col-md-6">
-                  <label>ID vendeur</label>
+                  <label>ID Vendeur</label>
                 </div>
                 <div class="col-md-6">
-                  <p>Vendeur ID</p>
+                  <p><?php echo htmlspecialchars($_SESSION['id']); ?></p>
                 </div>
               </div>
               <div class="row">
@@ -161,7 +162,7 @@ session_start();
                   <label>Nom</label>
                 </div>
                 <div class="col-md-6">
-                  <p>Nom du vendeur</p>
+                  <p><?php echo htmlspecialchars($_SESSION['nom']); ?></p>
                 </div>
               </div>
               <div class="row">
@@ -169,7 +170,7 @@ session_start();
                   <label>Email</label>
                 </div>
                 <div class="col-md-6">
-                  <p>emailvendeur@mail.com</p>
+                  <p><?php echo htmlspecialchars($_SESSION['email']); ?></p>
                 </div>
               </div>
             </div>
@@ -200,7 +201,10 @@ session_start();
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <a href="../add-article/"><label><u>+ Ajouter un article</u></label></a>
+                  <a href="../add-article/" type="button" class="btn btn-primary"><label>+ Ajouter un article</label></a>
+                </div>
+                <div class="col-md-6">
+                  <a href="../add-article/" type="button" class="btn btn-danger"><label>- Supprimer un article</label></a>
                 </div>
               </div>
             </div>
