@@ -5,7 +5,7 @@
       <div class="row">
 
         <!-- Billing -->
-        <div class="col-lg-6">
+        <div class="col-lg-12">
           <div class="billing">
             <div class="checkout_title">Informations</div>
             <div class="checkout_form_container">
