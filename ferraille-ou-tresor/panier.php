@@ -1,77 +1,9 @@
-<html>
-<html lang="fr">
-
-<head>
-  <title>BID ECE | Panier</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="BIDECE">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    type="text/css">
-  <link rel="stylesheet" type="text/css" href="../style/panier.css">
-</head>
-
-<body>
-  <!--Menu-->
-  <div class="menu-bar">
-    <ul>
-      <li><a href="../"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a></li>
-      <li><a href="../achat"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Achat</a>
-        <div class="sub-menu1">
-          <ul>
-            <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
-              <div class="sub-menu2">
-                <ul>
-                  <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
-                  <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
-                  <li><a href="../accessoire-vip/">Accessoire VIP</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="hover-me"><a href="../modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
-              <div class="sub-menu2">
-                <ul>
-                  <li><a href="../enchere/">Enchères</a></li>
-                  <li><a href="../achetez-le-maintenant/">Achetez-le maintenant</a></li>
-                  <li><a href="../meilleur-offre/">Meilleure offre</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Ventes</a>
-        <div class="sub-menu1">
-          <ul>
-            <li class="hover-me"><a href="../compte-vendeur/">Espace Vendeur</a></li>
-            <li class="hover-me"><a href="../compte-admin/">Espace Admin</a></li>
-          </ul>
-        </div>
-      </li>
-      <li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
-      <li><a href="../panier/"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
-    </ul>
-  </div>
-  <!--Fin menu-->
-
-  <!-- Home -->
-  <div class="home">
-    <div class="home_container d-flex flex-column align-items-center justify-content-end">
-      <div class="home_content text-center">
-        <div class="home_title">PANIER</div><br>
-        <h3>Un tout y peu pour avoir vos articles</h3><br>
-        <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
-          <ul class="d-flex flex-row align-items-start justify-content-start text-center">
-            <li><a href="index.html">Page principal</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<?php require "headerp.php"; ?> 
+<?php
+if (isset($_GET['del'])){
+  $panier->del($_GET['del']);
+}
+?>
   <!-- Cart -->
 
   <div class="cart_section">
@@ -84,17 +16,27 @@
             <div class="cart_bar">
               <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
                 <li class="mr-auto">Produit</li>
-                <li>Couleur</li>
-                <li>Prix</li>
+                <li>Categorie</li>
+                <li>Prix HT</li>
                 <li>Quantité</li>
                 <li>Total</li>
+                <li>Action</li>
+
               </ul>
             </div>
 
             <!-- Cart Items -->
             <div class="cart_items">
               <ul class="cart_items_list">
-
+                <?php
+                $item_ids= array_keys($_SESSION['panier']);
+                if(empty($item_ids)){
+                  $item = array();
+                }else{
+                $item= $DB->query('SELECT * FROM item WHERE item_id IN ('.implode(',',$item_ids).')');
+                }
+                foreach($item as $product):
+                ?>
                 <!-- Cart Item -->
                 <li
                   class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
@@ -107,21 +49,25 @@
                       <div class="product_image"><img src="images/cart_itemk_1.jpg" alt=""></div>
                     </div>
                     <div class="product_name_container">
-                      <div class="product_name"><a href="product.html">Nom du produit</a></div>
+                      <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
                       <div class="product_text">ajouter une mini description</div>
                     </div>
                   </div>
-                  <div class="product_color product_text"><span>Couleur: </span></div>
-                  <div class="product_price product_text"><span>Prix: </span></div>
+                  <div class="product_color product_text"><?= $product->categorie;?></div>
+                  <div class="product_price product_text"><?= number_format($product->prix,2);?>€</div>
                   <div class="product_quantity_container">
                     <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
-                      <span class="product_text product_num">1</span>
+                      <span class="product_text product_num"><?= $_SESSION['panier'][$product->item_id]; ?></span>
                       <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
                       <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
                     </div>
                   </div>
-                  <div class="product_total product_text"><span>Total: </span></div>
+                  <div class="product_total product_text"><?= number_format($product->prix*1.196,2);?>€</div>
+                  <div>
+                      <div class="product_image"><a href="panier.php?del=<?= $product->item_id; ?>"> <img src="../img/icones/trash.svg" class="svg" alt=""></a></div>
+                    </div>
                 </li>
+                <?php endforeach; ?>
               </ul>
             </div>
 
@@ -187,7 +133,7 @@
               <ul class="cart_extra_total_list">
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Sub-total</div>
-                  <div class="cart_extra_total_value ml-auto">$29.90</div>
+                  <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total(),2); ?> €</span></div>
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Livraison</div>
@@ -195,20 +141,19 @@
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Total</div>
-                  <div class="cart_extra_total_value ml-auto">$29.90</div>
+                  <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total(),2); ?> €</span></div>
                 </li>
               </ul>
-              <div class="checkout_button trans_200"><a href="../paiement/index.html">Finalisé votre achat ici</a></div>
+              <div class="checkout_button trans_200"><a href="paiement.php">Finalisé votre achat ici</a></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <!-- Footer -->
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer_content">
       <div class="container">
         <div class="row">
@@ -303,6 +248,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
-</body>
+  </body>
 
 </html>
+  
