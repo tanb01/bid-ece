@@ -26,12 +26,12 @@ include "../traitement/config.php";
 
 <body>
     <?php
-    require "../common/header.php";
-    ?>
+require "../common/header.php";
+?>
     <?php
-    if ($_SESSION['statut'] != "Acheteur") {
-      header("location: ../");
-    }?>
+if ($_SESSION['statut'] != "Acheteur") {
+    header("location: ../");
+}?>
 
   <div class="container emp-profile">
     <form method="post">
@@ -125,7 +125,7 @@ include "../traitement/config.php";
                   <label>Contrat legal</label>
                 </div>
                 <div class="col-md-6">
-                  <p><?php echo $_SESSION['contrat_legal']==0? "Non": "Oui"; ?></p>
+                  <p><?php echo $_SESSION['contrat_legal'] == 0 ? "Non" : "Oui"; ?></p>
                 </div>
               </div>
               <div class="row">
@@ -133,7 +133,7 @@ include "../traitement/config.php";
                   <label>Carte de fidelite</label>
                 </div>
                 <div class="col-md-6">
-                  <p><?php echo $_SESSION['carte_de_fidelite']==0? "Non": "Oui"; ?></p>
+                  <p><?php echo $_SESSION['carte_de_fidelite'] == 0 ? "Non" : "Oui"; ?></p>
                 </div>
               </div>
             </div>
@@ -234,7 +234,9 @@ include "../traitement/config.php";
             <div class="tab-pane fade" id="formulaire" role="tabpanel" aria-labelledby="formulaire-tab">
               <div class="row">
                 <div class="col-md-6">
-                  <label></label>
+                  <p>
+                  <label>En acceptant ce formulaire, vous acceptez les conditions de ventes du site de vente aux enchères BID ECE.</label>
+                  </p>
                 </div>
                 <div class="col-md-6">
                   <div class="form-check">
@@ -245,6 +247,22 @@ include "../traitement/config.php";
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-8">
+                  <ul>
+                  <li>
+                    -	Dans le cas où vous achetez l’article par meilleure offre : vous devrez payer l’intégralité de la somme dans les 7 jours suivant l’achat de l’article. Vous devez donc être solvable sur votre moyen de paiement.
+                  </li>
+                  <br>
+                  <li>
+                    -	Dans le cas où vous achetez l’article par achat immédiat : la somme sera prélevée automatiquement après votre paiement depuis votre moyen de paiement sélectionné.
+                  </li>
+                  <br>
+
+                <li>-	Dans le cas où vous achetez l’article par enchère : vous devrez payer l’intégralité de la somme dans les 14 jours suivant l’achat de l’article. Vous devez donc être solvable sur votre moyen de paiement.</li>
+                </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -253,8 +271,8 @@ include "../traitement/config.php";
 
 
   <?php
-    require "../common/footer.php";
-    ?>
+require "../common/footer.php";
+?>
   </div>
 </body>
 
