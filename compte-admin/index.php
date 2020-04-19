@@ -1,30 +1,13 @@
 <?php
 include "../traitement/config.php";
+include "../traitement/supprimer_article.php";
+include "../traitement/supprimer_vendeur.php";
 
 $sql = "SELECT COUNT(*) nombreDeVendeurs FROM user";
 $result = mysqli_query($db_handle, $sql);
 $data = mysqli_fetch_assoc($result);
 $nombreDeVendeurs = $data['nombreDeVendeurs'];
 
-if (isset($_POST['supprimerArticle']) && $_POST['supprimerArticle'] == '- Supprimer un article' && isset($_POST['idArticle'])) {
-    $itemId = isset($_POST["idArticle"]) ? $_POST["idArticle"] : "";
-    $sql = "SELECT item_id FROM `item` WHERE item_id =" . $itemId;
-    $result = mysqli_query($db_handle, $sql);
-    if (mysqli_num_rows($result) == 1) {
-        $sql = "DELETE FROM `item` WHERE `item`.`item_id` =" . $itemId;
-        $result = mysqli_query($db_handle, $sql);
-        ?>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>L'article <?php echo $itemId ?> a été supprimer!</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-<?php
-?>
-      </div>
-<?php
-}
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,13 +38,14 @@ require "../common/header.php";
 ?>
   <?php
 
-if ($_SESSION['statut'] == "Admin") {?>
-<?php
+if ($_SESSION['statut'] != "Admin") {
+    header("location: ../");
+}
 $sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=" . $_SESSION['id'];
-    $result = mysqli_query($db_handle, $sql);
-    $data = mysqli_fetch_assoc($result);
-    $nombreArticles = $data['nombreArticles'];
-    ?>
+$result = mysqli_query($db_handle, $sql);
+$data = mysqli_fetch_assoc($result);
+$nombreArticles = $data['nombreArticles'];
+?>
 
   <div class="container emp-profile">
       <div class="row">
@@ -108,7 +92,7 @@ $sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=" . $_SESSION['id
           </div>
         </div>
         <div class="col-md-8">
-          <div class="tab-content informations-tab" id="myTabContent">
+          <div class="tab-content profile-tab" id="myTabContent">
             <div class="tab-pane fade show active" id="informations" role="tabpanel" aria-labelledby="informations-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -144,48 +128,47 @@ $sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=" . $_SESSION['id
                   <p>Nombre d'article(s) : <?php echo "$nombreArticles" ?></p>
                 </div>
               </div>
-              <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Prix</th>
-                  <th scope="col">Categorie</th>
-                  <th scope="col">Mode de Vente</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Prix</th>
+                      <th scope="col">Categorie</th>
+                      <th scope="col">Mode de Vente</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
 $sql = "SELECT item_id, nom, prix, categorie, mode_de_vente FROM item WHERE user_id=" . $_SESSION['id'];
-    $result = mysqli_query($db_handle, $sql);
-    while ($data = mysqli_fetch_assoc($result)) {
-        ?>
-              <tr>
-                <th scope="row"><?php echo $data['item_id'] ?></th>
-                <td><?php echo $data['nom'] ?></td>
-                <td><?php echo $data['prix'] ?> €</td>
-                <td><?php echo $data['categorie'] ?></td>
-                <td class="text-center"><?php echo $data['mode_de_vente'] ?></td>
-              </tr>
-              <?php
-}
+$result = mysqli_query($db_handle, $sql);
+while ($data = mysqli_fetch_assoc($result)) {
     ?>
-              </tbody>
-              </table>
+                                <tr>
+                                  <th scope="row"><?php echo $data['item_id'] ?></th>
+                                  <td><?php echo $data['nom'] ?></td>
+                                  <td><?php echo $data['prix'] ?> €</td>
+                                  <td><?php echo $data['categorie'] ?></td>
+                                  <td class="text-center"><?php echo $data['mode_de_vente'] ?></td>
+                                </tr>
+                                <?php
+}
+?>
+                  </tbody>
+                  </table>
                 <div class="row">
-                <form action="../add-article/" method="POST">
-                    <div class="col-md-6">
-                      <input type="submit" class="btn btn-primary" name="ajouterArticle" value="+ Ajouter un article">
-                    </div>
-                </form>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="col-md-6">
-                      <input type="number" id="idArticle" name="idArticle" placeholder="Id de l'article">
-                      <input type="submit" class="btn btn-danger" name="supprimerArticle" value="- Supprimer un article">
-                    </div>
-                </form>
+                  <form action="../add-article/" method="POST">
+                      <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" name="ajouterArticle" value="+ Ajouter un article">
+                      </div>
+                  </form>
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <div class="col-md-6">
+                        <input type="number" id="idArticle" name="idArticle" placeholder="Id de l'article">
+                        <input type="submit" class="btn btn-danger" name="supprimerArticle" value="- Supprimer un article">
+                      </div>
+                  </form>
                 </div>
-              </form>
             </div>
             <div class="tab-pane fade" id="vendeurs" role="tabpanel" aria-labelledby="vendeurs-tab">
               <div class="row">
@@ -201,39 +184,40 @@ $sql = "SELECT item_id, nom, prix, categorie, mode_de_vente FROM item WHERE user
                 <tr>
                   <th scope="col">Id</th>
                   <th scope="col">Nom</th>
-                  <th scope="col">Statut</th>
+                  <th scope="col">Pseudo</th>
                   <th scope="col">Email</th>
-                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
               <?php
 $sql = "SELECT user_id, nom, pseudo, statut, email, note FROM user WHERE user_id!=" . $_SESSION['id'];
-    $result = mysqli_query($db_handle, $sql);
-    while ($data = mysqli_fetch_assoc($result)) {
-        ?>
+$result = mysqli_query($db_handle, $sql);
+while ($data = mysqli_fetch_assoc($result)) {
+    ?>
               <tr>
                 <th scope="row"><?php echo $data['user_id'] ?></th>
                 <td><?php echo $data['nom'] ?></td>
-                <td><?php echo $data['statut'] ?></td>
+                <td><?php echo $data['pseudo'] ?></td>
                 <td><?php echo $data['email'] ?></td>
-                <td>Supprimer</td>
               </tr>
               <?php
 }
-    ?>
+?>
               </tbody>
 </table>
-              <div class="row">
-              <div class="col-md-6">
-                  <a href="../add-article/" type="button" class="btn btn-primary" name="ajouterVendeur"><label>+ Ajouter un vendeur</label></a>
-              </div>
-              <div class="row">
-              <div class="col-md-6">
-                  <a href="../add-article/" type="button" class="btn btn-danger" name="supprimerVendeur"><label>- Supprimer un vendeur</label></a>
-              </div>
-              </div>
-              </div>
+<div class="row">
+                  <form action="../add-vendeur/" method="POST">
+                      <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" name="ajouterVendeur" value="+ Ajouter un vendeur">
+                      </div>
+                  </form>
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <div class="col-md-6">
+                        <input type="number" id="idVendeur" name="idVendeur" placeholder="Id du vendeur">
+                        <input type="submit" class="btn btn-danger" name="supprimerVendeur" value="- Supprimer un vendeur">
+                      </div>
+                  </form>
+                </div>
             </div>
           </div>
         </div>
@@ -241,10 +225,6 @@ $sql = "SELECT user_id, nom, pseudo, statut, email, note FROM user WHERE user_id
   </div>
 
 <?php require "../common/footer.php";?>
-<?php
-} else {
-    header("location: ../");
-}
-?></body>
+</body>
 
 </html>

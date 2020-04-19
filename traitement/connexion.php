@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
-    header("location: ../compte-vendeur/");
+    header("location: ../");
     exit;
 }
 
@@ -46,6 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['nom'] = $data['nom'];
                     $_SESSION['contrat_legal'] = $data['contrat_legal'];
                     $_SESSION['carte_de_fidelite'] = $data['carte_de_fidelite'];
+                    header("location: ../compte-admin/");
+                    exit;
                 } else if ($isUser = 1) {
                     $_SESSION["id"] = $data['user_id'];
                     $_SESSION["statut"] = $data['statut'];
@@ -59,12 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["statut"] = "";
                     $_SESSION['prenom'] = "";
                 }
-
-                echo "Id: " . $_SESSION["id"] . "<br>";
-                echo "Statut: " . $_SESSION["statut"] . "<br>";
-                echo "Prenom: " . $_SESSION["prenom"] . "<br>";
-                header("location: ../compte-admin/");
-                exit;
+                // echo "Id: " . $_SESSION["id"] . "<br>";
+                // echo "Statut: " . $_SESSION["statut"] . "<br>";
+                // echo "Prenom: " . $_SESSION["prenom"] . "<br>";
             }
         } else if ($count == 0) {
             $emailErr = "Votre compte n'a pas ete retrouve!";
@@ -74,5 +73,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error = "Votre nom d'utilisateur ou mot de passe est invalide";
         }
         mysqli_close($db_handle);
+    }
+    if (isset($_SESSION['statut']) && $_SESSION['statut'] == 'Admin') {
+        header("location: ../compte-admin/");
+        exit;
+    } else if (isset($_SESSION['statut']) && $_SESSION['statut'] == 'Vendeur') {
+        header("location: ../compte-vendeur/");
+        exit;
+    } else if (isset($_SESSION['statut']) && $_SESSION['statut'] == 'Acheteur') {
+        header("location: ../compte-acheteur/");
+        exit;
     }
 }

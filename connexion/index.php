@@ -22,79 +22,9 @@
 </head>
 
 <body>
-  <!--Navbar-->
-  <div class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" width="100px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../">Accueil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="../achat" id="navbarDropdownMenuLink" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            Achat
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../categories/">
-              Catégories
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../modes-de-vente/">Mode de Vente</a>
-          </div>
-        </li>
-        <?php
-        if (isset($_SESSION['statut'])) {
-          if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
-          <li class="nav-item dropdown">
-          <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Vente
-          </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../compte-vendeur/">Espace Vendeur</a>
-            <?php
-            if ($_SESSION['statut'] == 'Admin') {?>
-                          <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../compte-admin/">Espace Admin</a>
-            <?php
-            }
-            ?>
-            </div>
-            <?php
-            }}
-            ?>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) { echo $_SESSION["prenom"];}
-          ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../paiement">Payer</a>
-        </li>
-        <?php
-        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {?>
-          <li class="nav-item">
-            <a href="../traitement/deconnexion.php" class="nav-link btn btn-danger">Deconnexion</a>
-          </li>
-        <?php
-        } else {?>
-          <li class="nav-item">
-            <a href="../connexion/" class="nav-link btn btn-primary">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a href="../inscription/" class="nav-link btn btn-success">S'inscrire</a>
-          </li>
-        <?php
-        }
-        ?>
-      </ul>
-    </div>
-  </div>
-  <!--/.Navbar-->
+<?php
+require "../common/header.php";
+?>
 
   <div class="container-fluid">
     <div class="wrapper fadeInDown">
@@ -108,7 +38,7 @@
 
         <!-- Formulaire de connexion -->
             <form action="../traitement/connexion.php" method="post">
-                <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email">
+                <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
                 <input type="password" id="mot_de_passe" class="fadeIn third" name="mot_de_passe" placeholder="Mot de passe">
                 <input type="submit" name="connexion" class="fadeIn fourth" value="Connexion">
             </form>
@@ -126,25 +56,9 @@
     </div>
   </div>
 
-  <!--Footer-->
-  <footer>
-    <div class="container">
-      <div class="my-auto text-white text-center py-4">
-        <h6 class="my-auto no-deco">2020
-          &copy; BID ECE<span></span></h6>
-        <div class="row">
-          BID ECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
-          les plus belles pièces uniques. Les prix affichés sont fixés par ces
-          vendeurs et BID ECE opère en tant qu’intermédiaire et tiers de confiance
-          auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
-          les 100 000 références de BID ECE la perle rare et être livrés sans
-          bouger de leur canapé. Les pièces proposées à la vente sont quant à
-          elles quotidiennement sélectionnées à la main par nos équipes.
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!--/.Footer-->
+<?php
+require "../common/footer.php";
+?>
 
 </body>
 

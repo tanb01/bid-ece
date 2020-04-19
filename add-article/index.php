@@ -1,68 +1,7 @@
 <?php
 include "../traitement/config.php";
 
-// Récuperer les données venant de la page HTML
-$nomArticle = isset($_POST["nomArticle"]) ? $_POST["nomArticle"] : "";
-$description = isset($_POST["description"]) ? $_POST["description"] : "";
-$prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
-$cat = isset($_POST["choix"]) ? $_POST["choix"] : "";
-$mdv = isset($_POST["choix1"]) ? $_POST["choix1"] : "";
-
-if (isset($_POST["ajouter"])) {
-    if ($nomArticle && $description && $prix) {
-        $sql = "SELECT * FROM item";
-        if ($nomArticle != "") {
-            //on cherche l'article avec le paramètre nomArticle
-            $sql .= " WHERE nom LIKE '%$nomArticle%'";
-        }
-        $result = mysqli_query($db_handle, $sql);
-        //regarder s'il y a de résultat
-
-        if (mysqli_num_rows($result) != 0) {
-            //l'article est déjà dans la BDD
-            ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>L'article est déjà en ligne!</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <?php
-} else {
-            $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, '1', '$nomArticle', '$prix', NULL, NULL, '$description', '$cat', '$mdv', '1')";
-            $result = mysqli_query($db_handle, $sql);
-            ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>L'article a été ajouté!</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <?php
-}
-    } else {
-        echo "<h4>Veuillez remplir tout les champs</h4>";
-    }
-}
-//fermer la connexion
-mysqli_close($db_handle);
 ?>
-
-    <?php
-//si le bouton est cliqué
-if (isset($_POST["ajouter"])) {
-    // //afficher information sur la catégorie
-    // echo "<br>Catégorie:" . $cat;
-    // //afficher information sur le mode de vente
-    // echo "<br>Mode de vente:" . $mdv;
-    // echo "<br>Nom Article:" . $nomArticle;
-    // echo "<br>Description:" . $description;
-    // echo "<br>Prix:" . $prix;?>
-
-<?php
-}
-?>
-
 
 <!DOCTYPE html>
 <html>
@@ -87,8 +26,77 @@ if (isset($_POST["ajouter"])) {
 <?php
 require "../common/header.php";
 ?>
+<?php
+// Récuperer les données venant de la page HTML
+$nomArticle = isset($_POST["nomArticle"]) ? $_POST["nomArticle"] : "";
+$description = isset($_POST["description"]) ? $_POST["description"] : "";
+$prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
+$cat = isset($_POST["choix"]) ? $_POST["choix"] : "";
+$mdv = isset($_POST["choix1"]) ? $_POST["choix1"] : "";
+$photoDeprofil = isset($_POST["photo"]) ? $_POST["photo"] : "";
+$video = isset($_POST["video"]) ? $_POST["video"] : "";
 
-    <div class="container">
+if (isset($_POST["ajouter"])) {
+    if ($nomArticle && $description && $prix) {
+        $sql = "SELECT * FROM item";
+        if ($nomArticle != "") {
+            //on cherche l'article avec le paramètre nomArticle
+            $sql .= " WHERE nom LIKE '%$nomArticle%'";
+        }
+        $result = mysqli_query($db_handle, $sql);
+        //regarder s'il y a de résultat
+
+        if (mysqli_num_rows($result) != 0) {
+            //l'article est déjà dans la BDD
+            ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>L'article est déjà en ligne!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <?php
+} else {
+            $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, ".$_SESSION['id'].", '$nomArticle', '$prix', $photoDeprofil, $video, '$description', '$cat', '$mdv', '1')";
+            $result = mysqli_query($db_handle, $sql);
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>L'article a été ajouté!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <?php
+}
+    } else {
+      ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Veuillez remplir tout les champs</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <?php
+    }
+}
+//fermer la connexion
+mysqli_close($db_handle);
+
+//si le bouton est cliqué
+if (isset($_POST["ajouter"])) {
+    // //afficher information sur la catégorie
+    // echo "<br>Catégorie:" . $cat;
+    // //afficher information sur le mode de vente
+    // echo "<br>Mode de vente:" . $mdv;
+    // echo "<br>Nom Article:" . $nomArticle;
+    // echo "<br>Description:" . $description;
+    // echo "<br>Prix:" . $prix;?>
+
+<?php
+}
+?>
+
+    <div class="container mt-5">
 
         <div class="row">
             <div class="col-lg-12" class="text-center">

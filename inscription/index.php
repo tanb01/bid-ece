@@ -27,11 +27,25 @@ if (isset($_POST["inscrire"])) {
 
                 if (mysqli_num_rows($result) != 0) {
                     //l'acheteur est déjà dans la BDD
-                    echo "Déjà inscrit, connectez vous grâce à votre compte.";
+                    ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Déjà inscrit, connectez vous grâce à votre compte.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <?php
                 } else {
                     $sql = "INSERT INTO acheteur (acheteur_id, email, mot_de_passe, nom, prenom, contrat_legal, carte_de_fidelite) VALUES(NULL,'$email', '$password', '$nom', '$prenom','0','0')";
                     $result = mysqli_query($db_handle, $sql);
-                    echo "Inscription réussie" . "<br>";
+                    ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Inscription réussi!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <?php
                 }
 
             } else {
@@ -75,79 +89,21 @@ mysqli_close($db_handle);
 </head>
 
 <body>
-   <!--Navbar-->
-   <div class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" width="100px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../">Accueil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="../achat" id="navbarDropdownMenuLink" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            Achat
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../categories/">
-              Catégories
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../modes-de-vente/">Mode de Vente</a>
-          </div>
-        </li>
-        <?php
-        if (isset($_SESSION['statut'])) {
-          if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
-          <li class="nav-item dropdown">
-          <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Vente
-          </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../compte-vendeur/">Espace Vendeur</a>
-            <?php
-            if ($_SESSION['statut'] == 'Admin') {?>
-                          <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../compte-admin/">Espace Admin</a>
-            <?php
-            }
-            ?>
-            </div>
-            <?php
-            }}
-            ?>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) { echo $_SESSION["prenom"];}
-          ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../paiement">Payer</a>
-        </li>
-        <?php
-        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {?>
-          <li class="nav-item">
-            <a href="../traitement/deconnexion.php" class="nav-link btn btn-danger">Deconnexion</a>
-          </li>
-        <?php
-        } else {?>
-          <li class="nav-item">
-            <a href="../connexion/" class="nav-link btn btn-primary">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a href="../inscription/" class="nav-link btn btn-success">S'inscrire</a>
-          </li>
-        <?php
-        }
-        ?>
-      </ul>
-    </div>
-  </div>
-  <!--/.Navbar-->
+<?php
+require "../common/header.php";
+?>
+<?php
+if (isset($_SESSION['statut']) && $_SESSION['statut'] == "Admin") {
+    header("location: ../compte-admin/");
+    exit;
+} else if (isset($_SESSION['statut']) && $_SESSION['statut'] == "Vendeur") {
+    header("location: ../compte-vendeur/");
+    exit;
+} else if (isset($_SESSION['statut']) && $_SESSION['statut'] == "Acheteur") {
+    header("location: ../compte-acheteur/");
+    exit;
+}
+?>
   <div class="container-fluid">
 
     <div class="wrapper fadeInDown">
@@ -156,14 +112,14 @@ mysqli_close($db_handle);
 
         <!-- Icone -->
         <div class="fadeIn first">
-          <img src="../img/logo_bid_ece.jpg" id="icon" alt="BID ECE" />
+          <img src="../img/logo_bid_ece.jpg" id="icon" alt="BID ECE" style="width:150px"/>
         </div>
 
         <!-- Formulaire d'inscription -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" id="nom" class="fadeIn second" name="nom" placeholder="Nom">
             <input type="text" id="prenom" class="fadeIn second" name="prenom" placeholder="Prénom">
-            <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email">
+            <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
             <input type="password" id="mot_de_passe" class="fadeIn third" name="mot_de_passe" placeholder="Mot de passe">
             <label for="mot_de_passe"><small>Le mot de passe doit contenir au moins 8 caractères.</small></label>
             <input type="password" id="conf_mot_de_passe" class="fadeIn third" name="conf_mot_de_passe" placeholder="Confirmation du mot de passe">
@@ -178,25 +134,9 @@ mysqli_close($db_handle);
     </div>
   </div>
 
-  <!--Footer-->
-  <footer>
-    <div class="container">
-      <div class="my-auto text-white text-center py-4">
-        <h6 class="my-auto no-deco">2020
-          &copy; BID ECE<span></span></h6>
-        <div class="row">
-          BID ECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
-          les plus belles pièces uniques. Les prix affichés sont fixés par ces
-          vendeurs et BID ECE opère en tant qu’intermédiaire et tiers de confiance
-          auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
-          les 100 000 références de BID ECE la perle rare et être livrés sans
-          bouger de leur canapé. Les pièces proposées à la vente sont quant à
-          elles quotidiennement sélectionnées à la main par nos équipes.
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!--/.Footer-->
+  <?php
+require "../common/footer.php";
+?>
 
 </body>
 

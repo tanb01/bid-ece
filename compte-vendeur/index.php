@@ -1,7 +1,6 @@
 <?php
-include("../traitement/config.php");
-
-// if ($_SESSION['statut'] == "Admin") {?>
+include "../traitement/config.php";
+?>
 
 <!DOCTYPE html>
 <html>
@@ -22,24 +21,27 @@ include("../traitement/config.php");
   </script>
   <link href="../style/comptes.css" rel="stylesheet" media="all" type="text/css">
   <link href="../style/style.css" rel="stylesheet" media="all" type="text/css">
-  
+
   <title>BID ECE | Compte Vendeur</title>
 </head>
 
 <body>
 <?php
-  require "../common/header.php";
-  ?>
+require "../common/header.php";
+?>
+<?php
+if ($_SESSION['statut'] != "Vendeur") {
+    header("location: ../");
+}
+include "../traitement/supprimer_article.php";
 
-<?php 
-  $sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=". $_SESSION['id'];
-  $result = mysqli_query($db_handle, $sql);
-  $data=mysqli_fetch_assoc($result);
-  $nombreArticles = $data['nombreArticles'];
+$sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=" . $_SESSION['id'];
+$result = mysqli_query($db_handle, $sql);
+$data = mysqli_fetch_assoc($result);
+$nombreArticles = $data['nombreArticles'];
 ?>
 
   <div class="container emp-profile">
-    <form method="post">
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
@@ -58,7 +60,7 @@ include("../traitement/config.php");
             <h6>
               Vendeur numéro <?php echo htmlspecialchars($_SESSION['id']); ?>
             </h6>
-            <p class="proile-rating">Note <span><?php echo isset($_SESSION['note'])? "/10" : "Aucune"; ?></span></p>
+            <p class="proile-rating">Note <span><?php echo isset($_SESSION['note']) ? "/10" : "Aucune"; ?></span></p>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="informations-tab" data-toggle="tab" href="#informations" role="tab"
@@ -117,7 +119,7 @@ include("../traitement/config.php");
                   <label>Article(s) en vente</label>
                 </div>
                 <div class="col-md-6">
-                  <p>Nombre d'article(s) : <?php echo "$nombreArticles"?></p>
+                  <p>Nombre d'article(s) : <?php echo "$nombreArticles" ?></p>
                 </div>
               </div>
               <table class="table">
@@ -132,40 +134,44 @@ include("../traitement/config.php");
               </thead>
               <tbody>
               <?php
-              $sql = "SELECT item_id, nom, prix, categorie, mode_de_vente FROM item WHERE user_id=" . $_SESSION['id'];
-              $result = mysqli_query($db_handle, $sql);
-              while ($data=mysqli_fetch_assoc($result)) {
-              ?>
+$sql = "SELECT item_id, nom, prix, categorie, mode_de_vente FROM item WHERE user_id=" . $_SESSION['id'];
+$result = mysqli_query($db_handle, $sql);
+while ($data = mysqli_fetch_assoc($result)) {
+    ?>
               <tr>
-                <th scope="row"><?php echo $data['item_id']?></th>
-                <td><?php echo $data['nom']?></td>
-                <td><?php echo $data['prix']?>  €</td>
-                <td><?php echo $data['categorie']?></td>
-                <td class="text-center"><?php echo $data['mode_de_vente']?></td>
+                <th scope="row"><?php echo $data['item_id'] ?></th>
+                <td><?php echo $data['nom'] ?></td>
+                <td><?php echo $data['prix'] ?>  €</td>
+                <td><?php echo $data['categorie'] ?></td>
+                <td class="text-center"><?php echo $data['mode_de_vente'] ?></td>
               </tr>
               <?php
-              }
-              ?>
+}
+?>
               </tbody>
               </table>
               <div class="row">
-                <div class="col-md-6">
-                  <a href="../add-article/" type="button" class="btn btn-primary"><label>+ Ajouter un article</label></a>
+                  <form action="../add-article/" method="POST">
+                      <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" name="ajouterArticle" value="+ Ajouter un article">
+                      </div>
+                  </form>
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <div class="col-md-6">
+                        <input type="number" id="idArticle" name="idArticle" placeholder="Id de l'article">
+                        <input type="submit" class="btn btn-danger" name="supprimerArticle" value="- Supprimer un article">
+                      </div>
+                  </form>
                 </div>
-                <div class="col-md-6">
-                  <a href="../add-article/" type="button" class="btn btn-danger"><label>- Supprimer un article</label></a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </form>
   </div>
 
   <?php
-  require "../common/footer.php";
-  ?>
+require "../common/footer.php";
+?>
 
 
 </body>

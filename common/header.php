@@ -48,7 +48,7 @@ if ($_SESSION['statut'] == 'Admin') {?>
 }}
     ?>
         <?php 
-        if ($_SESSION['statut']=="Acheteur") {?></li>
+        if (isset($_SESSION['statut']) && $_SESSION['statut'] =="Acheteur") {?></li>
         <li class="nav-item">
           <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["prenom"])) {echo $_SESSION["prenom"];
           }
