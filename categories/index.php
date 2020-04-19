@@ -14,15 +14,15 @@
 
 <body>
   <?php
-  require "../common/header.php";
-  ?>
+require "../common/header.php";
+?>
   <div class="container-fluid">
     <div class="wrapper">
       <h1><u>Catégories :</u></h1>
       <div class="cols">
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_categories/tresor.png)">
+            <div class="front" style="background-image: url(../img/img_categories/tresor.jpg)">
               <div class="inner">
                 <p>Ferraille/Trésor</p>
                 <span>Cliquez pour voir les articles</span>
@@ -52,7 +52,7 @@
         </div>
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_categories/vip.png)">
+            <div class="front" style="background-image: url(../img/img_categories/vip.jpg)">
               <div class="inner">
                 <p>Accessoires VIP</p>
                 <span>Cliquez pour voir les articles</span>
@@ -70,9 +70,9 @@
   </div>
 
   <?php
-  require "../common/footer.php";
-  ?>
-  
+require "../common/footer.php";
+?>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
   </script>

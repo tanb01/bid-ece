@@ -1,5 +1,6 @@
 <?php
 include "../traitement/config.php";
+include "../traitement/negocier.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,6 +66,10 @@ if ($_SESSION['statut'] != "Acheteur") {
               <li class="nav-item">
                 <a class="nav-link" id="enchere-tab" data-toggle="tab" href="#enchere" role="tab"
                   aria-controls="enchere" aria-selected="false">Enchere</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="negocier-tab" data-toggle="tab" href="#negocier" role="tab"
+                  aria-controls="negocier" aria-selected="false">Négocier</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="paiement-tab" data-toggle="tab" href="#paiement" role="tab"
@@ -235,6 +240,47 @@ if ($_SESSION['statut'] != "Acheteur") {
                 </div>
               </div>
             </div>
+            <div class="tab-pane fade" id="negocier" role="tabpanel" aria-labelledby="negocier-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Article(s) de Meilleure offre</label>
+                </div>
+              </div>
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Prix</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $sql = "SELECT item_id, nom, prix FROM item WHERE mode_de_vente=2 OR mode_de_vente=5";
+                    $result = mysqli_query($db_handle, $sql);
+                    while ($data = mysqli_fetch_assoc($result)) {
+                        ?>
+                      <tr>
+                        <th scope="row"><?php echo $data['item_id'] ?></th>
+                        <td><?php echo $data['nom'] ?></td>
+                        <td><?php echo $data['prix'] ?> €</td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+                  </tbody>
+                  </table>
+                <div class="row">
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <div class="col-md-6">
+                        <input type="number" id="idArticle" name="idArticle" placeholder="Id de l'article">
+                        <input type="number" id="prixMeilleureOffre" name="prixMeilleureOffre" placeholder="Prix Offre">
+                        <input type="submit" class="btn btn-primary" name="faireOffre" value="Faire une offre">
+                      </div>
+                  </form>
+                </div>
+            </div>
+
             <div class="tab-pane fade" id="paiement" role="tabpanel" aria-labelledby="paiement-tab">
               <div class="row">
                 <div class="col-md-6">

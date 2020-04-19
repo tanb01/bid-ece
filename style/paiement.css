@@ -94,7 +94,7 @@ body {
 	border-radius: 3px;
 }
 .menu-bar, .fa {
-	margin-right: 8px;
+	padding-right: 8px;
 }
 .sub-menu1 {
 	display: none;
