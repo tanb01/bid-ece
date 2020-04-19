@@ -1,7 +1,7 @@
 <?php
-session_start();
+include("../traitement/config.php");
 
-?>
+// if ($_SESSION['statut'] == "Admin") {?>
 
 <!DOCTYPE html>
 <html>
@@ -27,79 +27,16 @@ session_start();
 </head>
 
 <body>
-  <!--Navbar-->
-  <div class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" width="100px"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../">Accueil</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="../achat" id="navbarDropdownMenuLink" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            Achat
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../categories/">
-              Catégories
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../modes-de-vente/">Mode de Vente</a>
-          </div>
-        </li>
-        <?php
-        if (isset($_SESSION['statut'])) {
-          if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
-          <li class="nav-item dropdown">
-          <a class="nav-link" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Vente
-          </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="../compte-vendeur/">Espace Vendeur</a>
-            <?php
-            if ($_SESSION['statut'] == 'Admin') {?>
-                          <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" href="../compte-admin/">Espace Admin</a>
-            <?php
-            }
-            ?>
-            </div>
-            <?php
-            }}
-            ?>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../compte-acheteur/">Votre Compte <?php if (isset($_SESSION["nom"])) { echo $_SESSION["nom"];}
-          ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../paiement">Payer</a>
-        </li>
-        <?php
-        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {?>
-          <li class="nav-item">
-            <a href="../traitement/deconnexion.php" class="nav-link btn btn-danger">Deconnexion</a>
-          </li>
-        <?php
-        } else {?>
-          <li class="nav-item">
-            <a href="../connexion/" class="nav-link btn btn-primary">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a href="../inscription/" class="nav-link btn btn-success">S'inscrire</a>
-          </li>
-        <?php
-        }
-        ?>
-      </ul>
-    </div>
-  </div>
-  <!--/.Navbar-->
+<?php
+  require "../common/header.php";
+  ?>
+
+<?php 
+  $sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=". $_SESSION['id'];
+  $result = mysqli_query($db_handle, $sql);
+  $data=mysqli_fetch_assoc($result);
+  $nombreArticles = $data['nombreArticles'];
+?>
 
   <div class="container emp-profile">
     <form method="post">
@@ -177,28 +114,40 @@ session_start();
             <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
               <div class="row">
                 <div class="col-md-6">
-                  <label>Article(s) en vente :</label>
+                  <label>Article(s) en vente</label>
                 </div>
                 <div class="col-md-6">
-                  <p>Nombre d'article(s)</p>
+                  <p>Nombre d'article(s) : <?php echo "$nombreArticles"?></p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Article 1</label>
-                </div>
-                <div class="col-md-6">
-                  <p>Supprimer</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Article 2</label>
-                </div>
-                <div class="col-md-6">
-                  <p>Supprimer</p>
-                </div>
-              </div>
+              <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Categorie</th>
+                  <th scope="col">Mode de Vente</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+              $sql = "SELECT item_id, nom, prix, categorie, mode_de_vente FROM item WHERE user_id=" . $_SESSION['id'];
+              $result = mysqli_query($db_handle, $sql);
+              while ($data=mysqli_fetch_assoc($result)) {
+              ?>
+              <tr>
+                <th scope="row"><?php echo $data['item_id']?></th>
+                <td><?php echo $data['nom']?></td>
+                <td><?php echo $data['prix']?>  €</td>
+                <td><?php echo $data['categorie']?></td>
+                <td class="text-center"><?php echo $data['mode_de_vente']?></td>
+              </tr>
+              <?php
+              }
+              ?>
+              </tbody>
+              </table>
               <div class="row">
                 <div class="col-md-6">
                   <a href="../add-article/" type="button" class="btn btn-primary"><label>+ Ajouter un article</label></a>
@@ -214,25 +163,10 @@ session_start();
     </form>
   </div>
 
-    <!--Footer-->
-    <footer>
-      <div class="container">
-        <div class="my-auto text-white text-center py-4">
-          <h6 class="my-auto no-deco">2020
-            &copy; BID ECE<span></span></h6>
-          <div class="row">
-            BID ECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
-            les plus belles pièces uniques. Les prix affichés sont fixés par ces
-            vendeurs et BID ECE opère en tant qu’intermédiaire et tiers de confiance
-            auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
-            les 100 000 références de BID ECE la perle rare et être livrés sans
-            bouger de leur canapé. Les pièces proposées à la vente sont quant à
-            elles quotidiennement sélectionnées à la main par nos équipes.
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!--/.Footer-->
+  <?php
+  require "../common/footer.php";
+  ?>
+
 
 </body>
 

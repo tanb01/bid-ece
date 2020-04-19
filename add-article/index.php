@@ -1,7 +1,6 @@
 <?php
-include("../traitement/config.php");
+include "../traitement/config.php";
 
-if (isset($_POST['ajouterArticle'])) {
 // Récuperer les données venant de la page HTML
 $nomArticle = isset($_POST["nomArticle"]) ? $_POST["nomArticle"] : "";
 $description = isset($_POST["description"]) ? $_POST["description"] : "";
@@ -21,13 +20,26 @@ if (isset($_POST["ajouter"])) {
 
         if (mysqli_num_rows($result) != 0) {
             //l'article est déjà dans la BDD
-            echo "L'article est déjà en ligne";
-        } else {
-
+            ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>L'article est déjà en ligne!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <?php
+} else {
             $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, '1', '$nomArticle', '$prix', NULL, NULL, '$description', '$cat', '$mdv', '1')";
             $result = mysqli_query($db_handle, $sql);
-            echo "L'article a été ajouté" . "<br>";
-        }
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>L'article a été ajouté!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <?php
+}
     } else {
         echo "<h4>Veuillez remplir tout les champs</h4>";
     }
@@ -39,13 +51,15 @@ mysqli_close($db_handle);
     <?php
 //si le bouton est cliqué
 if (isset($_POST["ajouter"])) {
-    //afficher information sur la catégorie
-    echo "<br>Catégorie:" . $cat;
-    //afficher information sur le mode de vente
-    echo "<br>Mode de vente:" . $mdv;
-    echo "<br>Nom Article:" . $nomArticle;
-    echo "<br>Description:" . $description;
-    echo "<br>Prix:" . $prix;
+    // //afficher information sur la catégorie
+    // echo "<br>Catégorie:" . $cat;
+    // //afficher information sur le mode de vente
+    // echo "<br>Mode de vente:" . $mdv;
+    // echo "<br>Nom Article:" . $nomArticle;
+    // echo "<br>Description:" . $description;
+    // echo "<br>Prix:" . $prix;?>
+
+<?php
 }
 ?>
 
@@ -77,7 +91,7 @@ require "../common/header.php";
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-12" align="center">
+            <div class="col-lg-12" class="text-center">
                 <div id="formContent">
                     <form method="post" enctype="multipart/form-data">
                         <input type="text" id="nomArticle" name="nomArticle" placeholder="Nom Article">
@@ -89,7 +103,7 @@ require "../common/header.php";
                         <textarea class="form-control" name="description" id="description" rows="3"></textarea>
                         <input type="number" id="prix" name="prix" placeholder="Prix de départ">
                         <!--<input type="number" id="prixAchat" name="prixAchat" placeholder="Prix d'achat immédiat">-->
-                        <h5 align="center">Catégorie :</h5>
+                        <h5 class="text-center">Catégorie :</h5>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="choix" id="tresor" value="Ferraille ou Trésor" checked>
                             <label class="form-check-label" for="tresor">
@@ -108,7 +122,7 @@ require "../common/header.php";
                                 Accessoire VIP
                             </label>
                         </div>
-                        <h5 align="center">Mode de vente :</h5>
+                        <h5 class="text-center">Mode de vente :</h5>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="choix1" value="1" id="enchere" checked>Enchère
                             <label class="form-check-label" for="enchere" >
@@ -145,9 +159,7 @@ require "../common/header.php";
             </div>
         </div>
     </div>
- <?php
-  }
-  ?>
+
 <?php require "../common/footer.php";?>
 </body>
 

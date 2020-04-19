@@ -1,14 +1,11 @@
 <?php
+include("../traitement/config.php");
+
 if (isset($_GET["item_id"])) {
   $item_id = $_GET["item_id"];
 } else {
   $item_id = "Le produit n'a pas ete trouve";
 }
-
-$database = "bid_ece";
-$db_handle = mysqli_connect('localhost', 'root', '');
-mysqli_set_charset($db_handle, 'utf8');
-$db_found = mysqli_select_db($db_handle, $database);
 
 $sql = "SELECT * FROM item WHERE item_id = $item_id";
 
@@ -32,6 +29,9 @@ if (mysqli_num_rows($result) == 0) {
   </head>
 
   <body>
+  <?php
+  require "../common/header.php";
+  ?>
     <div class="container-fluid">
       <div class="container mt-4">
         <h1>Article</h1>
@@ -99,6 +99,10 @@ if (mysqli_num_rows($result) == 0) {
         </div>
       </div>
     </div>
+
+    <?php
+  require "../common/footer.php";
+  ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
