@@ -33,8 +33,8 @@ $description = isset($_POST["description"]) ? $_POST["description"] : "";
 $prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
 $cat = isset($_POST["choix"]) ? $_POST["choix"] : "";
 $mdv = isset($_POST["choix1"]) ? $_POST["choix1"] : "";
-$photoDeprofil = isset($_POST["photo"]) ? $_POST["photo"] : "";
-$video = isset($_POST["video"]) ? $_POST["video"] : "";
+$photoDeprofil = isset($_POST["photo"]) ? $_POST["photo"] : NULL;
+$video = isset($_POST["video"]) ? $_POST["video"] : NULL;
 
 if (isset($_POST["ajouter"])) {
     if ($nomArticle && $description && $prix) {
@@ -57,7 +57,7 @@ if (isset($_POST["ajouter"])) {
               </div>
               <?php
 } else {
-            $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, ".$_SESSION['id'].", '$nomArticle', '$prix', $photoDeprofil, $video, '$description', '$cat', '$mdv', '1')";
+            $sql = "INSERT INTO item (item_id, user_id, nom, prix, photo, video, description, categorie, mode_de_vente, stock) VALUES (NULL, ".$_SESSION['id'].", '$nomArticle', '$prix', '$photoDeprofil', '$video', '$description', '$cat', '$mdv', '1')";
             $result = mysqli_query($db_handle, $sql);
             ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

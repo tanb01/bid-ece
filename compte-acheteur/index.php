@@ -38,7 +38,7 @@ include "../traitement/config.php";
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
-            <img src="../img/logo_bid_ece.jpg" alt="Take a pic" />
+            <img src="../img/logo_bid_ece.jpg" style="width:150px" alt="Take a pic" />
             <div class="file btn btn-lg btn-primary">
               Modifier la photo
               <input type="file" name="file" />
