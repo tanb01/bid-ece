@@ -31,7 +31,7 @@ include("../traitement/config.php");
                   <img class="card-img-top" src="data:image/jpeg;base64, <?php echo base64_encode($data['photo']) ?>"/>
                       <div class="card-body">
                         <h4 class="card-title"><?php echo $data['nom'] ?></h4>
-                        <p class="card-text">Categorie : <?php echo $data['categorie'] ?></p>
+                        <p class="card-text">Catégorie : <?php echo $data['categorie'] ?></p>
                         <p class="card-text">Mode de Vente : <?php 
                         switch ($data['mode_de_vente']) {
                           case '1':
@@ -55,8 +55,8 @@ include("../traitement/config.php");
                         }
                         ?>
                         </p>
-                        <p class="card-text">Prix achat immediat : <?php echo $data['prix'] ?>€</p>
-                        <p class="card-text">Stock : <?php echo $data['stock'] ?></p>
+                        <p class="card-text">Prix achat immédiat : <?php echo $data['prix'] ?>€</p>
+                        <p class="card-text"><?php echo ($data['mode_de_vente']==3)? "Stock : " . $data['stock'] : ""?></p>
                     </div>
                   </a>
                 </div>

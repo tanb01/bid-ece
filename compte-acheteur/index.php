@@ -63,6 +63,10 @@ if ($_SESSION['statut'] != "Acheteur") {
                   aria-controls="livraison" aria-selected="false">Livraison</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" id="enchere-tab" data-toggle="tab" href="#enchere" role="tab"
+                  aria-controls="enchere" aria-selected="false">Enchere</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" id="paiement-tab" data-toggle="tab" href="#paiement" role="tab"
                   aria-controls="paiement" aria-selected="false">Paiement</a>
               </li>
@@ -138,6 +142,53 @@ if ($_SESSION['statut'] != "Acheteur") {
               </div>
             </div>
             <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="livraison-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Informations de livraison</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Adresse ligne 1</label>
+                </div>
+                <div class="col-md-6">
+                  <p>...</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Adresse ligne 2</label>
+                </div>
+                <div class="col-md-6">
+                  <p>...</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Ville</label>
+                </div>
+                <div class="col-md-6">
+                  <p>...</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Code Postal</label>
+                </div>
+                <div class="col-md-6">
+                  <p>...</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Pays</label>
+                </div>
+                <div class="col-md-6">
+                  <p>...</p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="enchere" role="tabpanel" aria-labelledby="enchere-tab">
               <div class="row">
                 <div class="col-md-6">
                   <label>Informations de livraison</label>

@@ -44,8 +44,29 @@ if (mysqli_num_rows($result) == 0) {
           <div class="col-sm">
             <h1 class="text-center"><?php echo $data['nom'] ?></h1>
             <h4>Catégorie : <?php echo $data['categorie'] ?></h4>
-            <h4>Mode de Vente : <?php echo $data['mode_de_vente'] ?></h4>
-            <h4>Stock : <?php echo $data['stock'] ?></h4>
+            <h4>Mode de Vente : <?php 
+                        switch ($data['mode_de_vente']) {
+                          case '1':
+                            echo "Enchère";
+                            break;
+                          case '2':
+                            echo "Meilleure Offre";
+                            break;
+                          case '3':
+                            echo "Achat Immédiat";
+                            break;
+                          case '4':
+                            echo "Enchère/ Achat Immédiat";
+                            break;
+                          case '5':
+                            echo "Meilleure Offre/ Achat Immédiat";
+                            break;
+                          default:
+                              echo "Erreur";
+                            break;
+                        }
+                        ?></h4>
+            <h4><?php echo ($data['mode_de_vente']==3)? "Stock : " . $data['stock'] : ""?></h4>
           </div>
           <div class="col-sm mt-5">
             <div class="card align-items-center text-center">
