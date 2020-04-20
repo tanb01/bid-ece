@@ -1,0 +1,78 @@
+:root {
+  --main-color-lightblue: #35a6f4;
+  --main-color-darkblue: #6995c6;
+  --main-color-navbar-footer: rgb(129, 188, 236);
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+a,
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#navbarSupportedContent>ul>li>a {
+  color: white;
+}
+
+li {
+  list-style-type: none;
+}
+
+footer {
+  background-color: var(--main-color-navbar-footer);
+  height:120  px; 
+  width: 100%; 
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropright:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  pointer-events: none;
+}
+
+.dropright>.dropright-toggle:active {
+  pointer-events: none;
+}
+
+.description-card {
+  background-color: lightgrey;
+  border-radius: 10px;
+  min-width: 20rem;
+  min-height: 20rem;
+}
+
+.floatleft-card {
+  float: left;
+  margin: 5px;
+  max-width: 300px;
+}
+
+.navbar {
+  background-color: rgb(129, 188, 236) !important;
+}
+
+.navbar-nav>li {
+  margin-right: 70px;
+  margin-left: 70px;
+}
+.alert {
+  margin-bottom: 0;
+  border-radius: 0;
+}
