@@ -1,4 +1,4 @@
-<?php require "headerp.php"; ?> 
+<?php require 'headerp.php';?>
 <?php
 if (isset($_GET['del'])){
   $panier->del($_GET['del']);
@@ -7,6 +7,7 @@ if (isset($_GET['del'])){
   <!-- Cart -->
 
   <div class="cart_section">
+    <form method="post" action="panier.php">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -43,23 +44,22 @@ if (isset($_GET['del'])){
                   <div
                     class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
                     <div>
-                      <div class="product_number">1</div>
+                      <div class="product_number"><?= $product->item_id;?></div>
                     </div>
                     <div>
-                      <div class="product_image"><img src="images/cart_itemk_1.jpg" alt=""></div>
+                      <div class="product_image"><img src="data:image/jpeg;base64, <?= base64_encode($product->photo); ?>" height="70px" width="100px"></div>
                     </div>
                     <div class="product_name_container">
                       <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
-                      <div class="product_text">ajouter une mini description</div>
+                      <div class="product_text"><?= $product->description;?></div>
                     </div>
                   </div>
-                  <div class="product_color product_text"><?= $product->categorie;?></div>
+                  <div class=" product_text"><?= $product->categorie;?></div>
                   <div class="product_price product_text"><?= number_format($product->prix,2);?>€</div>
                   <div class="product_quantity_container">
-                    <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
-                      <span class="product_text product_num"><?= $_SESSION['panier'][$product->item_id]; ?></span>
-                      <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
-                      <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
+                    <div class="product_quantity text-center">
+                    <imput type="texte" name="panier[product_quantity][<?=$product->item_id; ?>]"  value="<?= $_SESSION['panier'][$product->item_id]; ?>"></input>
+                      
                     </div>
                   </div>
                   <div class="product_total product_text"><?= number_format($product->prix*1.196,2);?>€</div>
@@ -74,14 +74,14 @@ if (isset($_GET['del'])){
             <!-- Cart Buttons -->
             <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
               <div
-                class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-                <div class="button button_clear trans_200"><a href="categories.html">Abandoner</a></div>
-                <div class="button button_continue trans_200"><a href="categories.html">continuer</a></div>
+                class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">                
+                <div class="button button_continue trans_200"><a href="index.php">Revoir plus de produits</a></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </form>
       <div class="row cart_extra_row">
         <div class="col-lg-6">
           <div class="cart_extra cart_extra_1">
@@ -89,8 +89,8 @@ if (isset($_GET['del'])){
               <div class="cart_extra_title">Code de réduction</div>
               <div class="coupon_form_container">
                 <form action="#" id="coupon_form" class="coupon_form">
-                  <input type="text" class="coupon_input" required="required">
-                  <button class="coupon_button">Appliquer</button>
+                  <input type="text" class="coupon_input"  required="required">
+                  <button class="coupon_button">Valider</button>
                 </form>
               </div>
               <div class="coupon_text">Si vous avez un code de réduction ajoutez le.<br> Code de 10% :QBEDI</div>
@@ -122,6 +122,7 @@ if (isset($_GET['del'])){
                     <div class="shipping_price ml-auto">Gratuite</div>
                   </li>
                 </ul>
+                <button class="coupon_livraison">Valider</button>
               </div>
             </div>
           </div>
@@ -137,11 +138,11 @@ if (isset($_GET['del'])){
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Livraison</div>
-                  <div class="cart_extra_total_value ml-auto">Gratuit</div>
+                  <div class="cart_extra_total_value ml-auto"><input class="shipping_radio"></div>
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Total</div>
-                  <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total(),2); ?> €</span></div>
+                  <div class="cart_extra_total_value ml-auto"><?= number_format($panier->total()*1.196,2); ?> €</div>
                 </li>
               </ul>
               <div class="checkout_button trans_200"><a href="paiement.php">Finalisé votre achat ici</a></div>
@@ -248,6 +249,8 @@ if (isset($_GET['del'])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
+  <script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="../custom-js/livraison.js"></script>
   </body>
 
 </html>

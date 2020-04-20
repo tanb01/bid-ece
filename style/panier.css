@@ -209,7 +209,7 @@ body {
 }
 .cart_bar_list li{
 	font-family: 'Open Sans', sans-serif;
-	width: 68px;
+	width: 78px;
 	font-size: 16px;
 	font-weight: 400;
 	color: #000000;
@@ -264,7 +264,7 @@ body {
 }
 .product_name a{
 	font-size: 18px;
-	color: #4a4a4a;
+	color: #0c0c0c;
 	font-weight: 500;
 }
 .product_name a:hover{
@@ -272,15 +272,12 @@ body {
 }
 .product_text{
 	font-size: 14px;
-	font-weight: 400;
-	color: #4a4a4a;
-}
-.product_color{
-	text-transform: uppercase;
+	font-weight: 100;
+	color: #050505;
 }
 .product_price
 {
-	font-size: 16px !important;
+	font-size: 14px !important;
 }
 .product_total{
 	font-size: 16px !important;
@@ -288,8 +285,8 @@ body {
 }
 .product_text{
 	font-size: 14px;
-	font-weight: 300;
-	color: #4a4a4a;
+	font-weight: 150;
+	color: #0c0c0c;
 }
 .product_quantity{
 	width: 68px;
@@ -409,6 +406,22 @@ body {
 	padding-left: 20px;
 }
 .coupon_button{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 90px;
+	height: 44px;
+	background: rgb(82, 144, 236);
+	border-radius: 3px;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 700;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.coupon_livraison{
 	position: absolute;
 	top: 0;
 	right: 0;
