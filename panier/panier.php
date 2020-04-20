@@ -91,7 +91,7 @@ if (isset($_GET['del'])){
         <div class="col">
           <div class="cart_container">
 
-            <!-- Barre du panier -->
+            <!-- Cart Bar -->
             <div class="cart_bar">
               <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
                 <li class="mr-auto">Produit</li>
@@ -104,7 +104,7 @@ if (isset($_GET['del'])){
               </ul>
             </div>
 
-            <!-- Articles du panier -->
+            <!-- Cart Items -->
             <div class="cart_items">
               <ul class="cart_items_list">
                 <?php
@@ -116,7 +116,7 @@ if (isset($_GET['del'])){
                 }
                 foreach($item as $product):
                 ?>
-                <!-- Un article -->
+                <!-- Cart Item -->
                 <li
                   class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
                   <div
@@ -149,17 +149,12 @@ if (isset($_GET['del'])){
               </ul>
             </div>
 
-            <!-- Boutons du panier -->
+            <!-- Cart Buttons -->
             <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
-              <div
-                class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">                
-                <div class="button button_continue trans_200"><a href="index.php">Revoir plus de produits</a></div>
-              </div>
-              <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
-              <div
-                class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">                
-                <input type="submit" value="calcul" class="button button_continue trans_200"><a href="index.php">Recalculer le total</a></div>
-              </div>  
+								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+									<div class="button button_clear trans_200"><a href="categories.html">Revoir plus de produits</a></div>
+									<div class="button button_continue trans_200"><a href="categories.html">continue shopping</a></div>
+								</div>  
             </div>
           </div>
         </div>
@@ -178,7 +173,7 @@ if (isset($_GET['del'])){
               </div>
               <div class="coupon_text">Si vous avez un code de réduction ajoutez le.<br> Code de 10% :QBEDI</div>
               <div class="shipping">
-                <div class="cart_extra_title">Méthode d'envoi</div>
+                <div class="cart_extra_title">Methode d'envoie</div>
                 <ul>
                   <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
                     <label class="radio_container">
@@ -192,7 +187,7 @@ if (isset($_GET['del'])){
                     <label class="radio_container">
                       <input type="radio" id="radio_2" name="shipping_radio" class="shipping_radio">
                       <span class="radio_mark"></span>
-                      <span class="radio_text">Livraison standard 24H</span>
+                      <span class="radio_text">Livraison standar</span>
                     </label>
                     <div class="shipping_price ml-auto">$1.99</div>
                   </li>
@@ -200,7 +195,7 @@ if (isset($_GET['del'])){
                     <label class="radio_container">
                       <input type="radio" id="radio_3" name="shipping_radio" class="shipping_radio" checked>
                       <span class="radio_mark"></span>
-                      <span class="radio_text">Livraison de plus de 10 jours</span>
+                      <span class="radio_text">Livraison plus de 10 jours</span>
                     </label>
                     <div class="shipping_price ml-auto">Gratuite</div>
                   </li>
@@ -218,17 +213,13 @@ if (isset($_GET['del'])){
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Sub-total</div>
                   <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total(),2); ?> €</span></div>
-                </li>
-                <li class="d-flex flex-row align-items-center justify-content-start">
-                  <div class="cart_extra_total_title">Livraison</div>
-                  <div class="cart_extra_total_value ml-auto"><input class="shipping_radio"></div>
-                </li>
+                </li>                
                 <li class="d-flex flex-row align-items-center justify-content-start">
                   <div class="cart_extra_total_title">Total</div>
                   <div class="cart_extra_total_value ml-auto"><?= number_format($panier->total()*1.196,2); ?> €</div>
                 </li>
               </ul>
-              <div class="checkout_button trans_200"><a href="paiement.php">Finalisé votre achat ici</a></div>
+              <div class="checkout_button trans_200"><a href="../paiement/paiement.php">Finalisé votre achat ici</a></div>
             </div>
           </div>
         </div>

@@ -60,8 +60,8 @@ require "../common/header.php";
               </div>
             </div>
             <div class="back">
-              <div class="inner">
-                <p>Retrouvez ici tous les articles appartenant à la catégories Accessoires VIP</p>
+              <div class="inner"><a href="../sous-categories/ferraille-ou-tresor">
+                <p>Retrouvez ici tous les articles appartenant à la catégories Accessoires VIP</p></a>
               </div>
             </div>
           </div>

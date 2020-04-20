@@ -46,13 +46,13 @@
       <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Ventes</a>
         <div class="sub-menu1">
           <ul>
-            <li class="hover-me"><a href="./compte-vendeur/">Espace Vendeur</a></li>
-            <li class="hover-me"><a href="./compte-admin/">Espace Admin</a></li>
+            <li class="hover-me"><a href="compte-vendeur/index">Espace Vendeur</a></li>
+            <li class="hover-me"><a href="compte-admin/index">Espace Admin</a></li>
           </ul>
         </div>
       </li>
-      <li><a href="./compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
-      <li><a href="./panier/"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
+      <li><a href="compte-acheteur/index/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
+      <li><a href="panier/panier"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
     </ul>
   </div>
   <!--Fin du menu-->
@@ -95,7 +95,7 @@
   <div class="products">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-xl-4 col-md-6">
           <div class="section_title text-center">CATÉGORIES</div>
         </div>
       </div>
@@ -135,7 +135,7 @@
                   <div
                     class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-                      <div><a href="panier/index.html"><img src="./img/icones/panier.svg" class="svg"
+                      <div><a href="./panier/"><img src="./img/icones/panier.svg" class="svg"
                             alt="ajouter dans le panier" title="Ajouter dans le panier"></a>
                         <div>+</div>
                       </div>
@@ -144,7 +144,7 @@
                   <div
                     class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-                      <div><a href="paiement/index.html"><img src="./img/icones/payer.svg" class="svg" alt="payer"
+                      <div><a href="./paiement/coordonnees"><img src="./img/icones/payer.svg" class="svg" alt="payer"
                             title="Payer maintenat"></a>
                         <div>+</div>
                       </div>

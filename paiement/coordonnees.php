@@ -76,31 +76,30 @@ require '../connection.php';
   <!--Contour de la boite paiement-->
   <div class="checkout">
 			<div class="container">
-				<div class="row">
-					<form action="traitement.php" methode="post">
+				<div class="row">					
 					<!-- Billing -->
-					<div class="col-lg-6 cart_col">
-					<div class="billing">
+					<div class="col-lg-6">
+						<div class="billing">
 							<div class="checkout_title">Informations</div>
 							<div class="checkout_form_container">
-							<form action="#" id="checkout_form" class="checkout_form">
+							<form action="traitement.php" methode="post" class="checkout_form">
 								<div class="row">
 								<div class="col-lg-6">
 									<!-- Name -->
 									<input type="text" id="nombre" name="prenome "class="checkout_input" placeholder="Prenom"
 									required="required"  minlength="2" maxlength="20" title="Renseigné votre prenom de famille">
-								</div><br>
+								</div>
 								<div class="col-lg-6">
 									<!-- Last Name -->
 									<input type="text" id="apellido" name="nom" class="checkout_input" placeholder="Nom"
 									required="required" minlength="2" maxlength="20" title="Renseigné votre nom de famille">
 								</div>
-								</div><br>
+								</div>
 								<div >
 								<!-- Country -->
 								<input type="text" id="pays" name="pays" class="dropdown_item_select checkout_input"
 									require="required" placeholder="pays">									
-								</div><br>
+								</div>
 								<div>
 								<!-- Address -->
 								<input type="text" id="direction" name="adresse1" class="checkout_input checkout_address_1"
@@ -110,23 +109,23 @@ require '../connection.php';
 								<!-- Address -->
 								<input type="text" id="direction" name="adresse2" class="checkout_input checkout_address_2"
 									placeholder="Address Ligne 2" required="required" minlength="9" maxlength="40" title="Renseigné votre adresse">
-								</div><br>
+								</div>
 								<div>
 								<!-- Zipcode -->
 								<input type="number" id="zipcode" name="codepostale" class="checkout_input" placeholder="Code postal"
 									required="required" size="5" title="Entrez entre 3 et 4 chifres du code postale français">
-								</div><br>
+								</div>
 								<div>
 								<!-- City / Town -->
 								<input type="text" id="ville" name="ciudad "class="dropdown_item_select checkout_input"
 									require="required" placeholder="Ville">									
-								</div><br>
+								</div>
 								<div>
 								<!-- Phone no -->
 								<input type="number" id="phone" name="tel" class="checkout_input" placeholder="Phone No."
 									required="required" pattern="\x2b[0-9]+" size="20"  title="Inserz un numéro de telephone de 10 nombres">
-								</div><br>								
-								
+								</div>								
+							
 								<div class="garder_options">
 								<div class="checkout_title">On protege vos informations</div><br>
 								<ul>
@@ -149,10 +148,9 @@ require '../connection.php';
 									<input type="submit" name="button1" class="checkout_button trans_200" value="Confirmer mes coordonnées">									
 								</form>
 							</div>
-						</div>
-					</form>	
-					</div><br><br>
-
+						</div>						
+					</div>
+						
 					<!-- Cart Total -->
 					<div class="col-lg-6 cart_col">
 					<div class="checkout_form_container">
@@ -171,7 +169,7 @@ require '../connection.php';
 												<input type="text" id="checkout_last_name" nom="nom" class="checkout_input" placeholder="Nom" required="required">
 											</div>
 										</div>
-										<div>
+										<div><br>
 										<!--Carte bancaire-->
 										<select name="carte" id="typecarte" class="dropdown_item_select checkout_input"
 											require="required">
@@ -217,10 +215,7 @@ require '../connection.php';
 										<div>                    
 										<!-- Cryptogramme visuel-->
 										<input type="number" name="crypto" id="crypto" class="checkout_input" placeholder="Crytogramme visuel" required="required" size="3">
-										</div>
-										</div>																			
-									</form>
-								</div><br>
+										</div><br>
 								<div class="checkout_title">Total du Panier</div>
 								<div class="cart_text">
 									<h5>Puisque vous avez chosit un achat immmediat, la livraison est offerte</h5><br>
@@ -234,7 +229,7 @@ require '../connection.php';
 				</div>
 			</div>
 		</div>
-    
+    <p>.</p>
 
   <!-- Footer -->
 

@@ -70,7 +70,7 @@ $panier =new panier($DB);
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
             <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
             <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
-            <li><a href="#">Accessoire VIP</a></li>
+            <li><a href="../accesoire-vip">Accessoire VIP</a></li>
           </ul>
         </div>
       </div>
