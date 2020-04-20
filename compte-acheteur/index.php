@@ -1,6 +1,6 @@
 <?php
 include "../traitement/config.php";
-include "../traitement/negocier.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,10 @@ require "../common/header.php";
     <?php
 if ($_SESSION['statut'] != "Acheteur") {
     header("location: ../");
-}?>
+}
+
+include "../traitement/negocier.php";
+?>
 
   <div class="container emp-profile">
     <form method="post">
