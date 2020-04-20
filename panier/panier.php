@@ -1,10 +1,93 @@
-<?php require 'headerp.php';?>
+<?php
+require '../connection.php';
+require 'panier.class.php';
+$DB = new DB();/**connecteru a la bases de donnes */
+$panier =new panier($DB);
+?>
 <?php
 if (isset($_GET['del'])){
   $panier->del($_GET['del']);
 }
+<<<<<<< HEAD
 ?>
   <!-- Panier -->
+=======
+?><!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>BID ECE | Panier</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="BIDECE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" type="text/css" href="../style/panier.css">
+</head>
+
+<body>
+  <!--Menu-->
+  <div class="menu-bar">
+    <ul>
+      <li><a href="../"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a></li>
+      <li><a href="../achat"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Achat</a>
+        <div class="sub-menu1">
+          <ul>
+            <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
+              <div class="sub-menu2">
+                <ul>
+                  <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
+                  <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
+                  <li><a href="../accessoire-vip/">Accessoire VIP</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="hover-me"><a href="../modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
+              <div class="sub-menu2">
+                <ul>
+                  <li><a href="../enchere/">Enchères</a></li>
+                  <li><a href="../achetez-le-maintenant/">Achetez-le maintenant</a></li>
+                  <li><a href="../meilleur-offre/">Meilleure offre</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Ventes</a>
+        <div class="sub-menu1">
+          <ul>
+            <li class="hover-me"><a href="../compte-vendeur/">Espace Vendeur</a></li>
+            <li class="hover-me"><a href="../compte-admin/">Espace Admin</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
+      <li><a href="../panier/"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
+    </ul>
+  </div>
+  <!--Fin menu-->
+
+  <!-- Home -->
+  <div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+      <div class="home_content text-center">
+        <div class="home_title">PANIER</div><br>
+        <h3>Un tout y peu pour avoir vos articles</h3><br>
+        <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+          <ul class="d-flex flex-row align-items-start justify-content-start text-center">
+            <li><a href="index.html">Page principal</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart -->
+>>>>>>> 9585f5db7ccd7a7f1530ef147ddb77bf3d1b8063
 
   <div class="cart_section">
     <form method="post" action="panier.php">
@@ -57,8 +140,8 @@ if (isset($_GET['del'])){
                   <div class=" product_text"><?= $product->categorie;?></div>
                   <div class="product_price product_text"><?= number_format($product->prix,2);?>€</div>
                   <div class="product_quantity_container">
-                    <div class="product_quantity text-center">
-                    <imput type="texte" name="panier[product_quantity][<?=$product->item_id; ?>]"  value="<?= $_SESSION['panier'][$product->item_id]; ?>"></input>
+                    <div class="quantity text-center ">
+                    <input type="texte" name="panier[quantity][<?=$product->item_id; ?>]"  value="<?= $_SESSION['panier'][$product->item_id]; ?>" >
                       
                     </div>
                   </div>
@@ -77,6 +160,11 @@ if (isset($_GET['del'])){
                 class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">                
                 <div class="button button_continue trans_200"><a href="index.php">Revoir plus de produits</a></div>
               </div>
+              <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+              <div
+                class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">                
+                <input type="submit" value="calcul" class="button button_continue trans_200"><a href="index.php">Recalculer le total</a></div>
+              </div>  
             </div>
           </div>
         </div>

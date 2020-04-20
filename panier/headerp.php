@@ -1,5 +1,5 @@
 <?php
-require 'connection.php';
+require '../connection.php';
 require 'panier.class.php';
 $DB = new DB();/**Connexion à la base de données */
 $panier =new panier($DB);
