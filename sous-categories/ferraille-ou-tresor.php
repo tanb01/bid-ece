@@ -149,13 +149,8 @@ $DB->query("SELECT * FROM item");
                   <div
                     class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-<<<<<<< HEAD
-                      <!--Grâce à l'icône panier on peut ajouter des produits dans le panier-->
-                      <div><a class="add ajoutPanier" href="ajout.php?item_id=<?= $product->item_id;?>"><img src="../img/icones/panier.svg" class="svg" alt=""></a>
-=======
                       <!--Grâce à l'icone panie on peut ajouter des produits dans le panier-->
                       <div><a class="add ajoutPanier" href="../panier/ajout.php?item_id=<?= $product->item_id;?>"><img src="../img/icones/panier.svg" class="svg" alt=""></a>
->>>>>>> 9585f5db7ccd7a7f1530ef147ddb77bf3d1b8063
                         <div>+</div>
                       </div>
                     </div>

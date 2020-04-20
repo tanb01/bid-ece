@@ -8,10 +8,6 @@ $panier =new panier($DB);
 if (isset($_GET['del'])){
   $panier->del($_GET['del']);
 }
-<<<<<<< HEAD
-?>
-  <!-- Panier -->
-=======
 ?><!DOCTYPE html>
 <html lang="fr">
 
@@ -87,7 +83,6 @@ if (isset($_GET['del'])){
   </div>
 
   <!-- Cart -->
->>>>>>> 9585f5db7ccd7a7f1530ef147ddb77bf3d1b8063
 
   <div class="cart_section">
     <form method="post" action="panier.php">
