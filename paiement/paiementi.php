@@ -1,12 +1,29 @@
 <?php
-require 'connection.php';
-require 'panier.class.php';
-$DB = new DB();/**connecteru a la bases de donnes */
-$panier =new panier($DB);
+require '../connection.php';
+require '../panier/panier.class.php';
+$DB = new DB(); /**connecteru a la bases de donnes */
+$panier = new panier($DB);
 ?>
 <?php
 $DB->query("SELECT prix FROM item");
-?><!DOCTYPE html>
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {?>
+
+<!-- cree une vente a faire -->
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Article acheté!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <?php
+}
+
+
+?>
+
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -38,7 +55,7 @@ $DB->query("SELECT prix FROM item");
 								    <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
 								    <li><a href="../accessoire-vip/">Accessoire VIP</a></li>
 							   </ul>
-						   </div> 
+						   </div>
 						</li>
 						<li class="hover-me"><a href="../modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
 							<div class="sub-menu2">
@@ -47,7 +64,7 @@ $DB->query("SELECT prix FROM item");
 									<li><a href="../achetez-le-maintenant/">Achetez-le maintenant</a></li>
 									<li><a href="../meilleur-offre/">Meilleure offre</a></li>
 								</ul>
-							</div> 
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -57,13 +74,13 @@ $DB->query("SELECT prix FROM item");
 					<ul>
 						<li class="hover-me"><a href="../compte-vendeur/">Espace vendeur</a></li>
 						<li class="hover-me"><a href="../compte-admin/">Espace administrateur</a></li>
-					</ul>    
-				</div>            
+					</ul>
+				</div>
 			</li>
 			<li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre compte</a></li>
 			<li><a href="../panier/"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
-		</ul>       
-	</div>		
+		</ul>
+	</div>
   <!-- Home -->
   <div class="home">
     <div class="home_container d-flex flex-column align-items-center justify-content-end">
@@ -81,7 +98,6 @@ $DB->query("SELECT prix FROM item");
   <div class="checkout">
     <div class="container">
       <div class="row">
-
         <!-- Billing -->
         <div class="col-lg-12">
           <div class="billing">
@@ -151,7 +167,7 @@ $DB->query("SELECT prix FROM item");
                         <span class="radio_text">Je ne souhaite pas garder mes informations</span>
                       </label>
                     </li>
-                  </ul><br>                
+                  </ul><br>
                   <div class="checkout_title">Mode de payment</div>
                   <ul>
                     <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
@@ -170,7 +186,7 @@ $DB->query("SELECT prix FROM item");
                     </li>
                   </ul>
                 </div>
-                <div class="checkout_form_container">                  
+                <div class="checkout_form_container">
                     <div>
                       <!-- Carte -->
                       <select name="checkout_carte" id="typecarte" class="dropdown_item_select checkout_input"
@@ -202,7 +218,7 @@ $DB->query("SELECT prix FROM item");
                         <option value='10'>Octobre</option>
                         <option value='11'>Novembre</option>
                         <option value='12'>Decembre</option>
-                    </select> 
+                    </select>
                     <select name='expireYY' id='expireYY' class="dropdown_item_select checkout_input">
                         <option value=''>Year</option>
                         <option value='10'>2020</option>
@@ -210,7 +226,7 @@ $DB->query("SELECT prix FROM item");
                         <option value='12'>2022</option>
                         <option value='11'>2023</option>
                         <option value='12'>2024</option>
-                    </select> 
+                    </select>
                     </div><br>
                     <div>
                     <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4"/>
@@ -219,12 +235,12 @@ $DB->query("SELECT prix FROM item");
                         required="required" size="3">
                     </div>
                   </form>
-                </div><br>                
+                </div><br>
                 <div class="checkout_title">Total du produit</div>
                 <ul class="cart_extra_total_list">
                   <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="cart_extra_total_title">Sub-total</div>
-                    <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total(),2); ?> €</span></div>
+                    <div class="cart_extra_total_value ml-auto"><span><?=number_format($panier->total(), 2);?> €</span></div>
                   </li>
                   <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="cart_extra_total_title">Mode de livraison</div>
@@ -232,17 +248,18 @@ $DB->query("SELECT prix FROM item");
                   </li>
                   <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="cart_extra_total_title"></div>
-                    <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total()*1.196,2);?> €</span></div>
+                    <div class="cart_extra_total_value ml-auto"><span><?=number_format($panier->total() * 1.196, 2);?> €</span></div>
                   </li>
                 </ul>
                 <div class="cart_text">
                   <h6>Merci de votre Achat, vous etês presque pour avoir vos articles.</h6>
-                </div>                
+                </div>
               </div>
-              <button class="checkout_button"><a>Payer maintenat</a></button>
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+              <input type="submit" class="checkout_button" value="Payer maintenant"></form>
             </div>
           </div>
-                    
+
          </form>
         <div id="errordiv"></div>
       </div>

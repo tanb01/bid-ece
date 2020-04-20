@@ -10,7 +10,6 @@ $ville = isset($_POST["ville"]) ? $_POST["ville"] : "";
 $phone = isset($_POST["phone"]) ? $_POST["phone"] : "";
 $email = isset($_POST["email"]) ? $_POST["email"] : "";
 
-
 if ($_POST["envoyer"]) {
       $sql = "SELECT * FROM coordonnees";
       $sql = "INSERT INTO coordonnees(coordonnees_id, acheteur_id, nom, prenom, adresse_ligne_1, adresse_ligne_2, ville, code_postal, pays, numero_de_telephone) VALUES(NULL,'1', '$nom', '$prenom', '$adresse', NULL, '$ville', '$zipcode', 'France', '$phone')";
