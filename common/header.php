@@ -1,8 +1,9 @@
 <?php 
+// Début de la session
 session_start();
 ?>
 
-<!--Navbar-->
+<!--Navbar et Menu-->
 <div class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand h1 text-primary" href="../"><img src="../img/logo_bid_ece.jpg" style="height:48px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -28,6 +29,7 @@ session_start();
           </div>
         </li>
         <?php
+          // Différence de statut et de droit, un acheteur n'aura pas la même navbar qu'un admin ou un vendeur
 if (isset($_SESSION['statut'])) {
     if ($_SESSION['statut'] == 'Admin' || $_SESSION['statut'] == 'Vendeur') {?>
           <li class="nav-item dropdown">
@@ -60,6 +62,7 @@ if ($_SESSION['statut'] == 'Admin') {?>
           <a class="nav-link" href="../paiement">Payer</a>
         </li>
         <?php
+          // Code pour se déconnecter de sa session sur laquelle on est connecté
         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {?>
           <li class="nav-item">
             <a href="../traitement/deconnexion.php" class="nav-link btn btn-danger">Deconnexion</a>
@@ -78,6 +81,6 @@ if ($_SESSION['statut'] == 'Admin') {?>
       </ul>
     </div>
   </div>
-  <!--/.Navbar-->
+  <!--Fin du code de Navbar-->
 
 <?php ?>

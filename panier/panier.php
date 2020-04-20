@@ -4,7 +4,7 @@ if (isset($_GET['del'])){
   $panier->del($_GET['del']);
 }
 ?>
-  <!-- Cart -->
+  <!-- Panier -->
 
   <div class="cart_section">
     <form method="post" action="panier.php">
@@ -13,7 +13,7 @@ if (isset($_GET['del'])){
         <div class="col">
           <div class="cart_container">
 
-            <!-- Cart Bar -->
+            <!-- Barre du panier -->
             <div class="cart_bar">
               <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
                 <li class="mr-auto">Produit</li>
@@ -26,7 +26,7 @@ if (isset($_GET['del'])){
               </ul>
             </div>
 
-            <!-- Cart Items -->
+            <!-- Articles du panier -->
             <div class="cart_items">
               <ul class="cart_items_list">
                 <?php
@@ -38,7 +38,7 @@ if (isset($_GET['del'])){
                 }
                 foreach($item as $product):
                 ?>
-                <!-- Cart Item -->
+                <!-- Un article -->
                 <li
                   class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
                   <div
@@ -71,7 +71,7 @@ if (isset($_GET['del'])){
               </ul>
             </div>
 
-            <!-- Cart Buttons -->
+            <!-- Boutons du panier -->
             <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
               <div
                 class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">                
@@ -95,7 +95,7 @@ if (isset($_GET['del'])){
               </div>
               <div class="coupon_text">Si vous avez un code de réduction ajoutez le.<br> Code de 10% :QBEDI</div>
               <div class="shipping">
-                <div class="cart_extra_title">Methode d'envoie</div>
+                <div class="cart_extra_title">Méthode d'envoi</div>
                 <ul>
                   <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
                     <label class="radio_container">
@@ -109,7 +109,7 @@ if (isset($_GET['del'])){
                     <label class="radio_container">
                       <input type="radio" id="radio_2" name="shipping_radio" class="shipping_radio">
                       <span class="radio_mark"></span>
-                      <span class="radio_text">Livraison standar</span>
+                      <span class="radio_text">Livraison standard 24H</span>
                     </label>
                     <div class="shipping_price ml-auto">$1.99</div>
                   </li>
@@ -117,7 +117,7 @@ if (isset($_GET['del'])){
                     <label class="radio_container">
                       <input type="radio" id="radio_3" name="shipping_radio" class="shipping_radio" checked>
                       <span class="radio_mark"></span>
-                      <span class="radio_text">Livraison plus de 10 jours</span>
+                      <span class="radio_text">Livraison de plus de 10 jours</span>
                     </label>
                     <div class="shipping_price ml-auto">Gratuite</div>
                   </li>

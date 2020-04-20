@@ -1,7 +1,7 @@
 <?php
 require 'connection.php';
 require 'panier.class.php';
-$DB = new DB();/**connecteru a la bases de donnes */
+$DB = new DB();/**Connexion à la base de données */
 $panier =new panier($DB);
 ?><!DOCTYPE html>
 <html lang="fr">

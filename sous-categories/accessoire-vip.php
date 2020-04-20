@@ -1,8 +1,8 @@
 <?php require 'headera.php'; ?>
-<!-- Recuperation de produits qu'on stoque dans la requete req-->
+<!-- Récupération de produits qu'on stocke dans la requète req-->
 <?php
 $DB->query("SELECT * FROM item");
-?> <!-- Products -->
+?> <!-- Produits -->
  <div class="products">
     <div class="container">
       <div class="row products_bar_row">
@@ -19,17 +19,17 @@ $DB->query("SELECT * FROM item");
               <div class="products_dropdown product_dropdown_sorting">
               <?php $item =$DB->query('SELECT nom, prix FROM item ORDER BY prix'); ?> 
                          
-              
+              <!-- Trier -->
                 <div class="isotope_sorting_text"><span>Trier par:</span><i class="fa fa-caret-down"
                     aria-hidden="true"></i></div>
                 <ul>
-                  <li class="item_sorting_btn">prix</li>
+                  <li class="item_sorting_btn">Prix</li>
                   <li class="item_sorting_btn">Nom</li>
                 </ul>
               </div>
-              
+              <!-- Filtrer -->
               <div class="products_dropdown text-right product_dropdown_filter">
-                <div class="isotope_filter_text"><span>Filter</span><i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="isotope_filter_text"><span>Filtrer</span><i class="fa fa-caret-down" aria-hidden="true"></i>
                 </div>
                 <ul>
                   <li class="item_filter_btn" data-filter="*">Tous</li>
@@ -41,27 +41,27 @@ $DB->query("SELECT * FROM item");
         </div>
       </div>
       <div class="row products_row products_container grid">
-        <!--selection de produits du tableau items qu'on va stocker sous la variable product--> 
+        <!--Sélection de produits du tableau items que l'on va stocker sous la variable product--> 
         <?php $item =$DB->query("SELECT * FROM item WHERE categorie  LIKE '%VI%'"); ?>
         <?php foreach($item as $product):?>
-        <!-- Product tous les appeles à venir se fond grace à l'id du produit-->
+        <!-- Tous les appels à venir se fond grâce à l'id du produit-->
         <div class="col-xl-4 col-md-6 grid-item new">
           <div class="product">
-            <!--On va prendre l'image qui correspond ou produit qu'on va appeler-->
+            <!--On va prendre l'image qui correspond au produit que l'on va appeler-->
             <div class="product_image"><img src="data:image/jpeg;base64, <?= base64_encode($product->photo); ?>" height="350px" width="500px"></div>
             <div class="product_content">
               <div class="product_info d-flex flex-row align-items-start justify-content-start">
                 <div>
                   <div>
-                    <!--On va prendre le nom qui correspond ou produit qu'on va appeler-->
+                    <!--On va prendre le nom qui correspond au produit que l'on va appeler-->
                     <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
-                    <!--On va prendre la catégorie qui correspond ou produit qu'on va appeler-->
+                    <!--On va prendre la catégorie qui correspond au produit que l'on va appeler-->
                     <div class="product_category">dans <a href="category.html"><?= $product->categorie;?></a></div>
                   </div>
                 </div>
                 <div class="ml-auto text-right">
                   <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                  <!--On va prendre le prix  qui correspond ou produit qu'on va appeler-->
+                  <!--On va prendre le prix  qui correspond au produit que l'on va appeler-->
                   <div class="product_price text-right"><?= number_format($product->prix,2);?>€</div>
                 </div>
               </div>
@@ -70,7 +70,7 @@ $DB->query("SELECT * FROM item");
                   <div
                     class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-                      <!--Grâce à l'icone panie on peut ajouter des produits dans le panier-->
+                      <!--Grâce à l'icône panier on peut ajouter des produits dans le panier-->
                       <div><a class="add ajoutPanier" href="ajout.php?item_id=<?= $product->item_id;?>"><img src="../img/icones/panier.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>
@@ -79,7 +79,7 @@ $DB->query("SELECT * FROM item");
                   <div
                     class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-                      <!--Grâce à l'icone carte de crédit être rédirigé vers paiment avec l'unique produit selectionéé-->
+                      <!--Grâce à l'icône carte de crédit être rédirigé vers paiement avec l'unique produit selectioné-->
                       <div><a class="add ajoutPaiement" href="paiement.php?item_id<?= $product->item_id;?>"><img src="../img/icones/payer.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>

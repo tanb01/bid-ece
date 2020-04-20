@@ -1,7 +1,7 @@
 <?php
 require 'connection.php';
 require 'panier.class.php';
-$DB = new DB();/**connecteru a la bases de donnes */
+$DB = new DB();/**Connexion à la base de données */
 $panier =new panier($DB);
 ?><!DOCTYPE html>
 <html lang="fr">
@@ -65,7 +65,7 @@ $panier =new panier($DB);
   <div class="home">
     <div class="home_container d-flex flex-column align-items-center justify-content-end">
       <div class="home_content text-center">
-        <div class="home_title">PAIMENT</div><br>
+        <div class="home_title">PAIEMENT</div><br>
         <h3>Finalisez votre achat</h3><br>
         <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
@@ -79,7 +79,7 @@ $panier =new panier($DB);
     <div class="container">
       <div class="row">
 
-        <!-- Billing -->
+        <!-- Information livraison -->
         <div class="col-lg-12">
           <div class="billing">
             <div class="checkout_title">Informations</div>
@@ -87,44 +87,42 @@ $panier =new panier($DB);
               <form action="#" id="checkout_form" class="checkout_form">
                 <div class="row">
                   <div class="col-lg-6">
-                    <!-- Name -->
-                    <input type="text" id="nombre" class="checkout_input" placeholder="Prenom"
-                      required="required"  minlength="2" maxlength="20" title="Renseigné votre prenom de famille">
+                    <!-- Nom -->
+                    <input type="text" id="nombre" class="checkout_input" placeholder="Prénom"
+                      required="required"  minlength="2" maxlength="20" title="Renseignez votre prénom">
                   </div>
                   <div class="col-lg-6">
-                    <!-- Last Name -->
+                    <!-- Prénom -->
                     <input type="text" id="apellido" class="checkout_input" placeholder="Nom"
-                      required="required" minlength="2" maxlength="20" title="Renseigné votre nom de famille">
+                      required="required" minlength="2" maxlength="20" title="Renseignez votre nom de famille">
                   </div>
                 </div>
                 <div>
-                  <!-- Country -->
+                  <!-- Pays -->
                   <select name="checkout_country" id="pays" class="dropdown_item_select checkout_input"
                     require="required">
                     <option>France</option>
                   </select>
                 </div>
                 <div>
-                  <!-- Address -->
+                  <!-- Adresse -->
                   <input type="text" id="direction" class="checkout_input checkout_address_2"
-                    placeholder="Address" required="required" minlength="9" maxlength="40" title="Renseigné votre adresse">
+                    placeholder="Adresse" required="required" minlength="9" maxlength="40" title="Renseignez votre adresse">
                 </div>
                 <div>
-                  <!-- Zipcode -->
+                  <!-- Code postal -->
                   <input type="number" id="zipcode" class="checkout_input" placeholder="Code postal"
-                    required="required" min="75000" max="75020" title="Entrez entre 3 et 4 chifres du code postale français">
+                    required="required" title="Entrez votre Code Postal">
                 </div>
                 <div>
-                  <!-- City / Town -->
-                  <select name="checkout_city" id="ville" class="dropdown_item_select checkout_input"
-                    require="required">
-                    <option>Paris</option>
-                  </select>
+                  <!-- Ville -->
+                  <input type="text" id="ville" class="checkout_input checkout_address_2"
+                    placeholder="Ville" required="required" title="Renseignez votre Ville">
                 </div>
                 <div>
-                  <!-- Phone no -->
-                  <input type="number" id="phone" class="checkout_input" placeholder="Phone No."
-                    required="required" pattern="\x2b[0-9]+" size="20"  title="Inserz un numéro de telephone de 10 nombres">
+                  <!-- Numéro de téléphone -->
+                  <input type="number" id="phone" class="checkout_input" placeholder="Numéro de téléphone"
+                    required="required" pattern="\x2b[0-9]+" size="20"  title="Insérez un numéro de téléphone">
                 </div>
                 <div>
                   <!-- Email -->
@@ -132,7 +130,7 @@ $panier =new panier($DB);
                     required="required" title="Rensegnez votre email">
                 </div>
                 <div class="garder_options">
-                  <div class="checkout_title">On protege vos informations</div>
+                  <div class="checkout_title">On protège vos informations</div>
                   <ul>
                     <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
                       <label class="radio_container">
@@ -149,7 +147,7 @@ $panier =new panier($DB);
                       </label>
                     </li>
                   </ul><br>                
-                  <div class="checkout_title">Mode de payment</div>
+                  <div class="checkout_title">Mode de paiement</div>
                   <ul>
                     <li class="shipping_option d-flex flex-row align-items-center justify-content-start">
                       <label class="radio_container">
@@ -169,7 +167,7 @@ $panier =new panier($DB);
                 </div>
                 <div class="checkout_form_container">                  
                     <div>
-                      <!-- Carte -->
+                      <!-- Type de carte -->
                       <select name="checkout_carte" id="typecarte" class="dropdown_item_select checkout_input"
                         require="required">
                         <option>Visa</option>
@@ -179,14 +177,14 @@ $panier =new panier($DB);
                     </div><br>
                     <div>
                       <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4"/>
-                        <!-- Cryptogramme visuel -->
-                        <input type="number" id="numero de carte" class="checkout_input" placeholder="Numero de carte bancaire"
+                        <!-- Numéro de la carte -->
+                        <input type="number" id="numero de carte" class="checkout_input" placeholder="Numéro de carte bancaire"
                           required="required" size="16">
                       </div><br>
-                    <!-- expiration -->
+                    <!-- Date d'expiration -->
                     <div>
                       <select name='expireMM' id='expireMM' class="dropdown_item_select checkout_input">
-                        <option value=''>Month</option>
+                        <option value=''>Mois</option>
                         <option value='01'>Janvier</option>
                         <option value='02'>Fevrier</option>
                         <option value='03'>Mars</option>
@@ -198,10 +196,10 @@ $panier =new panier($DB);
                         <option value='09'>Septembre</option>
                         <option value='10'>Octobre</option>
                         <option value='11'>Novembre</option>
-                        <option value='12'>Decembre</option>
+                        <option value='12'>Décembre</option>
                     </select> 
                     <select name='expireYY' id='expireYY' class="dropdown_item_select checkout_input">
-                        <option value=''>Year</option>
+                        <option value=''>Année</option>
                         <option value='10'>2020</option>
                         <option value='11'>2021</option>
                         <option value='12'>2022</option>
@@ -220,7 +218,7 @@ $panier =new panier($DB);
                 <div class="checkout_title">Total du Panier</div>
                 <ul class="cart_extra_total_list">
                   <li class="d-flex flex-row align-items-center justify-content-start">
-                    <div class="cart_extra_total_title">Sub-total</div>
+                    <div class="cart_extra_total_title">Sous-total</div>
                     <div class="cart_extra_total_value ml-auto"><span><?= number_format($panier->total(),2); ?> €</span></div>
                   </li>
                   <li class="d-flex flex-row align-items-center justify-content-start">
@@ -233,10 +231,10 @@ $panier =new panier($DB);
                   </li>
                 </ul>
                 <div class="cart_text">
-                  <h6>Merci de votre Achat, vous etês presque pour avoir vos articles.</h6>
+                  <h6>Merci de votre Achat, vous y êtes presque pour avoir vos articles.</h6>
                 </div>                
               </div>
-              <button class="checkout_button"><a>Payer maintenat</a></button>
+              <button class="checkout_button"><a>Payer maintenant</a></button>
             </div>
           </div>           
          </form>

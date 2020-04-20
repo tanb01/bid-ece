@@ -6,7 +6,7 @@ class DB{
     private $password = "";
     private $database = "bid_ece";
     private $db;
-/*parametres que prends la fontion DB qu'on a declare à la tête du header*/
+/*paramètres que prends la fontion DB qu'on a déclarer à la tête du header*/
     public function __construct($host = null, $username = null, $password = null, $database =null){
         if($host != null){
             $this->host = $host;
@@ -14,7 +14,7 @@ class DB{
             $this->password = $password;
             $this->database = $database;
         }
-        /**PDO pour se connecter à la bases de données */
+        /**PDO pour se connecter à la base de données */
         try{
             $this->db = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->username,
             $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8",
@@ -23,7 +23,7 @@ class DB{
             die("Impossible de se connecter a la base");
         }
     }
-    /**methode pour les requetes plus rapidement */ 
+    /**méthode pour faire les requètes plus rapidement */ 
     public function query($sql, $data = array()){
         $req =$this->db->prepare($sql);
         $req->execute($data);

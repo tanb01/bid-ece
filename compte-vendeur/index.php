@@ -28,8 +28,11 @@ include "../traitement/config.php";
 <body>
 <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
 <?php
+    // Si le statut connecté est égal à Venduer alors il aura les droits de ajouter supprimer article et
+    // ses droits de sa session avec son navbar
 if ($_SESSION['statut'] != "Vendeur" && $_SESSION['statut'] != "Admin" ) {
     header("location: ../");
 }
@@ -90,6 +93,7 @@ $nombreArticles = $data['nombreArticles'];
             <a href="">Lien 2</a>
           </div>
         </div>
+          <!-- Affichage des infos du vendeur connecté -->
         <div class="col-md-8">
           <div class="tab-content profile-tab" id="myTabContent">
             <div class="tab-pane fade show active" id="informations" role="tabpanel" aria-labelledby="informations-tab">
@@ -118,6 +122,7 @@ $nombreArticles = $data['nombreArticles'];
                 </div>
               </div>
             </div>
+              <!-- Affichage des articles sur le site -->
             <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -155,6 +160,7 @@ $nombreArticles = $data['nombreArticles'];
                 ?>
               </tbody>
               </table>
+                <!-- Formulaire d'ajout d'article -->
               <div class="row">
                   <form action="../add-article/" method="POST">
                       <div class="col-md-6">
@@ -169,6 +175,7 @@ $nombreArticles = $data['nombreArticles'];
                   </form>
                 </div>
             </div>
+              <!-- Affichage de l'offre négociation -->
             <div class="tab-pane fade" id="negociations" role="tabpanel" aria-labelledby="negociations-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -204,7 +211,7 @@ $nombreArticles = $data['nombreArticles'];
                 ?>
               </tbody>
               </table>
-              <!-- accepter -->
+              <!-- Accepter l'offre -->
               <div class="row">
                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                       <div class="col-md-6">
@@ -221,6 +228,7 @@ $nombreArticles = $data['nombreArticles'];
 
   <?php
 require "../common/footer.php";
+    // Footer commun inclut dans chaque page
 ?>
 
 

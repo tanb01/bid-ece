@@ -31,6 +31,7 @@ if (mysqli_num_rows($result) == 0) {
   <body>
   <?php
   require "../common/header.php";
+    // Header commun inclut dans chaque page
   ?>
     <div class="container-fluid">
       <div class="container mt-4">
@@ -38,7 +39,7 @@ if (mysqli_num_rows($result) == 0) {
         <div class="row mb-5">
           <div class="col-sm">
             <a href="#">
-              <img src="data:image/jpeg;base64, <?php echo base64_encode($data['photo']) ?>" class="card-img-top rounded" />
+              <img src="data:image/jpeg;base64, <?php echo base64_encode($data['photo']) ?>" class="card-img-top rounded" /> <!-- Récupération de l'image -->
             </a>
           </div>
           <div class="col-sm">
@@ -139,6 +140,7 @@ if (mysqli_num_rows($result) == 0) {
 
     <?php
   require "../common/footer.php";
+    // Footer commun inclut dans chaque page
   ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

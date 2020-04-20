@@ -1,5 +1,5 @@
 <?php
-
+// code pour supprimer un vendeur avec l'id
 if (isset($_POST['supprimerVendeur']) && $_POST['supprimerVendeur'] == '- Supprimer un vendeur' && isset($_POST['idVendeur'])) {
     $userId = isset($_POST["idVendeur"]) ? $_POST["idVendeur"] : "";
     $sql = "SELECT user_id FROM `user` WHERE user_id =" . $userId;

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!--Menu-->
+  <!--Menu du navbar en header-->
   <div class="menu-bar">
     <ul>
       <li><a href="./"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a></li>
@@ -55,9 +55,9 @@
       <li><a href="./panier/"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
     </ul>
   </div>
-  <!--Fin menu-->
+  <!--Fin du menu-->
 
-  <!-- Carousel-->
+  <!-- Caroussel d'images-->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -87,16 +87,16 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <!-- END Carousel-->
+  <!-- FIN du caroussel d'image -->
 
   
-  <!-- Products -->
+  <!-- Produits -->
 
   <div class="products">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
-          <div class="section_title text-center">CATEGORIES</div>
+          <div class="section_title text-center">CATÉGORIES</div>
         </div>
       </div>
       <div class="row page_nav_row">
@@ -112,7 +112,7 @@
       </div>
       <div class="row products_row">
 
-        <!-- Product -->
+        <!-- Produit -->
         <div class="col-xl-4 col-md-6">
           <div class="product">
             <div class="product_image"><img src="./img/img_accueil/statue.jpg" alt="statue" width="350px"
@@ -155,22 +155,22 @@
             </div>
           </div>
         </div>        
-        <!-- Product -->
+        <!-- Guide pour le site -->
         <div class="col-xl-4 col-md-8">
           <div class="product">            
             <h2 sty>Comment ça marche?</h2>
             <h5> Nous vous proposons 3 façons d'acheter sur notre site BIDECE:</h5>
               <ul>
-                <li>Encheres: On vous propose de produits en encherès, c'est à vous de faire des offres et de remporter l'objet. Restez attentif et augmentez votres chances de gagner en faisant au moins 5 offres </li><br>
-                <li>Achat immédiat d'un product: Vu avez eu un coup de foudre pour un de nos produits? Pas de panique!! vous pouvez le payer en un clique pour cela rendez-vous sur la page ACHAT IMMEDIAT </li><br>
-                <li>Meillieur offre:Vous pouvez négocier avec le vendeur jusqu'à 5 fois pour conclure le prix final d'un article. </li> 
+                <li>Enchères: Nous vous proposons des produits aux enchères, c'est à vous de faire des offres et de remporter l'objet. Restez attentif et augmentez vos chances de gagner en faisant au moins 5 offres. </li><br>
+                <li>Achat immédiat d'un produit: Vous avez eu un coup de foudre pour un de nos produits ? Pas de panique !! Vous pouvez le payer en un clic. Pour cela rendez-vous sur la page ACHAT IMMÉDIAT </li><br>
+                <li>Meilleure offre: Vous pouvez négocier avec le vendeur jusqu'à 5 fois pour conclure le prix final d'un article. </li> 
               </ul>
             </div>
         </div>
-        <!-- Product -->
+        <!-- Aide / Guide pour ajouter ou payer un article -->
         <div class="col-xl-4 col-md-6">
           <div class="product">
-          <h3 sty>Comment Ajouter sur le panier ou payer un article?</h3>
+          <h3 sty>Comment ajouter un article au panier ou payer un article?</h3>
               <div class="product_buttons">
                 <div class="text-right d-flex flex-row align-items-start justify-content-start">
                   <div
@@ -194,12 +194,12 @@
                 </div>
               </div><br>
               <ul>
-                <li>Ajouter dans le panier: Cliquez sur l'icon Panier pour ajouter vos articles dans le panier tout au long de votre navigation dans la page, vous pouvez modifier manuelment la quantité dans le panier. Un message va apparaitre en vous demandons de aller dans le panier ou continuer à voir vos articles </li><br>
-                <li>Achat immédiat d'un product: Cliquez sur l'icone carte de crédit, qui va vous rediger ver la page paiment, remplisez le formulaire et payez l'article! Simple et Facile comme BIDECE.</ul>
+                <li>Ajouter un article dans le panier: Cliquez sur l'icône Panier pour ajouter vos articles dans le panier tout au long de votre navigation dans la page, vous pouvez modifier manuellement la quantité dans le panier. Un message va apparaître en vous demandons de aller dans le panier ou continuer à voir vos articles </li><br>
+                <li>Achat immédiat d'un produit: Cliquez sur l'icône carte de crédit, qui va vous rediriger vers la page paiement, remplissez le formulaire et payez l'article ! Simple et Facile comme BIDECE.</ul>
             </div>
           </div>
         </div> 
-        <!-- Boxes -->
+        <!-- Cases pour les enchères populaires, les meilleures offres ou acheter maintenant -->
 
         <div class="boxes">
           <div class="container">
@@ -207,7 +207,7 @@
               <div class="col">
                 <div class="boxes_container d-flex flex-row align-items-start justify-content-between flex-wrap">
 
-                  <!-- Box -->
+                  <!-- Enchères les plus populaires -->
                   <div class="box">
                     <div class="background_image" style="background-image:url(./img/img_accueil/art1.jpg)"></div>
                     <div class="box_content d-flex flex-row align-items-center justify-content-start">
@@ -220,12 +220,12 @@
                         </div>
                       </div>
                       <div class="box_right text-center">
-                        <div class="box_title">Encherès les plus populaire</div>
+                        <div class="box_title">Encherès les plus populaires</div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Box -->
+                  <!-- Meilleures offres -->
                   <div class="box">
                     <div class="background_image" style="background-image:url(./img/img_accueil/art2.jpg)"></div>
                     <div class="box_content d-flex flex-row align-items-center justify-content-start">
@@ -238,12 +238,12 @@
                         </div>
                       </div>
                       <div class="box_right text-center">
-                        <div class="box_title">Profitez des meilleurs offres</div>
+                        <div class="box_title">Profitez des meilleures offres</div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Box -->
+                  <!-- Acheter maintenant -->
                   <div class="box">
                     <div class="background_image" style="background-image:url(./img/img_accueil/art3.jpg)"></div>
                     <div class="box_content d-flex flex-row align-items-center justify-content-start">
@@ -276,7 +276,7 @@
             <div class="container">
               <div class="row">
 
-                <!-- About -->
+                <!-- À propos de nous -->
                 <div class="col-lg-4 footer_col">
                   <div class="footer_about">
                     <div class="footer_logo">
@@ -301,7 +301,7 @@
                   </div>
                 </div>
 
-                <!-- Footer Links -->
+                <!-- Liens du footer -->
                 <div class="col-lg-4 footer_col">
                   <div class="footer_menu">
                     <div class="footer_title">Support technique</div>
@@ -326,7 +326,7 @@
                   </div>
                 </div>
 
-                <!-- Footer Contact -->
+                <!-- Contact footer -->
                 <div class="col-lg-4 footer_col">
                   <div class="footer_contact">
                     <div class="footer_title">Restons connectés</div>

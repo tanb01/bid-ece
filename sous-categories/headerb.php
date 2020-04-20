@@ -1,7 +1,7 @@
 <?php
 require '../connection.php';
 require '../panier/panier.class.php';
-$DB = new DB();/**connecteru a la bases de donnes */
+$DB = new DB();/**Connexion à la base de données */
 $panier =new panier($DB);
 ?><!DOCTYPE html>
 <html lang="fr">
@@ -65,7 +65,7 @@ $panier =new panier($DB);
   <div class="home">
     <div class="home_container d-flex flex-column align-items-center justify-content-end">
       <div class="home_content text-center">
-        <div class="home_title">BON POUR LE MUSEE</div>
+        <div class="home_title">BON POUR LE MUSÉE</div>
         <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
             <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
