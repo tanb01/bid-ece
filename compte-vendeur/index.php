@@ -78,6 +78,10 @@ $nombreArticles = $data['nombreArticles'];
                 <a class="nav-link" id="negociations-tab" data-toggle="tab" href="#negociations" role="tab"
                   aria-controls="negociations" aria-selected="false">Negociations</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" id="vendu-tab" data-toggle="tab" href="#vendu" role="tab"
+                  aria-controls="vendu" aria-selected="false">Vendu</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -185,7 +189,7 @@ $nombreArticles = $data['nombreArticles'];
               <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Id</th>
+                  <th scope="col">Id Offre</th>
                   <th scope="col">Nom</th>
                   <th scope="col">Prix</th>
                   <th scope="col">Prix Offert</th>
@@ -194,13 +198,13 @@ $nombreArticles = $data['nombreArticles'];
               </thead>
               <tbody>
               <?php
-                $sql = "SELECT item.item_id, item.nom, item.user_id, item.prix, negociation.prix_meilleure_offre, negociation.numero_offre FROM negociation INNER JOIN item ON item.item_id = negociation.item_id WHERE negociation.is_vendu=0 AND item.user_id=".$_SESSION['id'];
+                $sql = "SELECT negociation.negociation_id, item.item_id, item.nom, item.user_id, item.prix, negociation.prix_meilleure_offre, negociation.numero_offre FROM negociation INNER JOIN item ON item.item_id = negociation.item_id WHERE negociation.is_vendu=0 AND item.user_id=".$_SESSION['id'];
                 $result = mysqli_query($db_handle, $sql);
                 $data = mysqli_fetch_assoc($result);
               while ($data = mysqli_fetch_assoc($result)) {
                   ?>
               <tr>
-                <th scope="row"><?php echo $data['item_id'] ?></th>
+                <th scope="row"><?php echo $data['negociation_id'] ?></th>
                 <td><?php echo $data['nom'] ?></td>
                 <td><?php echo $data['prix'] ?>  €</td>
                 <td><?php echo $data['prix_meilleure_offre'] ?>  €</td>
@@ -217,6 +221,59 @@ $nombreArticles = $data['nombreArticles'];
                       <div class="col-md-6">
                         <input type="number" id="idOffre" name="idOffre" placeholder="Id de l'offre">
                         <input type="submit" class="btn btn-success" name="accepterOffre" value="Accepter Offre">
+                      </div>
+                  </form>
+                </div>
+            </div>
+                         <!-- Affichage des articles sur le site -->
+                         <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Article(s) vendu</label>
+                </div>
+                <!-- <div class="col-md-6">
+                  <p>Nombre d'article(s) vendu: <?php echo "$nombreArticles" ?></p>
+                </div> -->
+              </div>
+              <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Categorie</th>
+                  <th scope="col">Mode de Vente</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+              $sql = "SELECT item_id, nom, prix, categorie, mode_de_vente FROM item WHERE user_id=" . $_SESSION['id'] ;
+              $result = mysqli_query($db_handle, $sql);
+              while ($data = mysqli_fetch_assoc($result)) {
+                  ?>
+              <tr>
+                <th scope="row"><?php echo $data['item_id'] ?></th>
+                <td><?php echo $data['nom'] ?></td>
+                <td><?php echo $data['prix'] ?>  €</td>
+                <td><?php echo $data['categorie'] ?></td>
+                <td class="text-center"><?php echo $data['mode_de_vente'] ?></td>
+              </tr>
+              <?php
+                }
+                ?>
+              </tbody>
+              </table>
+                <!-- Formulaire d'ajout d'article -->
+              <div class="row">
+                  <form action="../add-article/" method="POST">
+                      <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" name="ajouterArticle" value="+ Ajouter un article">
+                      </div>
+                  </form>
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                      <div class="col-md-6">
+                        <input type="number" id="idArticle" name="idArticle" placeholder="Id de l'article">
+                        <input type="submit" class="btn btn-danger" name="supprimerArticle" value="- Supprimer un article">
                       </div>
                   </form>
                 </div>

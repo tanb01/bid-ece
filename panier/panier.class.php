@@ -12,9 +12,21 @@ class panier{
         }
         //initialisation
         $this->DB= $DB;
-    }
-    //fonction qui permet de calculer le total du panier
+        
+        if(isset($_POST['panier']['quantity'])){
+            $this->calcul();
+        }
 
+    }
+    //fontion qui permet calculer le total du panier
+    public function calcul(){
+        foreach($_SESSION['panier'] as $product_item_id => $quantity ){
+            if(isset($_POST['panier']['quantity'][$product_item_id])){
+             $_SESSION['panier'][$product_item_id]= $_POST['panier']['quantity'][$product_item_id];
+            }
+        }       
+        
+    }
     public function total(){
         //parcours du tableau avec différents produits
         $total=0;

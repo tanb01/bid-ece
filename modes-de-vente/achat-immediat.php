@@ -30,8 +30,8 @@ $panier =new panier($DB);
             <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="ferraille-ou-tresor">Ferraille ou Trésor</a></li>
-                  <li><a href="bon-pour-le-musee.php">Bon pour le Musée</a></li>
+                  <li><a href="../sous-categories/ferraille-ou-tresor.php">Ferraille ou Trésor</a></li>
+                  <li><a href="../sous-categories/bon-pour-le-musee.php">Bon pour le Musée</a></li>
                   <li><a href="accessoire-vip.php">Accessoire VIP</a></li>
                 </ul>
               </div>
@@ -39,9 +39,9 @@ $panier =new panier($DB);
             <li class="hover-me"><a href="../modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="../enchere/">Enchères</a></li>
-                  <li><a href="../achetez-le-maintenant/">Achetez-le maintenant</a></li>
-                  <li><a href="../meilleur-offre/">Meilleure offre</a></li>
+                  <li><a href="../modes-de-vente/enchere/">Enchères</a></li>
+                  <li><a href="../modes-de-vente/achetez-le-maintenant/">Achetez-le maintenant</a></li>
+                  <li><a href="../modes-de-vente/meilleur-offre/">Meilleure offre</a></li>
                 </ul>
               </div>
             </li>
@@ -68,9 +68,9 @@ $panier =new panier($DB);
         <div class="home_title">ACHETEZ UN PRODUIT MAINTENANT</div>
         <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
-            <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
-            <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
-            <li><a href="#">Accessoire VIP</a></li>
+          <li><a href="../sous-categories/ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
+            <li><a href="../sous-categories/bon-pour-le-musee/">Bon pour le Musée</a></li>
+            <li><a href="/sous-categories/accessoires-vip">Accessoire VIP</a></li>
           </ul>
         </div>
       </div>
@@ -95,9 +95,6 @@ $DB->query("SELECT * FROM item");
             </div>
             <div class="products_bar_side d-flex flex-row align-items-center justify-content-start ml-lg-auto">
               <div class="products_dropdown product_dropdown_sorting">
-              <?php $item =$DB->query('SELECT nom, prix FROM item ORDER BY prix'); ?> 
-                         
-              
                 <div class="isotope_sorting_text"><span>Trier par:</span><i class="fa fa-caret-down"
                     aria-hidden="true"></i></div>
                 <ul>
@@ -120,7 +117,7 @@ $DB->query("SELECT * FROM item");
       </div>
       <div class="row products_row products_container grid">
         <!--Sélection de produits du tableau items que l'on va stocker sous la variable product--> 
-        <?php $item =$DB->query("SELECT * FROM item "); ?>
+        <?php $item =$DB->query("SELECT * FROM item WHERE categorie  LIKE '%IM%'"); ?>
         <?php foreach($item as $product):?>
         <!-- Tous les appels à venir se font grâce à l'id du produit-->
         <div class="col-xl-4 col-md-6 grid-item new">
@@ -149,7 +146,7 @@ $DB->query("SELECT * FROM item");
                     class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
                       <!--Grâce à l'icône carte de crédit être redirigé vers paiement avec l'unique produit selectioné-->
-                      <div><a class="add ajoutPaiement" href="paiementi.php?item_id<?= $product->item_id;?>"><img src="../img/icones/payer.svg" class="svg" alt=""></a>
+                      <div><a class="add ajoutPaiement" href="../paiement/coordonnees.php?item_id<?= $product->item_id;?>"><img src="../img/icones/payer.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>
                     </div>
@@ -175,95 +172,93 @@ $DB->query("SELECT * FROM item");
       </div>
     </div>
   </div>
-  <!-- Footer -->
+ <!-- Footer -->
 
-  <footer class="footer">
-    <div class="footer_content">
-      <div class="container">
-        <div class="row">
+ <footer class="footer">
+          <div class="footer_content">
+            <div class="container">
+              <div class="row">
 
-          <!-- About -->
-          <div class="col-lg-4 footer_col">
-            <div class="footer_about">
-              <div class="footer_logo">
-                <a href="#">
-                  <div class="d-flex flex-row align-items-center justify-content-start">
-                    <div class="footer_logo_icon"><img src="../img/logo_bid_ece.jpg" alt="logo" height="50px"
-                        width="50px">
+                <!-- À propos de nous -->
+                <div class="col-lg-4 footer_col">
+                  <div class="footer_about">
+                    <div class="footer_logo">
+                      <a href="#">
+                        <div class="d-flex flex-row align-items-center justify-content-start">
+                          <div class="footer_logo_icon"><img src="../img/logo_bid_ece.jpg" alt="logo" height="50px"
+                              width="50px">
+                          </div>
+                          <div>BIDECE.fr</div>
+                        </div>
+                      </a>
                     </div>
-                    <div>BIDECE.fr</div>
+                    <div class="footer_about_text">
+                      <p>BIDECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
+                        les plus belles pièces uniques. Les prix affichés sont fixés par ces
+                        vendeurs et BIDECE opère en tant qu’intermédiaire et tiers de confiance
+                        auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
+                        les 100 000 références de BIDECE la perle rare et être livrés sans
+                        bouger de leur canapé. Les pièces proposées à la vente sont quant à
+                        elles quotidiennement sélectionnées à la main par nos équipes.</p>
+                    </div>
                   </div>
-                </a>
-              </div>
-              <div class="footer_about_text">
-                <p>BIDECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
-                  les plus belles pièces uniques. Les prix affichés sont fixés par ces
-                  vendeurs et BIDECE opère en tant qu’intermédiaire et tiers de confiance
-                  auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
-                  les 100 000 références de BIDECE la perle rare et être livrés sans
-                  bouger de leur canapé. Les pièces proposées à la vente sont quant à
-                  elles quotidiennement sélectionnées à la main par nos équipes.</p>
-              </div>
-            </div>
-          </div>
+                </div>
 
-          <!-- Footer Links -->
-          <div class="col-lg-4 footer_col">
-            <div class="footer_menu">
-              <div class="footer_title">Support technique</div>
-              <ul class="footer_list">
-                <li>
-                  <a href="#">
-                    <div>Service client</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div>Guide pour payer<div class="footer_tag_2">recommandé</div>
+                <!-- Liens du footer -->
+                <div class="col-lg-4 footer_col">
+                  <div class="footer_menu">
+                    <div class="footer_title">Support technique</div>
+                    <ul class="footer_list">
+                      <li>
+                        <a href="../">
+                          <div>Accueil</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="../modes-de-vente/enchere">
+                          <div>Encherès du moment<div class="footer_tag_2">recommandé</div>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="../modes-de-vente/meilleures-offres">
+                          <div>Meilleures offres du moment</div>
+                        </a>
+                      </li>                
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Contact footer -->
+                <div class="col-lg-4 footer_col">
+                  <div class="footer_contact">
+                    <div class="footer_title">Restons connectés</div>
+                    <div class="newsletter">
+                      <form action="#" id="newsletter_form" class="newsletter_form">
+                        <input type="email" class="newsletter_input" placeholder="Abonnez vous" required="required">
+                        <button class="newsletter_button">+</button>
+                      </form>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div>Page principal</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div>Contact</div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Footer Contact -->
-          <div class="col-lg-4 footer_col">
-            <div class="footer_contact">
-              <div class="footer_title">Restons connectés</div>
-              <div class="newsletter">
-                <form action="#" id="newsletter_form" class="newsletter_form">
-                  <input type="email" class="newsletter_input" placeholder="Abonnez vous" required="required">
-                  <button class="newsletter_button">+</button>
-                </form>
-              </div>
-              <div class="footer_social">
-                <div class="footer_title">Social</div>
-                <ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
-                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  </li>
-                </ul>
+                    <div class="footer_social">
+                      <div class="footer_title">Social</div>
+                      <ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </footer>
       </div>
-    </div>
+
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

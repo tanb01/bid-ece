@@ -1,6 +1,6 @@
 <?php
-require 'connection.php';
-require 'panier.class.php';
+require '../connection.php';
+require '../panier/panier.class.php';
 $DB = new DB();/**Connexion à la base de données */
 $panier =new panier($DB);
 ?><!DOCTYPE html>
@@ -124,6 +124,7 @@ $panier =new panier($DB);
                   <input type="number" id="phone" class="checkout_input" placeholder="Numéro de téléphone"
                     required="required" pattern="\x2b[0-9]+" size="20"  title="Insérez un numéro de téléphone">
                 </div>
+                
                 <div>
                   <!-- Email -->
                   <input type="email" id="email" class="checkout_input" placeholder="Email"

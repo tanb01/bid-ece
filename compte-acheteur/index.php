@@ -85,6 +85,10 @@ include "../traitement/negocier.php";
                 <a class="nav-link" id="formulaire-tab" data-toggle="tab" href="#formulaire" role="tab"
                   aria-controls="formulaire" aria-selected="false">Formulaire</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" id="achete-tab" data-toggle="tab" href="#achete" role="tab"
+                  aria-controls="achete" aria-selected="false">Achete</a>
+              </li>
             </ul>
           </div>
         </div>

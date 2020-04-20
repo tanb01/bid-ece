@@ -1,8 +1,87 @@
-<?php require 'headerf.php'; ?>
-<!-- Récupération de produits que l'on stocke dans la requète req-->
+<?php
+require '../connection.php';
+require '../panier/panier.class.php';
+$DB = new DB();/**connecteru a la bases de donnes */
+$panier =new panier($DB);
+?>
+<!-- Recuperation de produits qu'on stoque dans la requete req-->
 <?php
 $DB->query("SELECT * FROM item");
-?> <!-- Produits -->
+?><!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>BID ECE | Ferraille ou Trésor</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="BIDECE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" type="text/css" href="../style/ferraille.css">
+</head>
+
+<body>
+  <!--Menu-->
+  <div class="menu-bar">
+    <ul>
+      <li><a href="../"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a></li>
+      <li><a href="../achat"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Achat</a>
+        <div class="sub-menu1">
+          <ul>
+            <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
+              <div class="sub-menu2">
+                <ul>
+                  <li><a href="ferraille-ou-tresor">Ferraille ou Trésor</a></li>
+                  <li><a href="bon-pour-le-musee.php">Bon pour le Musée</a></li>
+                  <li><a href="accessoire-vip.php">Accessoire VIP</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="hover-me"><a href="../modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
+              <div class="sub-menu2">
+                <ul>
+                  <li><a href="../modes-de-vente/enchere/">Enchères</a></li>
+                  <li><a href="../modes-de-vente/achat-immediat/">Achetez-le maintenant</a></li>
+                  <li><a href="../modes-de-vente/meilleures-offres/">Meilleure offre</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Ventes</a>
+        <div class="sub-menu1">
+          <ul>
+            <li class="hover-me"><a href="../compte-vendeur/">Espace Vendeur</a></li>
+            <li class="hover-me"><a href="../compte-admin/">Espace Admin</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
+      <li><a href="../panier/panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
+        </ul>
+  </div>
+  <!--Fin menu-->
+  <!-- Home -->
+  <div class="home">
+    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+      <div class="home_content text-center">
+        <div class="home_title">Ferraille ou Trésor</div>
+        <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+          <ul class="d-flex flex-row align-items-start justify-content-start text-center">
+            <li><a href="../sous-categories/ferraille-ou-tresor">Ferraille ou Trésor</a></li>
+            <li><a href="../sous-categories/bon-pour-le-musee/">Bon pour le Musée</a></li>
+            <li><a href="../sous-categories/accessoire-vip">Accessoire VIP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<!-- Products -->
  <div class="products">
     <div class="container">
       <div class="row products_bar_row">
@@ -16,27 +95,17 @@ $DB->query("SELECT * FROM item");
               </ul>
             </div>
             <div class="products_bar_side d-flex flex-row align-items-center justify-content-start ml-lg-auto">
-              <div class="products_dropdown product_dropdown_sorting">
-              <?php $item =$DB->query('SELECT nom, prix FROM item ORDER BY prix'); ?> 
+              <div class="products_dropdown product_dropdown_sorting">           
                          
               
                 <div class="isotope_sorting_text"><span>Trier par:</span><i class="fa fa-caret-down"
                     aria-hidden="true"></i></div>
                 <ul>
-                  <li class="item_sorting_btn">prix</li>
-                  <li class="item_sorting_btn">Nom</li>
+                  <li class="item_sorting_btn"><a href="ferraille-ou-tresor-prix">prix</a></li>
+                  <li class="item_sorting_btn"><a href="ferraille-ou-tresor-nom-croissant">Nom </a></li>
+                  
                 </ul>
-              </div>
-              
-              <div class="products_dropdown text-right product_dropdown_filter">
-                <div class="isotope_filter_text"><span>Filter</span><i class="fa fa-caret-down" aria-hidden="true"></i>
-                </div>
-                <ul>
-                  <li class="item_filter_btn" data-filter="*">Tous</li>
-                  <li class="item_filter_btn" data-filter=".hot">Nouveau</li>
-                </ul>
-              </div>
-            </div>
+              </div>              
           </div>
         </div>
       </div>
@@ -54,9 +123,9 @@ $DB->query("SELECT * FROM item");
                 <div>
                   <div>
                     <!--On va prendre le nom qui correspond au produit que l'on va appeler-->
-                    <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
+                    <div class="product_name"><a href="../article/index.php"><?= $product->nom;?></a></div>
                     <!--On va prendre la catégorie qui correspond au produit que l'on va appeler-->
-                    <div class="product_category">dans <a href="category.html"><?= $product->categorie;?></a></div>
+                    <div class="product_category">dans <a href="ferraille-ou-tresor"><?= $product->categorie;?></a></div>
                   </div>
                 </div>
                 <div class="ml-auto text-right">
@@ -70,8 +139,8 @@ $DB->query("SELECT * FROM item");
                   <div
                     class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-                      <!--Grâce à l'icône panier on peut ajouter des produits dans le panier-->
-                      <div><a class="add ajoutPanier" href="ajout.php?item_id=<?= $product->item_id;?>"><img src="../img/icones/panier.svg" class="svg" alt=""></a>
+                      <!--Grâce à l'icone panie on peut ajouter des produits dans le panier-->
+                      <div><a class="add ajoutPanier" href="../panier/ajout.php?item_id=<?= $product->item_id;?>"><img src="../img/icones/panier.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>
                     </div>
@@ -109,92 +178,90 @@ $DB->query("SELECT * FROM item");
   <!-- Footer -->
 
   <footer class="footer">
-    <div class="footer_content">
-      <div class="container">
-        <div class="row">
+          <div class="footer_content">
+            <div class="container">
+              <div class="row">
 
-          <!-- About -->
-          <div class="col-lg-4 footer_col">
-            <div class="footer_about">
-              <div class="footer_logo">
-                <a href="#">
-                  <div class="d-flex flex-row align-items-center justify-content-start">
-                    <div class="footer_logo_icon"><img src="../img/logo_bid_ece.jpg" alt="logo" height="50px"
-                        width="50px">
+                <!-- À propos de nous -->
+                <div class="col-lg-4 footer_col">
+                  <div class="footer_about">
+                    <div class="footer_logo">
+                      <a href="#">
+                        <div class="d-flex flex-row align-items-center justify-content-start">
+                          <div class="footer_logo_icon"><img src="../img/logo_bid_ece.jpg" alt="logo" height="50px"
+                              width="50px">
+                          </div>
+                          <div>BIDECE.fr</div>
+                        </div>
+                      </a>
                     </div>
-                    <div>BIDECE.fr</div>
+                    <div class="footer_about_text">
+                      <p>BIDECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
+                        les plus belles pièces uniques. Les prix affichés sont fixés par ces
+                        vendeurs et BIDECE opère en tant qu’intermédiaire et tiers de confiance
+                        auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
+                        les 100 000 références de BIDECE la perle rare et être livrés sans
+                        bouger de leur canapé. Les pièces proposées à la vente sont quant à
+                        elles quotidiennement sélectionnées à la main par nos équipes.</p>
+                    </div>
                   </div>
-                </a>
-              </div>
-              <div class="footer_about_text">
-                <p>BIDECE a été créé en 2020 pour permettre à chacun d’acheter et de vendre
-                  les plus belles pièces uniques. Les prix affichés sont fixés par ces
-                  vendeurs et BIDECE opère en tant qu’intermédiaire et tiers de confiance
-                  auprès d’eux et des acheteurs. Ces derniers peuvent ainsi dénicher parmi
-                  les 100 000 références de BIDECE la perle rare et être livrés sans
-                  bouger de leur canapé. Les pièces proposées à la vente sont quant à
-                  elles quotidiennement sélectionnées à la main par nos équipes.</p>
-              </div>
-            </div>
-          </div>
+                </div>
 
-          <!-- Footer Links -->
-          <div class="col-lg-4 footer_col">
-            <div class="footer_menu">
-              <div class="footer_title">Support technique</div>
-              <ul class="footer_list">
-                <li>
-                  <a href="#">
-                    <div>Service client</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div>Guide pour payer<div class="footer_tag_2">recommandé</div>
+                <!-- Liens du footer -->
+                <div class="col-lg-4 footer_col">
+                  <div class="footer_menu">
+                    <div class="footer_title">Support technique</div>
+                    <ul class="footer_list">
+                      <li>
+                        <a href="../">
+                          <div>Accueil</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="../modes-de-vente/enchere">
+                          <div>Encherès du moment<div class="footer_tag_2">recommandé</div>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="../modes-de-vente/meilleures-offres">
+                          <div>Meilleures offres du moment</div>
+                        </a>
+                      </li>                
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Contact footer -->
+                <div class="col-lg-4 footer_col">
+                  <div class="footer_contact">
+                    <div class="footer_title">Restons connectés</div>
+                    <div class="newsletter">
+                      <form action="#" id="newsletter_form" class="newsletter_form">
+                        <input type="email" class="newsletter_input" placeholder="Abonnez vous" required="required">
+                        <button class="newsletter_button">+</button>
+                      </form>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div>Page principal</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div>Contact</div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Footer Contact -->
-          <div class="col-lg-4 footer_col">
-            <div class="footer_contact">
-              <div class="footer_title">Restons connectés</div>
-              <div class="newsletter">
-                <form action="#" id="newsletter_form" class="newsletter_form">
-                  <input type="email" class="newsletter_input" placeholder="Abonnez vous" required="required">
-                  <button class="newsletter_button">+</button>
-                </form>
-              </div>
-              <div class="footer_social">
-                <div class="footer_title">Social</div>
-                <ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
-                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  </li>
-                </ul>
+                    <div class="footer_social">
+                      <div class="footer_title">Social</div>
+                      <ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </footer>
       </div>
-    </div>
+
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

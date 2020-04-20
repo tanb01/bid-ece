@@ -187,41 +187,42 @@ body {
 /*********************************
 5. paiment
 *********************************/
-.checkout{
-	width: 100%;
-	background: #FFFFFF;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-.billing{
+.billing
+{
 	padding-top: 51px;
-	padding-left: 300px;
-	padding-right: 300px;
-	padding-bottom: 32px;
-	background: bisque;	
+	padding-left: 68px;
+	padding-right: 68px;
+	padding-bottom: 50px;
+	background: #f8f8f8;
 }
-.checkout_box{
+.checkout_box
+{
 	background: #edf4f6;
 }
-.checkout_title{
+.checkout_title
+{
 	font-weight: 600;
-	color: #f1aaaa;
+	color: #4a4a4a;
 	font-size: 24px;
 	line-height: 0.75;
 }
-.checkout_form_container{
-	margin-top: 10px;
+.checkout_form_container
+{
+	margin-top: 50px;
 }
-.checkout_form > div:not(:last-child){
+.checkout_form > div:not(:last-child)
+{
 	margin-bottom: 20px;
 }
-.checkout_form label{
+.checkout_form label
+{
 	font-size: 14px;
 	font-weight: 600;
 	color: #414141;
 	margin-bottom: 9px;
 }
-.checkout_input{
+.checkout_input
+{
 	width: 100%;
 	height: 52px;
 	background: #FFFFFF;
@@ -237,65 +238,83 @@ body {
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
-.checkout_input:hover, .checkout_input:focus{
+.checkout_input:hover,
+.checkout_input:focus
+{
 	border-bottom: solid 2px #2fce98;
 }
-.checkout_input::-webkit-input-placeholder{
+.checkout_input::-webkit-input-placeholder
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #969696 !important;
 }
-.checkout_input:-moz-placeholder{
+.checkout_input:-moz-placeholder
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #969696 !important;
 }
-.checkout_input::-moz-placeholder{
+.checkout_input::-moz-placeholder
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #969696 !important;
 } 
-.checkout_input:-ms-input-placeholder{ 
+.checkout_input:-ms-input-placeholder
+{ 
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #969696 !important;
 }
-.checkout_input::input-placeholder{
+.checkout_input::input-placeholder
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #969696 !important;
 }
-.checkout_input:focus::-webkit-input-placeholder{
+.checkout_input:focus::-webkit-input-placeholder
+{
 	color: #000000 !important;
 }
-.checkout_input:focus:-moz-placeholder{
+.checkout_input:focus:-moz-placeholder
+{
 	color: #000000 !important;
 }
-.checkout_input:focus::-moz-placeholder{
+.checkout_input:focus::-moz-placeholder
+{
 	color: #000000 !important;
 } 
-.checkout_input:focus:-ms-input-placeholder{ 
+.checkout_input:focus:-ms-input-placeholder
+{ 
 	color: #000000 !important;
 }
-.checkout_input:focus::input-placeholder{
+.checkout_input:focus::input-placeholder
+{
 	color: #000000 !important;
 }
-.checkout_input:hover::-webkit-input-placeholder{
+.checkout_input:hover::-webkit-input-placeholder
+{
 	color: #000000 !important;
 }
-.checkout_input:hover:-moz-placeholder{
+.checkout_input:hover:-moz-placeholder
+{
 	color: #000000 !important;
 }
-.checkout_input:hover::-moz-placeholder{
+.checkout_input:hover::-moz-placeholder
+{
 	color: #000000 !important;
 } 
-.checkout_input:hover:-ms-input-placeholder{ 
+.checkout_input:hover:-ms-input-placeholder
+{ 
 	color: #000000 !important;
 }
-.checkout_input:hover::input-placeholder{
+.checkout_input:hover::input-placeholder
+{
 	color: #000000 !important;
 }
-.dropdown_item_select{
+.dropdown_item_select
+{
 	-webkit-appearance:none;
     -moz-appearance:none;
     -ms-appearance:none;
@@ -315,23 +334,29 @@ body {
 	font-weight: 400;
 	color: #969696 !important;
 }
-.dropdown_item_select::-ms-expand{
+.dropdown_item_select::-ms-expand
+{
     display: none;
 }
-.checkout_address_2{
+.checkout_address_2
+{
 	margin-top: 16px;
 }
-.checkout_extra{
+.checkout_extra
+{
 	margin-top: 22px;
 }
-.checkbox_container{
+.checkbox_container
+{
 	position: relative;
 	padding-left: 29px;
 }
-.billing_checkbox{
+.billing_checkbox
+{
 	display: none;
 }
-.checkbox_mark{
+.checkbox_mark
+{
 	position: absolute;
 	left: 0;
 	top: 6px;
@@ -348,10 +373,12 @@ body {
 	margin-bottom: 0;
 	border: solid 2px #969696;
 }
-.billing_checkbox:checked ~ .checkbox_mark{
+.billing_checkbox:checked ~ .checkbox_mark
+{
 	border-color: #2fce98;
 }
-.checkbox_text{
+.checkbox_text
+{
 	font-size: 13px;
 	font-weight: 400;
 	color: #4a4a4a;
@@ -359,42 +386,52 @@ body {
 	vertical-align: middle;
 	cursor: pointer;
 }
+
 /*********************************
-Cart Total
+6.1 Cart Total
 *********************************/
 
-.cart_total{
+.cart_total
+{
 	padding-top: 8px;
     padding-left: 68px;
     padding-bottom: 59px;
     padding-right: 68px;
     background: #f8f8f8;
 }
-.cart_extra_total_list{
+.cart_extra_total_list
+{
 	margin-top: 36px;
 	padding-right: 48px;
 	padding-left: 20px;
 }
-.cart_extra_total_list li{
+.cart_extra_total_list li
+{
 	position: relative;
 }
-.cart_extra_total_list li:not(:last-child){
+.cart_extra_total_list li:not(:last-child)
+{
 	margin-bottom: 24px;
 }
-.cart_extra_total_title, .cart_extra_total_value{
+.cart_extra_total_title,
+.cart_extra_total_value
+{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	font-weight: 600;
 	color: #020202;
 }
-.cart_extra_total_value{
+.cart_extra_total_value
+{
 	color: #070707;
 }
-.cart_extra_total_list li:last-child .cart_extra_total_value{
+.cart_extra_total_list li:last-child .cart_extra_total_value
+{
 	color: #0a0a0a;
 	font-weight: 800;
 }
-.cart_extra_total_list li:last-child::before{
+.cart_extra_total_list li:last-child::before
+{
 	display: block;
 	position: absolute;
 	top: 50%;
@@ -410,18 +447,22 @@ Cart Total
 	content: '';
 	z-index: 0;
 }
-.payment_options{
+.payment_options
+{
 	margin-top: 53px;
 }
-.checkout_button{
+.checkout_button
+{
 	width: 100%;
 	height: 44px;
 	text-align: center;
+	text-size: 22px;
 	background: #308de4;
 	border-radius: 3px;
 	margin-top: 32px;
 }
-.checkout_button a{
+.checkout_button a
+{
 	display: block;
 	font-size: 18px;
 	font-weight: 700;
@@ -434,20 +475,25 @@ Cart Total
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
-.checkout_button:hover{
+.checkout_button:hover
+{
 	background: #4a4a4a;
 }
-.payment_options ul{
+.payment_options ul
+{
 	margin-top: 37px;
 }
-.payment_options ul li:not(:last-child){
+.payment_options ul li:not(:last-child)
+{
 	margin-bottom: 9px;
 }
-.payment_options input{
+.payment_options input
+{
 	display: inline-block;
 	vertical-align: middle;
 }
-.radio_container{
+.radio_container
+{
 	position: relative;
 	padding-left: 30px;
 	cursor: pointer;
@@ -458,35 +504,16 @@ Cart Total
 	vertical-align: middle;
 	margin-bottom: 0;
 }
-.payment_radio{
+.payment_radio
+{
 	position: absolute;
 	top: 0;
 	left: 0;
 	opacity: 0;
 	cursor: pointer;
 }
-.garder_radio{
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	cursor: pointer;
-}
-.garder_options{
-	margin-top: 53px;
-}
-
-.garder_options ul{
-	margin-top: 37px;
-}
-.garder_options ul li:not(:last-child){
-	margin-bottom: 9px;
-}
-.garder_options input{
-	display: inline-block;
-	vertical-align: middle;
-}
-.radio_mark{
+.radio_mark
+{
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
@@ -501,7 +528,8 @@ Cart Total
 	border: solid 2px #fc0202;
 	border-radius: 50%;
 }
-.radio_mark::after{
+.radio_mark::after
+{
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -518,30 +546,37 @@ Cart Total
 	visibility: hidden;
 	opacity: 0;
 }
-.radio_container input:checked ~ .radio_mark{
+.radio_container input:checked ~ .radio_mark
+{
 	border-color: #308de4;
 }
-.radio_container input:checked ~ .radio_mark::after{
+.radio_container input:checked ~ .radio_mark::after
+{
 	visibility: visible;
 	opacity: 1;
 }
-.radio_container input:checked ~ .radio_text{
-	color: #308de4;
+.radio_container input:checked ~ .radio_text
+{
+	color: ##308de4;
 }
-.radio_text{
+.radio_text
+{
 	font-size: 14px;
 	font-weight: 500;
 	color: #050505;
 }
-.cart_text{
+.cart_text
+{
 	margin-top: 26px;
 }
-.cart_text p{
+.cart_text p
+{
 	font-size: 13px;
 	color: #050505;
 	font-weight: 300;
 	line-height: 1.85;
 }
+
 /*********************************
 7. Footer
 *********************************/
