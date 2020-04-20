@@ -23,47 +23,53 @@ require "../common/header.php";
       <div class="cols">
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_categories/tresor.jpg)">
-              <div class="inner">
-                <p>Ferraille/Trésor</p>
-                <span>Cliquez pour voir les articles</span>
+            <a href="../sous-categories/ferraille-ou-tresor">
+              <div class="front" style="background-image: url(../img/img_categories/tresor.jpg)">
+                <div class="inner">
+                  <p>Ferraille/Trésor</p>
+                  <span>Cliquez pour voir les articles</span>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Retrouvez ici tous les articles appartenant à la catégories Ferraille/Trésor</p>
+              <div class="back">
+                <div class="inner">
+                  <p>Retrouvez ici tous les articles appartenant à la catégories Ferraille/Trésor</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_categories/musee.png)">
-              <div class="inner">
-                <p>Bon pour le musée</p>
-                <span>Cliquez pour voir les articles</span>
+            <a href="../sous-categories/bon-pour-le-musee">
+              <div class="front" style="background-image: url(../img/img_categories/musee.png)">
+                <div class="inner">
+                  <p>Bon pour le musée</p>
+                  <span>Cliquez pour voir les articles</span>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Retrouvez ici tous les articles appartenant à la catégories Bon pour le musée</p>
+              <div class="back">
+                <div class="inner">
+                  <p>Retrouvez ici tous les articles appartenant à la catégories Bon pour le musée</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_categories/vip.jpg)">
-              <div class="inner">
-                <p>Accessoires VIP</p>
-                <span>Cliquez pour voir les articles</span>
+            <a href="../sous-categories/accessoire-vip">
+              <div class="front" style="background-image: url(../img/img_categories/vip.jpg)">
+                <div class="inner">
+                  <p>Accessoires VIP</p>
+                  <span>Cliquez pour voir les articles</span>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Retrouvez ici tous les articles appartenant à la catégories Accessoires VIP</p>
+              <div class="back">
+                <div class="inner">
+                  <p>Retrouvez ici tous les articles appartenant à la catégories Accessoires VIP</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

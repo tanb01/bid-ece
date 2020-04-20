@@ -33,47 +33,53 @@
       <div class="cols">
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_modes_de_vente/enchere.png)">
-              <div class="inner">
-                <p>Enchères</p>
-                <span>Cliquez pour voir les articles vendus aux enchères</span>
+            <a href="./enchere.php">
+              <div class="front" style="background-image: url(../img/img_modes_de_vente/enchere.png)">
+                <div class="inner">
+                  <p>Enchères</p>
+                  <span>Cliquez pour voir les articles vendus aux enchères</span>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Description de la vente</p>
+              <div class="back">
+                <div class="inner">
+                  <p>Description de la vente</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_modes_de_vente/vente.png)">
-              <div class="inner">
-                <p>Achat Immédiat</p>
-                <span>Cliquez pour voir les articles en vente immédiate</span>
+            <a href="./achat-immediat.php">
+              <div class="front" style="background-image: url(../img/img_modes_de_vente/vente.png)">
+                <div class="inner">
+                  <p>Achat Immédiat</p>
+                  <span>Cliquez pour voir les articles en vente immédiate</span>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Description de la vente</p>
+              <div class="back">
+                <div class="inner">
+                  <p>Description de la vente</p>
+                </div>
               </div>
-            </div>
+            </a> 
           </div>
         </div>
         <div class="col" ontouchstart="this.classList.toggle('hover');">
           <div class="container">
-            <div class="front" style="background-image: url(../img/img_modes_de_vente/offre.png)">
-              <div class="inner">
-                <p>Meilleure offre</p>
-                <span>Cliquez pour voir les articles en vente par Meilleure Offre</span>
+            <a href="./meilleures-offres.php">
+              <div class="front" style="background-image: url(../img/img_modes_de_vente/offre.png)">
+                <div class="inner">
+                  <p>Meilleure offre</p>
+                  <span>Cliquez pour voir les articles en vente par Meilleure Offre</span>
+                </div>
               </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Description de la vente</p>
+              <div class="back">
+                <div class="inner">
+                  <p>Description de la vente</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
