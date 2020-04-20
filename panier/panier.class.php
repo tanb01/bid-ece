@@ -7,31 +7,31 @@ class panier{
             session_start();
         }
         if(!isset($_SESSION["panier"])){
-            //creation d'un panier vide
+            //création d'un panier vide
             $_SESSION["panier"]= array();
         }
-        //inilitiation
+        //initialisation
         $this->DB= $DB;
     }
-    //fontion qui permet calculer le total du panier
+    //fonction qui permet de calculer le total du panier
 
     public function total(){
-        //par cour du tableau avec differents produits
+        //parcours du tableau avec différents produits
         $total=0;
         $item_ids= array_keys($_SESSION['panier']);
-        //requete pour recouperer tout les id des produits
+        //requète pour récupérer tout les id des produits
         if(empty($item_ids)){
             $item = array();
         }else{
             $item = $this->DB->query('SELECT item_id, prix  FROM item WHERE item_id IN ('.implode(',',$item_ids).')');
         }
         foreach($item as $product){
-            //recuperation du prix total
+            //récuperation du prix total
             $total += $product->prix;
         }
         return $total;
     }
-    //fontion permettant d'ajouter du produit dans le panier
+    //fonction permettant d'ajouter du produit dans le panier
     public function ajouterpanier($product_item_id){
         //on va ajouter le produit au panier par l'id du produit
         if (isset($_SESSION['panier'][$product_item_id])){
@@ -41,9 +41,9 @@ class panier{
         }
     }
 
-    //fontion qui permet le peiement imédiat d'un seul produit (dans la page paiement)
+    //fonction qui permet le paiement immédiat d'un seul produit (dans la page paiement)
 
-    //funtion elimination produit du panier
+    //fonction élimination du produit du panier
     public function del($product_item_id){
         unset($_SESSION["panier"][$product_item_id]);
     }    

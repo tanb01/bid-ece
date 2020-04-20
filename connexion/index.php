@@ -24,6 +24,7 @@
 <body>
 <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
 
   <div class="container-fluid">
@@ -58,6 +59,7 @@ require "../common/header.php";
 
 <?php
 require "../common/footer.php";
+    // Footer commun inclut dans chaque page
 ?>
 
 </body>

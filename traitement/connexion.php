@@ -1,5 +1,5 @@
 <?php
-
+// Début de la session
 session_start();
 
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
@@ -8,7 +8,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
 }
 
 include "../traitement/config.php";
-
+// Traitement de la connexion et blindage
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["email"]))) {
         $emailErr = "Il faut votre nom d'utilisateur.";
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $password = trim($_POST["mot_de_passe"]);
     }
-
+    // Vérification de l'email et particulièrement email vendeur soit de la forme @edu.ece.fr
     if (empty($emailErr) && empty($passwordErr)) {
         $fin_de_email = substr($email, strpos($email, "@") + 1);
         if ($fin_de_email == "edu.ece.fr") {
