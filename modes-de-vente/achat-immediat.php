@@ -40,8 +40,8 @@ $panier =new panier($DB);
               <div class="sub-menu2">
                 <ul>
                   <li><a href="../modes-de-vente/enchere/">Enchères</a></li>
-                  <li><a href="../modes-de-vente//achetez-le-maintenant/">Achetez-le maintenant</a></li>
-                  <li><a href="../modes-de-vente//meilleur-offre/">Meilleure offre</a></li>
+                  <li><a href="../modes-de-vente/achetez-le-maintenant/">Achetez-le maintenant</a></li>
+                  <li><a href="../modes-de-vente/meilleur-offre/">Meilleure offre</a></li>
                 </ul>
               </div>
             </li>
@@ -95,9 +95,6 @@ $DB->query("SELECT * FROM item");
             </div>
             <div class="products_bar_side d-flex flex-row align-items-center justify-content-start ml-lg-auto">
               <div class="products_dropdown product_dropdown_sorting">
-              <?php $item =$DB->query('SELECT nom, prix FROM item ORDER BY prix'); ?> 
-                         
-              
                 <div class="isotope_sorting_text"><span>Trier par:</span><i class="fa fa-caret-down"
                     aria-hidden="true"></i></div>
                 <ul>

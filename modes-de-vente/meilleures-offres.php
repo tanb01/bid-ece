@@ -97,7 +97,7 @@ $DB->query("SELECT * FROM item");
       </div>      
       <div class="row products_row products_container grid">
         <!--selection de produits du tableau items qu'on va stocker sous la variable product--> 
-        <?php $item =$DB->query("SELECT * FROM item  WHERE categorie  LIKE '%OF%' "); ?>
+        <?php $item =$DB->query("SELECT * FROM item "); ?>
         <?php foreach($item as $product): ?>
           
         <!-- Product tous les appeles à venir se fond grace à l'id du produit-->
@@ -106,7 +106,7 @@ $DB->query("SELECT * FROM item");
          
           <div class="product_tag d-flex flex-column align-items-center justify-content-center">
 				<div>
-					<div>Solde</div>
+					<div>OFFRE</div>
           
 					</div>
 				</div>
