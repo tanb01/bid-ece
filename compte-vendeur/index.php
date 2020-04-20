@@ -34,6 +34,7 @@ if ($_SESSION['statut'] != "Vendeur" && $_SESSION['statut'] != "Admin" ) {
     header("location: ../");
 }
 include "../traitement/supprimer_article.php";
+include "../traitement/accepter_offre.php";
 
 $sql = "SELECT COUNT(*) nombreArticles FROM item WHERE user_id=" . $_SESSION['id'];
 $result = mysqli_query($db_handle, $sql);
@@ -207,8 +208,8 @@ $nombreArticles = $data['nombreArticles'];
               <div class="row">
                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                       <div class="col-md-6">
-                        <input type="number" id="idArticle" name="idArticle" placeholder="Id de l'article">
-                        <input type="submit" class="btn btn-danger" name="supprimerArticle" value="- Supprimer un article">
+                        <input type="number" id="idOffre" name="idOffre" placeholder="Id de l'offre">
+                        <input type="submit" class="btn btn-success" name="accepterOffre" value="Accepter Offre">
                       </div>
                   </form>
                 </div>
