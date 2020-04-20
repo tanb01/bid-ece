@@ -25,9 +25,10 @@ include "../traitement/config.php";
 <body>
 <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
 <?php
-// Récuperer les données venant de la page HTML
+// Récupérer les données venant de la page HTML (formulaire)
 $nomArticle = isset($_POST["nomArticle"]) ? $_POST["nomArticle"] : "";
 $description = isset($_POST["description"]) ? $_POST["description"] : "";
 $prix = isset($_POST["prix"]) ? $_POST["prix"] : "";
@@ -168,7 +169,9 @@ if (isset($_POST["ajouter"])) {
         </div>
     </div>
 
-<?php require "../common/footer.php";?>
+<?php require "../common/footer.php";
+    // Footer commun inclut dans chaque page
+    ?>
 </body>
 
 </body>

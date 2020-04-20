@@ -1,8 +1,9 @@
 <?php
+// Code pour négociation (Meilleure offre)
 if (isset($_POST['faireOffre']) && $_POST['faireOffre'] == 'Faire une offre' && isset($_POST['idArticle']) && isset($_POST['prixMeilleureOffre'])) {
     $itemId = isset($_POST["idArticle"]) ? $_POST["idArticle"] : "";
     $prixOffre = isset($_POST["prixMeilleureOffre"]) ? $_POST["prixMeilleureOffre"] : "";
-    
+    //Requète SQL
     $sql = "SELECT prix_meilleure_offre, MAX(numero_offre) as nombreOffre FROM negociation WHERE item_id =" .$itemId." AND acheteur_id = ".$_SESSION['id'];
     $result = mysqli_query($db_handle, $sql);
     $data = mysqli_fetch_assoc($result);
@@ -11,6 +12,7 @@ if (isset($_POST['faireOffre']) && $_POST['faireOffre'] == 'Faire une offre' && 
       header("location: ../compte-acheteur/");
       exit;
     }
+    //Pas + de 5 tentatives
     if ($nombreOffre < 5) {
       $nombreOffre++;
       $sql = "INSERT INTO `negociation` (`negociation_id`, `item_id`, `acheteur_id`, `numero_offre`, `prix_meilleure_offre`, `is_vendu`) VALUES (NULL, '$itemId',".$_SESSION['id'].", '$nombreOffre', '$prixOffre', '0')";

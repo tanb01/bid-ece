@@ -28,8 +28,11 @@ include "../traitement/config.php";
 <body>
     <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
     <?php
+    // Si le statut de la personne connectée est égale à Acheteur alors on récuperera tout de la table acheteur
+    // + uniquement les droits d'un acheteur
 if ($_SESSION['statut'] != "Acheteur") {
     header("location: ../");
 }
@@ -97,6 +100,7 @@ include "../traitement/negocier.php";
             <a href="">Lien 2</a>
           </div>
         </div>
+          <!-- Affichage des infos de l'acheteur -->
         <div class="col-md-8">
           <div class="tab-content profile-tab" id="myTabContent">
             <div class="tab-pane fade show active" id="informations" role="tabpanel" aria-labelledby="informations-tab">
@@ -142,13 +146,14 @@ include "../traitement/negocier.php";
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <label>Carte de fidelite</label>
+                  <label>Carte de fidélité</label>
                 </div>
                 <div class="col-md-6">
                   <p><?php echo $_SESSION['carte_de_fidelite'] == 0 ? "Non" : "Oui"; ?></p>
                 </div>
               </div>
             </div>
+              <!-- Affichage des infos de livraison de l'acheteur -->
             <div class="tab-pane fade" id="livraison" role="tabpanel" aria-labelledby="livraison-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -243,6 +248,7 @@ include "../traitement/negocier.php";
                 </div>
               </div>
             </div>
+              <!-- Affichage des articles meilleurs offres de l'acheteur -->
             <div class="tab-pane fade" id="negocier" role="tabpanel" aria-labelledby="negocier-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -273,6 +279,7 @@ include "../traitement/negocier.php";
                     ?>
                   </tbody>
                   </table>
+                <!-- Faire une offre -->
                 <div class="row">
                   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                       <div class="col-md-6">
@@ -283,7 +290,7 @@ include "../traitement/negocier.php";
                   </form>
                 </div>
             </div>
-
+            <!-- Affichage des infos de paiement de l'acheteur -->
             <div class="tab-pane fade" id="paiement" role="tabpanel" aria-labelledby="paiement-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -331,6 +338,7 @@ include "../traitement/negocier.php";
                 </div>
               </div>
             </div>
+              <!-- Affichage du formulaire de contrat légal -->
             <div class="tab-pane fade" id="formulaire" role="tabpanel" aria-labelledby="formulaire-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -372,6 +380,7 @@ include "../traitement/negocier.php";
 
   <?php
 require "../common/footer.php";
+      // Footer commun inclut dans chaque page
 ?>
   </div>
 </body>

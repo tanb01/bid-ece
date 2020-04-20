@@ -1,5 +1,5 @@
 <?php
-
+// Code pour supprimer un article avec l'id
 if (isset($_POST['supprimerArticle']) && $_POST['supprimerArticle'] == '- Supprimer un article' && isset($_POST['idArticle'])) {
     $itemId = isset($_POST["idArticle"]) ? $_POST["idArticle"] : "";
     $sql = "SELECT item_id FROM `item` WHERE item_id =" . $itemId;

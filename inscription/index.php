@@ -3,13 +3,13 @@ require_once "../traitement/config.php";
 
 $nom = $prenom = $email = $password = $confirmPassword = "";
 $nomErr = $prenomErr = $emailErr = $passwordErr = $confirmPasswordErr = "";
-// Récuperer les données venant de la page HTML
+// Récupérér les données venant de la page HTML
 $nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
 $prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
 $email = isset($_POST["email"]) ? $_POST["email"] : "";
 $password = isset($_POST["mot_de_passe"]) ? $_POST["mot_de_passe"] : "";
 $confirmPassword = isset($_POST["conf_mot_de_passe"]) ? $_POST["mot_de_passe"] : "";
-
+// Remplissage du formulaire et blindage
 if (isset($_POST["inscrire"])) {
     if ($nom && $prenom && $email && $password) {
         if (strlen($password) >= 8) {
@@ -91,8 +91,10 @@ mysqli_close($db_handle);
 <body>
 <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
 <?php
+    // Différenciation du statut de la personne connectée et donc de sa session et de ses pages respectives
 if (isset($_SESSION['statut']) && $_SESSION['statut'] == "Admin") {
     header("location: ../compte-admin/");
     exit;
@@ -136,6 +138,7 @@ if (isset($_SESSION['statut']) && $_SESSION['statut'] == "Admin") {
 
   <?php
 require "../common/footer.php";
+    // Footer commun inclut dans chaque page
 ?>
 
 </body>

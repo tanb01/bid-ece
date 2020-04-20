@@ -24,14 +24,16 @@ include "../traitement/config.php";
 <body>
 <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
 <?php
+    // Uniquement ADMIN peut ajouter un vendeur
 if ($_SESSION['statut'] != "Admin") {
     header("location: ../");
     exit;
 }
 
-// Récuperer les données venant de la page HTML
+// Récupérer les données venant de la page HTML
 $email = isset($_POST["emailVendeur"]) ? $_POST["emailVendeur"] : "";
 $password = isset($_POST["passwordVendeur"]) ? $_POST["passwordVendeur"] : "";
 $nomVendeur = isset($_POST["nomVendeur"]) ? $_POST["nomVendeur"] : "";
@@ -144,7 +146,9 @@ if (isset($_POST["ajouter"])) {
     </div>
   </div>
 
-<?php require "../common/footer.php";?>
+<?php require "../common/footer.php";
+    // Footer commun inclut dans chaque page
+    ?>
 
 </body>
 

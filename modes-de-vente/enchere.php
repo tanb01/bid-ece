@@ -1,10 +1,10 @@
 <?php
 require '../connection.php';
 require '../panier/panier.class.php';
-$DB = new DB();/**connecteru a la bases de donnes */
+$DB = new DB();/**connexion a la base de données */
 $panier =new panier($DB);
 ?>
-<!-- Recuperation de produits qu'on stoque dans la requete req-->
+<!-- Récupération de produits qu'on stocke dans la requète req-->
 <?php
 $DB->query("SELECT * FROM item");
 ?><!DOCTYPE html>
@@ -64,12 +64,12 @@ $DB->query("SELECT * FROM item");
       <li><a href="panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
         </ul>
   </div>
-  <!--Fin menu-->
+  <!-- Fin du menu-->
   <!-- Home -->
   <div class="home">
     <div class="home_container d-flex flex-column align-items-center justify-content-end">
       <div class="home_content text-center">
-        <div class="home_title">ENCHERES! Cliquez et  gagnez</div>
+        <div class="home_title">ENCHÈRES! Cliquez et gagnez !</div>
         <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
             <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
@@ -80,7 +80,7 @@ $DB->query("SELECT * FROM item");
       </div>
     </div>
   </div> 
-<!-- Products -->
+<!-- Produits -->
  <div class="products">
     <div class="container">
       <div class="row products_bar_row">
@@ -98,11 +98,11 @@ $DB->query("SELECT * FROM item");
       </div>
       <div id="app"></div>
       <div class="row products_row products_container grid">
-        <!--selection de produits du tableau items qu'on va stocker sous la variable product--> 
+        <!--Sélection de produits du tableau items qu'on va stocker sous la variable product--> 
         <?php $item =$DB->query("SELECT * FROM item "); ?>
         <?php foreach($item as $product): ?>
           
-        <!-- Product tous les appeles à venir se fond grace à l'id du produit-->
+        <!-- Tous les appels à venir se font grâce à l'id du produit-->
         <div class="col-xl-4 col-md-6 grid-item new">
           <div class="product">
          
@@ -112,13 +112,13 @@ $DB->query("SELECT * FROM item");
           
 					</div>
 				</div>
-            <!--On va prendre l'image qui correspond ou produit qu'on va appeler-->
+            <!--On va prendre l'image qui correspond au produit que l'on va appeler-->
             <div class="product_image"><img src="data:image/jpeg;base64, <?= base64_encode($product->photo); ?>" height="350px" width="500px"></div>
             <div class="product_content">
               <div class="product_info d-flex flex-row align-items-start justify-content-start">
                 <div>
                   <div>
-                    <!--On va prendre le nom qui correspond ou produit qu'on va appeler-->
+                    <!--On va prendre le nom qui correspond au produit que l'on va appeler-->
                     <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
                     <!--On va prendre la catégorie qui correspond ou produit qu'on va appeler-->
                     <div class="product_category">dans <a href="category.html"><?= $product->categorie;?></a></div>
@@ -126,7 +126,7 @@ $DB->query("SELECT * FROM item");
                 </div>
                 <div class="ml-auto text-right">
                   <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                  <!--On va prendre le prix  qui correspond ou produit qu'on va appeler-->
+                  <!--On va prendre le prix  qui correspond au produit que l'on va appeler-->
                   <div class="product_price text-right"><s><?= number_format($product->prix,2);?>€</s></div>
                   <div class="product_prices text-left"><?= number_format($product->prix,2);?>€</div>
                 </div>
@@ -136,7 +136,7 @@ $DB->query("SELECT * FROM item");
                   <div
                     class="product_button text-center d-flex   justify-content-center">
                     <div>
-                      <!--Grâce à l'icone carte de crédit être rédirigé vers paiment avec l'unique produit selectionéé-->
+                      <!--Grâce à l'icône carte de crédit être redirigé vers paiement avec l'unique produit selectioné-->
                       <div><a class="add ajoutPaiement" href="paiementi.php?item_id<?= $product->item_id;?>"><img src="../img/icones/law.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>

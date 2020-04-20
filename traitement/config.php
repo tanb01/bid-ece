@@ -1,4 +1,6 @@
 <?php
+// Connexion à la base de données
+// Mot de passe : root pour mac
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_MOT_DE_PASSE', '');

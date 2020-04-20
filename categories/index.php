@@ -15,6 +15,7 @@
 <body>
   <?php
 require "../common/header.php";
+    // Header commun inclut dans chaque page
 ?>
   <div class="container-fluid">
     <div class="wrapper">
@@ -71,6 +72,7 @@ require "../common/header.php";
 
   <?php
 require "../common/footer.php";
+    // Footer commun inclut dans chaque page
 ?>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

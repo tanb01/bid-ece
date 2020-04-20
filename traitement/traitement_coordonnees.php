@@ -1,7 +1,8 @@
 <?php
 include("./config.php");
+// Début de la session
 session_start();
-// Récuperer les données venant de la page HTML
+// Récupérer les données venant de la page HTML
 $nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
 $prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
 $adresse = isset($_POST["adresse"]) ? $_POST["adresse"] : "";
@@ -9,8 +10,7 @@ $zipcode = isset($_POST["zipcode"]) ? $_POST["zipcode"] : "";
 $ville = isset($_POST["ville"]) ? $_POST["ville"] : "";
 $phone = isset($_POST["phone"]) ? $_POST["phone"] : "";
 $email = isset($_POST["email"]) ? $_POST["email"] : "";
-
-
+//Envoi des coordonnées à la base de données
 if ($_POST["envoyer"]) {
       $sql = "SELECT * FROM coordonnees";
       $sql = "INSERT INTO coordonnees(coordonnees_id, acheteur_id, nom, prenom, adresse_ligne_1, adresse_ligne_2, ville, code_postal, pays, numero_de_telephone) VALUES(NULL,'1', '$nom', '$prenom', '$adresse', NULL, '$ville', '$zipcode', 'France', '$phone')";
@@ -105,13 +105,13 @@ mysqli_close($db_handle);
           <div class="billing">
             <!--caractéristique de titres dans le formulaire-->
             <div class="checkout_title">Informations</div>
-            <!--Distance entre le tritre el le contenu du formulaire-->
+            <!--Distance entre le titre et le contenu du formulaire-->
             <div class="checkout_form_container">
               <form id="checkout_form" class="checkout_form" method="post">
                 <div class="row">
-                  <!--Longueur pour les cases prenoms et nom-->
+                  <!--Longueur pour les cases prénoms et nom-->
                   <div class="col-lg-6">
-                    <!--Prenom-->
+                    <!--Prénom-->
                     <input type="text" id="prenom" name="prenom" class="checkout_input" placeholder="Prénom"
                       required="required"  minlength="2" maxlength="20" title="Renseignez votre prénom">
                   </div>
@@ -144,12 +144,12 @@ mysqli_close($db_handle);
                       required="required" minlength="2" maxlength="20" title="Renseignez votre ville">
                 </div>
                 <div>
-                  <!--Numéro de télephone -->
+                  <!--Numéro de téléphone-->
                   <input type="number" id="phone" name="phone" class="checkout_input" placeholder="Numéro de téléphone"
                     required="required" pattern="\x2b[0-9]+" size="20"  title="Insérez votre numéro de téléphone">
                 </div>
                 <div>
-                  <!--Email -->
+                  <!--Email-->
                   <input type="email" id="email" name="email" class="checkout_input" placeholder="Email"
                     required="required" title="Renseignez votre email">
                 </div>
@@ -247,7 +247,7 @@ mysqli_close($db_handle);
                 <div class="checkout_title">Total du Panier</div>
                 <ul class="cart_extra_total_list">
                   <li class="d-flex flex-row align-items-center justify-content-start">
-                    <div class="cart_extra_total_title">Sub-total</div>
+                    <div class="cart_extra_total_title">Sous-total</div>
                     <div class="cart_extra_total_value ml-auto">$29.90</div>
                   </li>
                   <li class="d-flex flex-row align-items-center justify-content-start">
@@ -260,7 +260,7 @@ mysqli_close($db_handle);
                   </li>
                 </ul>
                 <div class="cart_text">
-                  <h6>Merci de votre Achat, vous etês presque pour avoir vos articles.</h6>
+                  <h6>Merci de votre Achat, vous y êtes presque pour avoir vos articles.</h6>
                 </div>
               </div>
               <input type="button" value="Envoyer et finaliser mon paiement" name="valider" onclick="validate()" class="checkout_button"></input>
