@@ -25,18 +25,18 @@
             <li class="hover-me"><a href="./categories/">Catégories</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="./ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
-                  <li><a href="./bon-pour-le-musee/">Bon pour le Musée</a></li>
-                  <li><a href="./accessoire-vip/">Accessoire VIP</a></li>
+                  <li><a href="sous-categories/ferraille-ou-tresor">Ferraille ou Trésor</a></li>
+                  <li><a href="sous-categories/bon-pour-le-musee">Bon pour le Musée</a></li>
+                  <li><a href="sous-categories/accessoire-vip">Accessoire VIP</a></li>
                 </ul>
               </div>
             </li>
             <li class="hover-me"><a href="./modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="./enchere/">Enchères</a></li>
-                  <li><a href="./achetez-le-maintenant/">Achetez-le maintenant</a></li>
-                  <li><a href="./meilleur-offre/">Meilleure offre</a></li>
+                  <li><a href="modes-de-vente/enchere">Enchères</a></li>
+                  <li><a href="modes-de-vente/achat-immediat">Achetez-le maintenant</a></li>
+                  <li><a href="modes-de-vente/meilleures-offres">Meilleure offre</a></li>
                 </ul>
               </div>
             </li>
@@ -66,16 +66,16 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="./img/img_accueil/art4.jpg" alt="First slide">
+        <img class="d-block w-100" src="./img/img_accueil/timbres.jpg" alt="First slide" height="700px">
+      </div>
+      <div class="carousel-item"><a href="modes-de-vente/soldes">
+        <img class="d-block w-100" src="./img/img_accueil/sale.jpg" alt="First slide" height="700px" ></a>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="./img/img_accueil/art1.jpg" alt="First slide">
+        <img class="d-block w-100" src="./img/img_accueil/piece.jpg" alt="Second slide" height="700px">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="./img/img_accueil/art2.jpg" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="./img/img_accueil/art3.jpg" alt="Third slide">
+        <img class="d-block w-100" src="./img/img_accueil/art3.jpg" alt="Third slide" height="700px">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -89,8 +89,7 @@
   </div>
   <!-- END Carousel-->
 
-  <!-- Products -->
-
+  
   <!-- Products -->
 
   <div class="products">
@@ -104,9 +103,9 @@
         <div class="col">
           <div class="page_nav">
             <ul class="d-flex flex-row align-items-start justify-content-center">
-              <li class="active"><a href="Ferraille/index.html">Ferraille ou trésor</a></li>
-              <li><a href="Bonpourlemusee/index.htmll">Bon pour le musée</a></li>
-              <li><a href="Accessoirevip/index.html">Accessoire VIP</a></li>
+              <li><a href="sous-categories/ferraille-ou-tresor">Ferraille ou trésor</a></li>
+              <li><a href="sous-categories/bon-pour-le-musee">Bon pour le musée</a></li>
+              <li><a href="sous-categories/accessoire-vip">Accessoire VIP</a></li>
             </ul>
           </div>
         </div>
@@ -117,7 +116,7 @@
         <div class="col-xl-4 col-md-6">
           <div class="product">
             <div class="product_image"><img src="./img/img_accueil/statue.jpg" alt="statue" width="350px"
-                height="350px"></div>
+                height="320px"></div>
             <div class="product_content">
               <div class="product_info d-flex flex-row align-items-start justify-content-start">
                 <div>
@@ -155,26 +154,23 @@
               </div>
             </div>
           </div>
+        </div>        
+        <!-- Product -->
+        <div class="col-xl-4 col-md-8">
+          <div class="product">            
+            <h2 sty>Comment ça marche?</h2>
+            <h5> Nous vous proposons 3 façons d'acheter sur notre site BIDECE:</h5>
+              <ul>
+                <li>Encheres: On vous propose de produits en encherès, c'est à vous de faire des offres et de remporter l'objet. Restez attentif et augmentez votres chances de gagner en faisant au moins 5 offres </li><br>
+                <li>Achat immédiat d'un product: Vu avez eu un coup de foudre pour un de nos produits? Pas de panique!! vous pouvez le payer en un clique pour cela rendez-vous sur la page ACHAT IMMEDIAT </li><br>
+                <li>Meillieur offre:Vous pouvez négocier avec le vendeur jusqu'à 5 fois pour conclure le prix final d'un article. </li> 
+              </ul>
+            </div>
         </div>
-
         <!-- Product -->
         <div class="col-xl-4 col-md-6">
           <div class="product">
-            <div class="product_image"><img src="./img/img_accueil/statue.jpg" alt="statue" width="350px"
-                height="350px"></div>
-            <div class="product_content">
-              <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                <div>
-                  <div>
-                    <div class="product_name"><a href="product.html"> Le retour du pêcheur</a></div>
-                    <div class="product_category">In <a href="category.html">Achat</a></div>
-                  </div>
-                </div>
-                <div class="ml-auto text-right">
-                  <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="product_price text-right">$3<span>.999€</span></div>
-                </div>
-              </div>
+          <h3 sty>Comment Ajouter sur le panier ou payer un article?</h3>
               <div class="product_buttons">
                 <div class="text-right d-flex flex-row align-items-start justify-content-start">
                   <div
@@ -196,54 +192,13 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div><br>
+              <ul>
+                <li>Ajouter dans le panier: Cliquez sur l'icon Panier pour ajouter vos articles dans le panier tout au long de votre navigation dans la page, vous pouvez modifier manuelment la quantité dans le panier. Un message va apparaitre en vous demandons de aller dans le panier ou continuer à voir vos articles </li><br>
+                <li>Achat immédiat d'un product: Cliquez sur l'icone carte de crédit, qui va vous rediger ver la page paiment, remplisez le formulaire et payez l'article! Simple et Facile comme BIDECE.</ul>
             </div>
           </div>
-        </div>
-
-        <!-- Product -->
-        <div class="col-xl-4 col-md-6">
-          <div class="product">
-            <div class="product_image"><img src="./img/img_accueil/statue.jpg" alt="statue" width="350px"
-                height="350px"></div>
-            <div class="product_content">
-              <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                <div>
-                  <div>
-                    <div class="product_name"><a href="product.html"> Le retour du pêcheur</a></div>
-                    <div class="product_category">In <a href="category.html">Achat</a></div>
-                  </div>
-                </div>
-                <div class="ml-auto text-right">
-                  <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="product_price text-right">$3<span>.999€</span></div>
-                </div>
-              </div>
-              <div class="product_buttons">
-                <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                  <div
-                    class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                    <div>
-                      <div><a href="/panier.php"><img src="./img/icones/panier.svg" class="svg"
-                            alt="ajouter dans le panier" title="Ajouter dans le panier"></a>
-                        <div>+</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                    <div>
-                      <div><a href="/panier.php"><img src="./img/icones/payer.svg" class="svg" alt="payer"
-                            title="Payer maintenat"></a>
-                        <div>+</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div> 
         <!-- Boxes -->
 
         <div class="boxes">
@@ -258,7 +213,7 @@
                     <div class="box_content d-flex flex-row align-items-center justify-content-start">
                       <div class="box_left">
                         <div class="box_image">
-                          <a href="encheres/index.html">
+                          <a href="modes-de-vente/enchere">
                             <div class="background_image" style="background-image:url(./img/img_accueil/violent.jpg)">
                             </div>
                           </a>
@@ -276,7 +231,7 @@
                     <div class="box_content d-flex flex-row align-items-center justify-content-start">
                       <div class="box_left">
                         <div class="box_image">
-                          <a href="meilleursoffres/index.html">
+                          <a href="modes-de-vente/meilleures-offres">
                             <div class="background_image" style="background-image:url(./img/img_accueil/statue.jpg)">
                             </div>
                           </a>
@@ -294,7 +249,7 @@
                     <div class="box_content d-flex flex-row align-items-center justify-content-start">
                       <div class="box_left">
                         <div class="box_image">
-                          <a href="achetezmaintenant/index.html">
+                          <a href="modes-de-vente/achat-immediat">
                             <div class="background_image" style="background-image:url(./img/img_accueil/horloge.jpg)">
                             </div>
                           </a>
@@ -357,13 +312,13 @@
                         </a>
                       </li>
                       <li>
-                        <a href="../enchere/">
+                        <a href="modes-de-vente/enchere">
                           <div>Encherès du moment<div class="footer_tag_2">recommandé</div>
                           </div>
                         </a>
                       </li>
                       <li>
-                        <a href="../meilleur-offre/">
+                        <a href="modes-de-vente/meilleures-offres">
                           <div>Meilleures offres du moment</div>
                         </a>
                       </li>                

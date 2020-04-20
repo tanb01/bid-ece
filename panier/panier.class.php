@@ -31,8 +31,8 @@ class panier{
         }
         return $total;
     }
-    //fontion permettant j'ajout du produit dans le panier
-    public function add($product_item_id){
+    //fontion permettant d'ajouter du produit dans le panier
+    public function ajouterpanier($product_item_id){
         //on va ajouter le produit au panier par l'id du produit
         if (isset($_SESSION['panier'][$product_item_id])){
             $_SESSION["panier"][$product_item_id]++;
@@ -40,6 +40,8 @@ class panier{
         $_SESSION["panier"][$product_item_id]=1;
         }
     }
+
+    //fontion qui permet le peiement imédiat d'un seul produit (dans la page paiement)
 
     //funtion elimination produit du panier
     public function del($product_item_id){

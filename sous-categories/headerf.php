@@ -1,5 +1,8 @@
 <?php
-require '_header.php';
+require '../connection.php';
+require '../panier/panier.class.php';
+$DB = new DB();/**connecteru a la bases de donnes */
+$panier =new panier($DB);
 ?><!DOCTYPE html>
 <html lang="fr">
 
@@ -27,9 +30,9 @@ require '_header.php';
             <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
-                  <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
-                  <li><a href="../accessoire-vip/">Accessoire VIP</a></li>
+                  <li><a href="ferraille-ou-tresor">Ferraille ou Trésor</a></li>
+                  <li><a href="bon-pour-le-musee.php">Bon pour le Musée</a></li>
+                  <li><a href="accessoire-vip.php">Accessoire VIP</a></li>
                 </ul>
               </div>
             </li>
@@ -55,8 +58,7 @@ require '_header.php';
       </li>
       <li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
       <li><a href="panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
-      <li class="total"><span>Total:<?= number_format($panier->total(),2); ?></span></li>
-    </ul>
+        </ul>
   </div>
   <!--Fin menu-->
   <!-- Home -->
