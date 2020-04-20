@@ -46,8 +46,8 @@
       <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Ventes</a>
         <div class="sub-menu1">
           <ul>
-            <li class="hover-me"><a href="compte-vendeur/index">Espace Vendeur</a></li>
-            <li class="hover-me"><a href="compte-admin/index">Espace Admin</a></li>
+            <li class="hover-me"><a href="./compte-vendeur/index.php">Espace Vendeur</a></li>
+            <li class="hover-me"><a href="./compte-admin/index.php">Espace Admin</a></li>
           </ul>
         </div>
       </li>
@@ -78,11 +78,11 @@
         <img class="d-block w-100" src="./img/img_accueil/art3.jpg" alt="Third slide" height="700px">
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <a class="carousel-control-prev"  role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next"  role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

@@ -95,27 +95,17 @@ $DB->query("SELECT * FROM item");
               </ul>
             </div>
             <div class="products_bar_side d-flex flex-row align-items-center justify-content-start ml-lg-auto">
-              <div class="products_dropdown product_dropdown_sorting">
-              <?php $item =$DB->query('SELECT nom, prix FROM item ORDER BY prix'); ?> 
+              <div class="products_dropdown product_dropdown_sorting">           
                          
               
                 <div class="isotope_sorting_text"><span>Trier par:</span><i class="fa fa-caret-down"
                     aria-hidden="true"></i></div>
                 <ul>
-                  <li class="item_sorting_btn">prix</li>
-                  <li class="item_sorting_btn">Nom</li>
+                  <li class="item_sorting_btn"><a href="ferraille-ou-tresor-prix">prix</a></li>
+                  <li class="item_sorting_btn"><a href="ferraille-ou-tresor-nom-croissant">Nom </a></li>
+                  
                 </ul>
-              </div>
-              
-              <div class="products_dropdown text-right product_dropdown_filter">
-                <div class="isotope_filter_text"><span>Filter</span><i class="fa fa-caret-down" aria-hidden="true"></i>
-                </div>
-                <ul>
-                  <li class="item_filter_btn" data-filter="*">Tous</li>
-                  <li class="item_filter_btn" data-filter=".hot">Nouveau</li>
-                </ul>
-              </div>
-            </div>
+              </div>              
           </div>
         </div>
       </div>
@@ -133,9 +123,9 @@ $DB->query("SELECT * FROM item");
                 <div>
                   <div>
                     <!--On va prendre le nom qui correspond au produit que l'on va appeler-->
-                    <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
+                    <div class="product_name"><a href="../article/index.php"><?= $product->nom;?></a></div>
                     <!--On va prendre la catégorie qui correspond au produit que l'on va appeler-->
-                    <div class="product_category">dans <a href="category.html"><?= $product->categorie;?></a></div>
+                    <div class="product_category">dans <a href="ferraille-ou-tresor"><?= $product->categorie;?></a></div>
                   </div>
                 </div>
                 <div class="ml-auto text-right">

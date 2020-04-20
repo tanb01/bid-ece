@@ -64,17 +64,10 @@ require "../common/header.php";
                   <span>Cliquez pour voir les articles</span>
                 </div>
               </div>
-<<<<<<< HEAD
-            </div>
-            <div class="back">
-              <div class="inner"><a href="../sous-categories/ferraille-ou-tresor">
-                <p>Retrouvez ici tous les articles appartenant à la catégories Accessoires VIP</p></a>
-=======
               <div class="back">
                 <div class="inner">
                   <p>Retrouvez ici tous les articles appartenant à la catégories Accessoires VIP</p>
                 </div>
->>>>>>> 0bcab092800235f806803a8c83141e31c53304cb
               </div>
             </a>
           </div>

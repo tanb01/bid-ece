@@ -20,7 +20,7 @@ $DB->query("SELECT * FROM item");
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     type="text/css">
-  <link rel="stylesheet" type="text/css" href="../style/enchere.css">
+  <link rel="stylesheet" type="text/css" href="../style/ferraille.css">
 </head>
 
 <body>
@@ -34,8 +34,8 @@ $DB->query("SELECT * FROM item");
             <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="../sous-categories/ferraille-ou-tresor.php">Ferraille ou Trésor</a></li>
-                  <li><a href="../sous-categories/bon-pour-le-musee.php">Bon pour le Musée</a></li>
+                  <li><a href="ferraille-ou-tresor">Ferraille ou Trésor</a></li>
+                  <li><a href="bon-pour-le-musee.php">Bon pour le Musée</a></li>
                   <li><a href="accessoire-vip.php">Accessoire VIP</a></li>
                 </ul>
               </div>
@@ -44,8 +44,8 @@ $DB->query("SELECT * FROM item");
               <div class="sub-menu2">
                 <ul>
                   <li><a href="../modes-de-vente/enchere/">Enchères</a></li>
-                  <li><a href="../modes-de-vente//achetez-le-maintenant/">Achetez-le maintenant</a></li>
-                  <li><a href="../modes-de-vente//meilleur-offre/">Meilleure offre</a></li>
+                  <li><a href="../modes-de-vente/achat-immediat/">Achetez-le maintenant</a></li>
+                  <li><a href="../modes-de-vente/meilleures-offres/">Meilleure offre</a></li>
                 </ul>
               </div>
             </li>
@@ -61,7 +61,7 @@ $DB->query("SELECT * FROM item");
         </div>
       </li>
       <li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
-      <li><a href="panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
+      <li><a href="../panier/panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
         </ul>
   </div>
   <!--Fin menu-->
@@ -69,17 +69,18 @@ $DB->query("SELECT * FROM item");
   <div class="home">
     <div class="home_container d-flex flex-column align-items-center justify-content-end">
       <div class="home_content text-center">
-        <div class="home_title">MEILLEURES OFFRES</div>
+        <div class="home_title">Ferraille ou Trésor</div>
         <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
-            <li><a href="../sous-categories/ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
+            <li><a href="../sous-categories/ferraille-ou-tresor">Ferraille ou Trésor</a></li>
             <li><a href="../sous-categories/bon-pour-le-musee/">Bon pour le Musée</a></li>
-            <li><a href="/sous-categories/accessoires-vip">Accessoire VIP</a></li>
+            <li><a href="../sous-categories/accessoire-vip">Accessoire VIP</a></li>
           </ul>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
+ 
 <!-- Products -->
  <div class="products">
     <div class="container">
@@ -92,50 +93,61 @@ $DB->query("SELECT * FROM item");
                 <li><a href="../ferraille-ou-tresor/">Tous les produits</a></li>
                 <li><a href="#">Nouveau produit</a></li>
               </ul>
-            </div>            
+            </div>
+            <div class="products_bar_side d-flex flex-row align-items-center justify-content-start ml-lg-auto">
+              <div class="products_dropdown product_dropdown_sorting">                  
+              
+                <div class="isotope_sorting_text"><span>Trier par:</span><i class="fa fa-caret-down"
+                    aria-hidden="true"></i></div>
+                <ul>
+                  <li class="item_sorting_btn">prix</li>
+                  <li class="item_sorting_btn">Nom</li>
+                </ul>
+              </div>              
+          </div>
         </div>
-      </div>      
+      </div>
       <div class="row products_row products_container grid">
-        <!--selection de produits du tableau items qu'on va stocker sous la variable product--> 
-        <?php $item =$DB->query("SELECT * FROM item  WHERE categorie  LIKE '%OF%' "); ?>
-        <?php foreach($item as $product): ?>
-          
-        <!-- Product tous les appeles à venir se fond grace à l'id du produit-->
+        <!--Sélection de produits du tableau items qu'on va stocker sous la variable product--> 
+        <?php $item =$DB->query("SELECT * FROM item WHERE categorie  LIKE '%FE%' ORDER BY prix"); ?>
+        <?php foreach($item as $product):?>
+        <!-- Tous les appels à venir se fond grâce à l'id du produit-->
         <div class="col-xl-4 col-md-6 grid-item new">
           <div class="product">
-         
-          <div class="product_tag d-flex flex-column align-items-center justify-content-center">
-				<div>
-					<div>Solde</div>
-          
-					</div>
-				</div>
-            <!--On va prendre l'image qui correspond ou produit qu'on va appeler-->
+            <!--On va prendre l'image qui correspond au produit que l'on va appeler-->
             <div class="product_image"><img src="data:image/jpeg;base64, <?= base64_encode($product->photo); ?>" height="350px" width="500px"></div>
             <div class="product_content">
               <div class="product_info d-flex flex-row align-items-start justify-content-start">
                 <div>
                   <div>
-                    <!--On va prendre le nom qui correspond ou produit qu'on va appeler-->
-                    <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
-                    <!--On va prendre la catégorie qui correspond ou produit qu'on va appeler-->
-                    <div class="product_category">dans <a href="category.html"><?= $product->categorie;?></a></div>
+                    <!--On va prendre le nom qui correspond au produit que l'on va appeler-->
+                    <div class="product_name"><a href="../article/index.php"><?= $product->nom;?></a></div>
+                    <!--On va prendre la catégorie qui correspond au produit que l'on va appeler-->
+                    <div class="product_category">dans <a href="ferraille-ou-tresor"><?= $product->categorie;?></a></div>
                   </div>
                 </div>
                 <div class="ml-auto text-right">
                   <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                  <!--On va prendre le prix  qui correspond ou produit qu'on va appeler-->
-                  <div class="product_price text-right"><s><?= number_format($product->prix,2);?>€</s></div>
-                  <div class="product_prices text-left"><?= number_format($product->prix,2);?>€</div>
+                  <!--On va prendre le prix  qui correspond au produit que l'on va appeler-->
+                  <div class="product_price text-right"><?= number_format($product->prix,2);?>€</div>
                 </div>
               </div>
               <div class="product_buttons">
-                <div class="text-center ">                  
+                <div class="text-right d-flex flex-row align-items-start justify-content-start">
                   <div
-                    class="product_button text-center d-flex   justify-content-center">
+                    class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
-                      <!--Grâce à l'icone carte de crédit être rédirigé vers paiment avec l'unique produit selectionéé-->
-                      <div><a class="add ajoutPaiement" href="paiementi.php?item_id<?= $product->item_id;?>"><img src="../img/icones/law.svg" class="svg" alt=""></a>
+                      <!--Grâce à l'icone panie on peut ajouter des produits dans le panier-->
+                      <div><a class="add ajoutPanier" href="../panier/ajout.php?item_id=<?= $product->item_id;?>"><img src="../img/icones/panier.svg" class="svg" alt=""></a>
+                        <div>+</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                    <div>
+                      <!--Grâce à l'icône carte de crédit être rédirigé vers paiement avec l'unique produit selectioné-->
+                      <div><a class="add ajoutPaiement" href="paiement.php?item_id<?= $product->item_id;?>"><img src="../img/icones/payer.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>
                     </div>
@@ -146,7 +158,6 @@ $DB->query("SELECT * FROM item");
           </div>
         </div>
         <?php endforeach ?>
-        
       </div>
       <div class="row page_nav_row">
         <div class="col">
@@ -247,9 +258,9 @@ $DB->query("SELECT * FROM item");
             </div>
           </div>
         </footer>
-     
+      </div>
 
- 
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -261,10 +272,8 @@ $DB->query("SELECT * FROM item");
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
   <script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  
-  <script type="text/javascript" src="../custom-js/time.js"></script>
+  <script type="text/javascript" src="../custom-js/alert.js"></script>
 
-        
 
 
 </body>

@@ -30,8 +30,8 @@ $panier =new panier($DB);
             <li class="hover-me"><a href="../categories/">Catégories</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="ferraille-ou-tresor">Ferraille ou Trésor</a></li>
-                  <li><a href="bon-pour-le-musee.php">Bon pour le Musée</a></li>
+                  <li><a href="../sous-categories/ferraille-ou-tresor.php">Ferraille ou Trésor</a></li>
+                  <li><a href="../sous-categories/bon-pour-le-musee.php">Bon pour le Musée</a></li>
                   <li><a href="accessoire-vip.php">Accessoire VIP</a></li>
                 </ul>
               </div>
@@ -39,9 +39,9 @@ $panier =new panier($DB);
             <li class="hover-me"><a href="../modes-de-vente/">Mode de vente</a><i class="fa fa-angle-right"></i>
               <div class="sub-menu2">
                 <ul>
-                  <li><a href="../enchere/">Enchères</a></li>
-                  <li><a href="../achetez-le-maintenant/">Achetez-le maintenant</a></li>
-                  <li><a href="../meilleur-offre/">Meilleure offre</a></li>
+                  <li><a href="../modes-de-vente/enchere/">Enchères</a></li>
+                  <li><a href="../modes-de-vente//achetez-le-maintenant/">Achetez-le maintenant</a></li>
+                  <li><a href="../modes-de-vente//meilleur-offre/">Meilleure offre</a></li>
                 </ul>
               </div>
             </li>
@@ -68,9 +68,9 @@ $panier =new panier($DB);
         <div class="home_title">ACHETEZ UN PRODUIT MAINTENANT</div>
         <div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
           <ul class="d-flex flex-row align-items-start justify-content-start text-center">
-            <li><a href="../ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
-            <li><a href="../bon-pour-le-musee/">Bon pour le Musée</a></li>
-            <li><a href="#">Accessoire VIP</a></li>
+          <li><a href="../sous-categories/ferraille-ou-tresor/">Ferraille ou Trésor</a></li>
+            <li><a href="../sous-categories/bon-pour-le-musee/">Bon pour le Musée</a></li>
+            <li><a href="/sous-categories/accessoires-vip">Accessoire VIP</a></li>
           </ul>
         </div>
       </div>
@@ -120,7 +120,7 @@ $DB->query("SELECT * FROM item");
       </div>
       <div class="row products_row products_container grid">
         <!--Sélection de produits du tableau items que l'on va stocker sous la variable product--> 
-        <?php $item =$DB->query("SELECT * FROM item "); ?>
+        <?php $item =$DB->query("SELECT * FROM item WHERE categorie  LIKE '%IM%'"); ?>
         <?php foreach($item as $product):?>
         <!-- Tous les appels à venir se font grâce à l'id du produit-->
         <div class="col-xl-4 col-md-6 grid-item new">
@@ -149,7 +149,7 @@ $DB->query("SELECT * FROM item");
                     class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
                     <div>
                       <!--Grâce à l'icône carte de crédit être redirigé vers paiement avec l'unique produit selectioné-->
-                      <div><a class="add ajoutPaiement" href="paiementi.php?item_id<?= $product->item_id;?>"><img src="../img/icones/payer.svg" class="svg" alt=""></a>
+                      <div><a class="add ajoutPaiement" href="../paiement/coordonnees.php?item_id<?= $product->item_id;?>"><img src="../img/icones/payer.svg" class="svg" alt=""></a>
                         <div>+</div>
                       </div>
                     </div>

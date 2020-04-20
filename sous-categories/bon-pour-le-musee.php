@@ -131,7 +131,7 @@ $DB->query("SELECT * FROM item WHERE categorie='Bon pour le musée'");
                 <div>
                   <div>
                     <!--On va prendre le nom qui correspond au produit que l'on va appeler-->
-                    <div class="product_name"><a href="product.html"><?= $product->nom;?></a></div>
+                    <div class="product_name"><a href="../article/index.php"><?= $product->nom;?></a></div>
                     <!--On va prendre la catégorie qui correspond au produit que l'on va appeler-->
                     <div class="product_category">dans <a href="category.html"><?= $product->categorie;?></a></div>
                   </div>
