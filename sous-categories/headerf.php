@@ -57,7 +57,7 @@ $panier =new panier($DB);
         </div>
       </li>
       <li><a href="../compte-acheteur/"><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</a></li>
-      <li><a href="panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
+      <li><a href="../panier/panier.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Payer</a></li>
         </ul>
   </div>
   <!--Fin menu-->

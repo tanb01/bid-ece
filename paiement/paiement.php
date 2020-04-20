@@ -126,6 +126,7 @@ $panier =new panier($DB);
                   <input type="number" id="phone" class="checkout_input" placeholder="Phone No."
                     required="required" pattern="\x2b[0-9]+" size="20"  title="Inserz un numéro de telephone de 10 nombres">
                 </div>
+                
                 <div>
                   <!-- Email -->
                   <input type="email" id="email" class="checkout_input" placeholder="Email"

@@ -10,7 +10,7 @@
                 alert(data.message);
             }else{
                 if(confirm(data.message + ' voulez vous consulter votre panier ?')){
-                    location.href = 'panier.php';
+                    location.href = '../panier/panier.php';
                 }
                     
                     
